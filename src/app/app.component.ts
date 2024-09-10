@@ -12,7 +12,7 @@ import {InputOutputParentComponent} from "./1input-output/input-output-parent.co
     InputOutputParentComponent,
   ],
   template: `
-    <app-input-output input1="Hello" superInput="World" input3="Example" parentInput="ParentInput"/>
+    <app-input-output input1="Hello" superInput="World" input3="Example" parentInput="ParentInput" (output)="outputHandler()"/>
     <app-input-output-parent parentInput="parent"/>
     <app-input-output-signals [input1]="input1Signal()" [aliasNameInput]="input2Signal()"/>
   `,
@@ -20,4 +20,7 @@ import {InputOutputParentComponent} from "./1input-output/input-output-parent.co
 export class AppComponent {
   input1Signal = signal('input1Signal');
   input2Signal = signal('input2Signal');
+
+  outputHandler() {
+  }
 }

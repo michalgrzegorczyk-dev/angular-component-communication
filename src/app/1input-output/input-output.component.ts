@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, Output, EventEmitter} from "@angular/core";
 import {InputOutputParentComponent} from "./input-output-parent.component";
 
 @Component({
@@ -26,6 +26,9 @@ export class InputOutputComponent extends InputOutputParentComponent{
   set input3(val: string) {
     this.input3Internal = val;
   }
+
+  @Output()
+  output = EventEmitter<void>();
 
   input3Internal = '';
 }
