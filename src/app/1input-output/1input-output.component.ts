@@ -1,11 +1,11 @@
 import {Component, Input, Output, EventEmitter} from "@angular/core";
-import {InputOutputParentComponent} from "./input-output-parent.component";
+import {InputOutputParentComponent} from "./1input-output-parent.component";
 
 @Component({
-  selector: 'app-input-output',
+  selector: 'app-1input-output',
   standalone: true,
   template: `
-    <h1>Input and Output</h1>
+    <h1>1. Input and Output</h1>
     <p>Input 1: {{input1}}</p>
     <p>Input 2: {{input2}}</p>
     <p>Input 3: {{input3Internal}}</p>
@@ -28,7 +28,7 @@ export class InputOutputComponent extends InputOutputParentComponent{
   }
 
   @Output()
-  output = EventEmitter<void>();
+  output = new EventEmitter<void>();
 
   input3Internal = '';
 }

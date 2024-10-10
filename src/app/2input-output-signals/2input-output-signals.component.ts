@@ -1,10 +1,10 @@
 import {Component, input} from "@angular/core";
 
 @Component({
-  selector: 'app-input-output-signals',
+  selector: 'app-2input-output-signals',
   standalone: true,
   template: `
-    <h1>Input and Output Signals</h1>
+    <h1>2. Input and Output Signals</h1>
     <p>Input 1: {{ input1() }}</p>
     <p>Input 2: {{ input2() }}</p>
   `,
