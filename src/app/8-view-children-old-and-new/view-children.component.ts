@@ -9,7 +9,7 @@ import {ChildComponent} from "./child.component";
     @for (val of [1, 2, 3]; track $index) {
       <app-7-view-child-old-child/>
     }
-    <button (click)="click()">Call Child Method</button>
+    <button (click)="click()">Call Child Methods</button>
   `,
   imports: [ChildComponent]
 })
