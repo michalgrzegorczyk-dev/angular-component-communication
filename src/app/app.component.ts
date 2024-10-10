@@ -7,7 +7,8 @@ import {ServiceComponent} from "./4service/4service.component";
 import {Service} from "./4service/4service.service";
 import {TemplateVariableParentComponent} from "./5-template-variable/parent.component";
 import {ConstructorComponentParentComponent} from "./6-constructor-component/parent.component";
-import {ViewChildOldComponent} from "./7-view-child-old-and-new/view-child.component";
+import {ViewChildComponent} from "./7-view-child-old-and-new/view-child.component";
+import {ViewChildrenComponent} from "./8-view-children-old-and-new/view-children.component";
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,9 @@ import {ViewChildOldComponent} from "./7-view-child-old-and-new/view-child.compo
     ServiceComponent,
     TemplateVariableParentComponent,
     ConstructorComponentParentComponent,
-    ViewChildOldComponent,
+    ViewChildComponent,
+    ViewChildComponent,
+    ViewChildrenComponent,
   ],
   template: `
     <app-1input-output input1="Hello" superInput="World" input3="Example" parentInput="ParentInput"
@@ -31,7 +34,8 @@ import {ViewChildOldComponent} from "./7-view-child-old-and-new/view-child.compo
     <app-4service/>
     <app-5-template-variable-parent/>
     <app-6-constructor-component-parent/>
-    <app-7-view-child-old/>
+    <app-7-view-child/>
+    <app-8-view-children/>
   `,
 })
 export class AppComponent implements OnInit {

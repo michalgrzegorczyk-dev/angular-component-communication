@@ -1,23 +1,23 @@
 import {Component, ViewChild, viewChild} from "@angular/core";
-import {ViewChildOldChildComponent} from "./child.component";
+import {ViewChildChildComponent} from "./child.component";
 
 @Component({
-  selector: 'app-7-view-child-old',
+  selector: 'app-7-view-child',
   standalone: true,
   template: `
-    <h1>7. View Child Old</h1>
-    <app-7-view-child-old-child #viewChildOldChildComponent />
+    <h1>7. View Child</h1>
+    <app-7-view-child-child #viewChildChildComponent />
     <button (click)="click()">Call Child Method</button>
   `,
-  imports: [ViewChildOldChildComponent]
+  imports: [ViewChildChildComponent]
 })
-export class ViewChildOldComponent {
+export class ViewChildComponent {
   // old way of using ViewChild
-  @ViewChild(ViewChildOldChildComponent, {})
-  childComponentOld!: ViewChildOldChildComponent;
+  @ViewChild(ViewChildChildComponent)
+  childComponentOld!: ViewChildChildComponent;
 
   // new way with signals of using ViewChild
-  childComponentNew = viewChild.required<ViewChildOldChildComponent>('viewChildOldChildComponent');
+  childComponentNew = viewChild.required<ViewChildChildComponent>('viewChildChildComponent');
 
   click(): void {
     this.childComponentOld.someChildMethod();
