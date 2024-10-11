@@ -1,13 +1,13 @@
 import {Component, Input} from "@angular/core";
 
 @Component({
-  selector: 'app-1input-output-parent',
+  selector: 'app-1-input-output-parent-old',
   standalone: true,
   template: `
-    <h1>1.2 Input and Output with Parent</h1>
+    <h1>app-1-input-output-parent-old</h1>
     <p>Input 1: {{ parentInput }}</p>
   `,
 })
-export class InputOutputParentComponent {
+export class InputOutputParentOldComponent {
   @Input() parentInput = '';
 }

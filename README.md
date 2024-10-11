@@ -1,3 +1,9 @@
+todo:<br>
+- [x] 1 done
+- [x] 2 done
+- [x] rest 3... ->
+
+
 # Angular Component Communication
 
 `pnpm install` && `ng serve`

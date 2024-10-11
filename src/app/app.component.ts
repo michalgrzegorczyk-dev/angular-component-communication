@@ -1,8 +1,8 @@
 import {Component, signal, OnInit, inject} from '@angular/core';
-import {InputOutputComponent} from "./1-input-output-old-and-new/1input-output.component";
-import {InputOutputSignalsComponent} from "./2input-output-signals/2input-output-signals.component";
-import {InputOutputParentComponent} from "./1-input-output-old-and-new/1input-output-parent.component";
-import {InputNgOnChangesComponent} from "./3input-ng-on-changes/3input-ng-on-changes.component";
+import {InputOutputChildOldComponent} from "./1-input-output-old-and-new/old/input-output-child-old.component";
+import {InputOutputNewComponent} from "./1-input-output-old-and-new/new/input-output-new.component";
+import {InputOutputParentOldComponent} from "./1-input-output-old-and-new/old/input-output-parent-old.component";
+import {InputNgOnChangesComponent} from "./2-input-ng-on-changes/input-ng-on-changes.component";
 import {ServiceComponent} from "./4service/4service.component";
 import {Service} from "./4service/4service.service";
 import {TemplateVariableParentComponent} from "./5-template-variable/parent.component";
@@ -16,9 +16,9 @@ import {RoutingQueryParentComponent} from "./10-routing-query/routing-query-pare
   selector: 'app-root',
   standalone: true,
   imports: [
-    InputOutputComponent,
-    InputOutputSignalsComponent,
-    InputOutputParentComponent,
+    InputOutputChildOldComponent,
+    InputOutputNewComponent,
+    InputOutputParentOldComponent,
     InputNgOnChangesComponent,
     ServiceComponent,
     TemplateVariableParentComponent,
@@ -31,24 +31,21 @@ import {RoutingQueryParentComponent} from "./10-routing-query/routing-query-pare
   ],
   template: `
     <div class="box">
-        <app-1input-output input1="Hello" superInput="World" input3="Example" parentInput="ParentInput"
-                       (output)="outputHandler()"/>
+      <app-1-input-output-child-old input1="Hello"
+                                    aliasInput="World"
+                                    inputSetter="Example"
+                                    parentInput="ParentInput"
+                                    (output)="outputHandler()"/>
+      <app-1-input-output-parent-old parentInput="parent"/>
+      <app-1-input-output-new [input1]="input1Signal()" [aliasNameInput]="input2Signal()"/>
     </div>
 
     <div class="box">
-        <app-1input-output-parent parentInput="parent"/>
+      <app-2-input-ng-on-changes [input1]="input1Signal()"/>
     </div>
 
     <div class="box">
-        <app-2input-output-signals [input1]="input1Signal()" [aliasNameInput]="input2Signal()"/>
-    </div>
-
-    <div class="box">
-        <app-3input-ng-on-changes [input1]="input3Signal()"/>
-    </div>
-
-    <div class="box">
-        <app-4service/>
+      <app-4service/>
     </div>
 
     <div class="box">
@@ -72,23 +69,22 @@ import {RoutingQueryParentComponent} from "./10-routing-query/routing-query-pare
     </div>
 
     <div class="box">
-      <app-10-routing-query />
+      <app-10-routing-query/>
     </div>
 
   `,
 })
 export class AppComponent implements OnInit {
+  readonly input1Signal = signal('input-1-signal');
+  readonly input2Signal = signal('input-2-signal');
   #service = inject(Service);
-  readonly input1Signal = signal('input1Signal');
-  readonly input2Signal = signal('input2Signal');
-  readonly input3Signal = signal('input3Signal');
 
   outputHandler() {
   }
 
   ngOnInit(): void {
     // Example 3
-    setTimeout(() => this.input3Signal.set('Example'), 2000);
+    setTimeout(() => this.input1Signal.set('Example'), 2000);
 
     // Example 4
     setTimeout(() => this.#service.setValue('New Value From Service!'), 2000);

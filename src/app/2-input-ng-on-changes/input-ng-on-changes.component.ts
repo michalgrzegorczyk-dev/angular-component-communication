@@ -1,10 +1,11 @@
 import {Component, OnChanges, SimpleChanges, input} from "@angular/core";
 
 @Component({
-  selector: 'app-3input-ng-on-changes',
+  selector: 'app-2-input-ng-on-changes',
   standalone: true,
   template: `
-    <h1>3. Input ngOnChanges</h1>
+    <h1>app-2-input-ng-on-changes</h1>
+    <p>check console.log</p>
   `,
 })
 export class InputNgOnChangesComponent implements OnChanges {

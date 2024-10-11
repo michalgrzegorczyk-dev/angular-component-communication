@@ -1,5 +1,7 @@
 import {Injectable, signal} from "@angular/core";
 
+
+//todo make old and new observables and signals
 @Injectable({
   providedIn: 'root'
 })
