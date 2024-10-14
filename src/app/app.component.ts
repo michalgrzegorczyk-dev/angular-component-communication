@@ -3,8 +3,7 @@ import {InputOutputChildOldComponent} from "./1-input-output-old-and-new/old/inp
 import {InputOutputNewComponent} from "./1-input-output-old-and-new/new/input-output-new.component";
 import {InputOutputParentOldComponent} from "./1-input-output-old-and-new/old/input-output-parent-old.component";
 import {InputNgOnChangesComponent} from "./2-input-ng-on-changes/input-ng-on-changes.component";
-import {ServiceComponent} from "./4service/4service.component";
-import {Service} from "./4service/4service.service";
+import {ServiceComponent} from "./3-service/service.component";
 import {TemplateVariableParentComponent} from "./5-template-variable/parent.component";
 import {ConstructorComponentParentComponent} from "./6-constructor-component/parent.component";
 import {ViewChildComponent} from "./7-view-child-old-and-new/view-child.component";
@@ -45,7 +44,7 @@ import {RoutingQueryParentComponent} from "./10-routing-query/routing-query-pare
     </div>
 
     <div class="box">
-      <app-4service/>
+      <app-3-service/>
     </div>
 
     <div class="box">
@@ -77,7 +76,6 @@ import {RoutingQueryParentComponent} from "./10-routing-query/routing-query-pare
 export class AppComponent implements OnInit {
   readonly input1Signal = signal('input-1-signal');
   readonly input2Signal = signal('input-2-signal');
-  #service = inject(Service);
 
   outputHandler() {
   }
@@ -85,8 +83,5 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     // Example 3
     setTimeout(() => this.input1Signal.set('Example'), 2000);
-
-    // Example 4
-    setTimeout(() => this.#service.setValue('New Value From Service!'), 2000);
   }
 }
