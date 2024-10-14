@@ -1,11 +1,9 @@
 import {Injectable, signal} from "@angular/core";
 
-
-//todo make old and new observables and signals
 @Injectable({
   providedIn: 'root'
 })
-export class Service {
+export class NewService {
   readonly value = signal('initial');
 
   setValue(value: string) {
