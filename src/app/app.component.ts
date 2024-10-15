@@ -1,7 +1,7 @@
 import {Component, signal, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {InputOutputChildOldComponent} from "./1-input-output/old/input-output-child-old.component";
-import {InputOutputNewComponent} from "./1-input-output/new/input-output-new.component";
+import {InputOutputChildNewComponent} from "./1-input-output/new/input-output-child-new.component";
 import {InputOutputParentOldComponent} from "./1-input-output/old/input-output-parent-old.component";
 import {InputNgOnChangesComponent} from "./2-input-ng-on-changes/input-ng-on-changes.component";
 import {ServiceComponent} from "./3-service/service.component";
@@ -18,7 +18,7 @@ import {RoutingQueryContainerComponent} from "./9-routing-query/routing-query-co
   imports: [
     CommonModule,
     InputOutputChildOldComponent,
-    InputOutputNewComponent,
+    InputOutputChildNewComponent,
     InputOutputParentOldComponent,
     InputNgOnChangesComponent,
     ServiceComponent,
@@ -46,7 +46,7 @@ import {RoutingQueryContainerComponent} from "./9-routing-query/routing-query-co
                                       inputSetter="Example"
                                       parentInput="ParentInput"
                                       (output)="outputHandler()"/>
-        <app-1-input-output-new [input1]="input1Signal()" [aliasNameInput]="input2Signal()"/>
+        <app-1-input-output-new [xxxx]="input1Signal()" [input1]="input1Signal()" [aliasNameInput]="input2Signal()"/>
       </div>
 
       <div *ngSwitchCase="2" class="box">

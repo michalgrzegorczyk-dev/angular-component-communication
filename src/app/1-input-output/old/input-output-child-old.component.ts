@@ -15,16 +15,13 @@ import {InputOutputParentOldComponent} from "./input-output-parent-old.component
   inputs: ['parentInput'],
 })
 export class InputOutputChildOldComponent extends InputOutputParentOldComponent {
-  // basic input
   @Input() input1 = '';
 
-  // input with alias and transform
   @Input({required: true, alias: 'aliasInput', transform: (val: string) => val + '!'}) input2 = '';
   @Output()
   output = new EventEmitter<void>();
   input3Internal = '';
 
-  // input with setter
   @Input()
   set inputSetter(val: string) {
     this.input3Internal = val;
