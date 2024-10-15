@@ -2,10 +2,10 @@ import {Component, signal} from "@angular/core";
 import {NgForOf} from "@angular/common";
 
 @Component({
-  selector: 'app-5-template-variable-child-todo-list',
+  selector: 'app-4-template-variable-todo-list',
   standalone: true,
   template: `
-    <h2>Todo List</h2>
+    <h2>app-4-template-variable-todo-list</h2>
     <ul>
       @for (todo of todos(); track $index) {
         <li>{{ todo }}</li>
@@ -14,7 +14,7 @@ import {NgForOf} from "@angular/common";
   `,
   imports: [NgForOf]
 })
-export class ChildTodoListComponent {
+export class TemplateVariableTodoListComponent {
   readonly todos = signal(['Learn Angular', 'Learn TypeScript', 'Build Angular App']);
 
   addTodo(): void {

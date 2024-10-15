@@ -4,7 +4,7 @@ import {InputOutputNewComponent} from "./1-input-output-old-and-new/new/input-ou
 import {InputOutputParentOldComponent} from "./1-input-output-old-and-new/old/input-output-parent-old.component";
 import {InputNgOnChangesComponent} from "./2-input-ng-on-changes/input-ng-on-changes.component";
 import {ServiceComponent} from "./3-service/service.component";
-import {TemplateVariableParentComponent} from "./5-template-variable/parent.component";
+import {TemplateVariableParentComponent} from "./4-template-variable/template-variable-container.component";
 import {ConstructorComponentParentComponent} from "./6-constructor-component/parent.component";
 import {ViewChildComponent} from "./7-view-child-old-and-new/view-child.component";
 import {ViewChildrenComponent} from "./8-view-children-old-and-new/view-children.component";
