@@ -1,12 +1,12 @@
 import {Component, signal} from "@angular/core";
 import {NgForOf} from "@angular/common";
-import {ConstructorComponentParentComponent} from "./parent.component";
+import {ConstructorComponentParentComponent} from "./injected-component-parent.component";
 
 @Component({
-  selector: 'app-6-constructor-component-child-todo-list',
+  selector: 'app-5-injected-component-todo-list',
   standalone: true,
   template: `
-    <h2>Todo List</h2>
+    <h2>app-5-injected-component-todo-list</h2>
     <ul>
       @for (todo of todos(); track $index) {
         <li>{{ todo }}</li>
@@ -17,7 +17,7 @@ import {ConstructorComponentParentComponent} from "./parent.component";
   `,
   imports: [NgForOf]
 })
-export class ChildTodoListComponent {
+export class InjectedComponentTodoListComponent {
   readonly todos = signal(['Learn Angular', 'Learn TypeScript', 'Build Angular App']);
 
   constructor(private constructorComponentParentComponent: ConstructorComponentParentComponent) {

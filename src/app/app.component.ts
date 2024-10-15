@@ -5,7 +5,7 @@ import {InputOutputParentOldComponent} from "./1-input-output-old-and-new/old/in
 import {InputNgOnChangesComponent} from "./2-input-ng-on-changes/input-ng-on-changes.component";
 import {ServiceComponent} from "./3-service/service.component";
 import {TemplateVariableParentComponent} from "./4-template-variable/template-variable-container.component";
-import {ConstructorComponentParentComponent} from "./6-constructor-component/parent.component";
+import {ConstructorComponentParentComponent} from "./5-injected-component/injected-component-parent.component";
 import {ViewChildComponent} from "./7-view-child-old-and-new/view-child.component";
 import {ViewChildrenComponent} from "./8-view-children-old-and-new/view-children.component";
 import {ParentComponent} from "./9-routing-param/parent.component";
@@ -52,7 +52,7 @@ import {RoutingQueryParentComponent} from "./10-routing-query/routing-query-pare
     </div>
 
     <div class="box">
-      <app-6-constructor-component-parent/>
+      <app-5-injected-component-parent/>
     </div>
 
     <div class="box">
