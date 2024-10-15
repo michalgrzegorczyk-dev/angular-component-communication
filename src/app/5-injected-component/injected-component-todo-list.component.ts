@@ -23,7 +23,7 @@ export class InjectedComponentTodoListComponent {
   constructor(private constructorComponentParentComponent: ConstructorComponentParentComponent) {
   }
 
-  addTodo(): void  {
+  addTodo(): void {
     this.todos.set([...this.todos(), 'New Todo']);
     this.constructorComponentParentComponent.displayNotification();
   }

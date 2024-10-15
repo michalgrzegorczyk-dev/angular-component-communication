@@ -5,7 +5,7 @@ import {ActivatedRoute} from "@angular/router";
   selector: 'app-8-routing-param-child',
   standalone: true,
   template: `
-    <h2>Child</h2>
+    <h2>app-8-routing-param-child</h2>
     {{ id() }}
   `,
 })

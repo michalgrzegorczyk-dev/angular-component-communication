@@ -3,3 +3,28 @@
   padding: 30px 30px;
   margin-bottom: 10px;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #000;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: green;
+  color: #fff;
+}
+
+.box {
+  border: 1px solid #000;
+  padding: 20px;
+  margin-top: 20px;
+}
