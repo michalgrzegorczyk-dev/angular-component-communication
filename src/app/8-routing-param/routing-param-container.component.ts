@@ -2,17 +2,17 @@ import {Component, inject} from "@angular/core";
 import {RouterOutlet, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-9-routing',
+  selector: 'app-8-routing-param-container',
   standalone: true,
   template: `
-    <h2>Parent</h2>
+    <h2>app-8-routing-param-container</h2>
     <button (click)="goToDetail()">Go to detail</button>
     <router-outlet/>
   `,
   imports: [RouterOutlet]
 })
-export class ParentComponent {
-  #router = inject(Router);
+export class RoutingParamContainerComponent {
+  readonly #router = inject(Router);
 
   async goToDetail(): Promise<void> {
     await this.#router.navigate(['/detail', '123']);

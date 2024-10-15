@@ -8,7 +8,7 @@ import {TemplateVariableParentComponent} from "./4-template-variable/template-va
 import {ConstructorComponentParentComponent} from "./5-injected-component/injected-component-parent.component";
 import {ViewChildContainerComponent} from "./6-view-child/view-child-container.component";
 import {ViewChildrenContainerComponent} from "./7-view-children/view-children-container.component";
-import {ParentComponent} from "./9-routing-param/parent.component";
+import {RoutingParamContainerComponent} from "./8-routing-param/routing-param-container.component";
 import {RoutingQueryParentComponent} from "./10-routing-query/routing-query-parent.component";
 
 @Component({
@@ -25,7 +25,7 @@ import {RoutingQueryParentComponent} from "./10-routing-query/routing-query-pare
     ViewChildContainerComponent,
     ViewChildContainerComponent,
     ViewChildrenContainerComponent,
-    ParentComponent,
+    RoutingParamContainerComponent,
     RoutingQueryParentComponent,
   ],
   template: `
@@ -60,11 +60,11 @@ import {RoutingQueryParentComponent} from "./10-routing-query/routing-query-pare
     </div>
 
     <div class="box">
-      <app-8-view-children/>
+      <app-7-view-children-container/>
     </div>
 
     <div class="box">
-      <app-9-routing/>
+      <app-8-routing-param-container/>
     </div>
 
     <div class="box">

@@ -7,7 +7,7 @@ import {ViewChildrenChildComponent} from "./view-children-child.component";
   template: `
     <h1>app-7-view-children-container</h1>
     @for (val of [1, 2, 3]; track $index) {
-      <app-7-view-child-old-child/>
+      <app-7-view-children-child/>
     }
     <button (click)="click()">Call Child Methods</button>
   `,
