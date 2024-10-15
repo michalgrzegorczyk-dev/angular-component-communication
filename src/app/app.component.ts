@@ -1,12 +1,12 @@
 import {Component, signal, OnInit, inject} from '@angular/core';
-import {InputOutputChildOldComponent} from "./1-input-output-old-and-new/old/input-output-child-old.component";
-import {InputOutputNewComponent} from "./1-input-output-old-and-new/new/input-output-new.component";
-import {InputOutputParentOldComponent} from "./1-input-output-old-and-new/old/input-output-parent-old.component";
+import {InputOutputChildOldComponent} from "./1-input-output/old/input-output-child-old.component";
+import {InputOutputNewComponent} from "./1-input-output/new/input-output-new.component";
+import {InputOutputParentOldComponent} from "./1-input-output/old/input-output-parent-old.component";
 import {InputNgOnChangesComponent} from "./2-input-ng-on-changes/input-ng-on-changes.component";
 import {ServiceComponent} from "./3-service/service.component";
 import {TemplateVariableParentComponent} from "./4-template-variable/template-variable-container.component";
 import {ConstructorComponentParentComponent} from "./5-injected-component/injected-component-parent.component";
-import {ViewChildComponent} from "./7-view-child-old-and-new/view-child.component";
+import {ViewChildContainerComponent} from "./6-view-child/view-child-container.component";
 import {ViewChildrenComponent} from "./8-view-children-old-and-new/view-children.component";
 import {ParentComponent} from "./9-routing-param/parent.component";
 import {RoutingQueryParentComponent} from "./10-routing-query/routing-query-parent.component";
@@ -22,8 +22,8 @@ import {RoutingQueryParentComponent} from "./10-routing-query/routing-query-pare
     ServiceComponent,
     TemplateVariableParentComponent,
     ConstructorComponentParentComponent,
-    ViewChildComponent,
-    ViewChildComponent,
+    ViewChildContainerComponent,
+    ViewChildContainerComponent,
     ViewChildrenComponent,
     ParentComponent,
     RoutingQueryParentComponent,
@@ -56,7 +56,7 @@ import {RoutingQueryParentComponent} from "./10-routing-query/routing-query-pare
     </div>
 
     <div class="box">
-      <app-7-view-child/>
+      <app-6-view-child-container/>
     </div>
 
     <div class="box">
