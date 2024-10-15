@@ -1,9 +1,3 @@
-todo:<br>
-- [x] 1 done
-- [x] 2 done
-- [x] rest 3... -> maybe consider templates
-- [ ] add description about commetings
-
 # Angular Component Communication
 
 `pnpm install` && `ng serve`
