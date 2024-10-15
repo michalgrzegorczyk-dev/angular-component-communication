@@ -6,7 +6,7 @@ import {TemplateVariableTodoListComponent} from "./template-variable-todo-list.c
   standalone: true,
   template: `
     <h1>app-4-template-variable-container</h1>
-    <app-4-todo-list #todoList/>
+    <app-4-template-variable-todo-list #todoList/>
     <button (click)="addTodo(todoList)">Add Todo</button>
   `,
   imports: [TemplateVariableTodoListComponent]

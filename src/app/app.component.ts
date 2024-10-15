@@ -48,7 +48,7 @@ import {RoutingQueryParentComponent} from "./10-routing-query/routing-query-pare
     </div>
 
     <div class="box">
-      <app-5-template-variable-parent/>
+      <app-4-template-variable-container/>
     </div>
 
     <div class="box">
