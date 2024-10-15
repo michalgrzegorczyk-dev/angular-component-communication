@@ -7,7 +7,7 @@ import {ServiceComponent} from "./3-service/service.component";
 import {TemplateVariableParentComponent} from "./4-template-variable/template-variable-container.component";
 import {ConstructorComponentParentComponent} from "./5-injected-component/injected-component-parent.component";
 import {ViewChildContainerComponent} from "./6-view-child/view-child-container.component";
-import {ViewChildrenComponent} from "./8-view-children-old-and-new/view-children.component";
+import {ViewChildrenContainerComponent} from "./7-view-children/view-children-container.component";
 import {ParentComponent} from "./9-routing-param/parent.component";
 import {RoutingQueryParentComponent} from "./10-routing-query/routing-query-parent.component";
 
@@ -24,7 +24,7 @@ import {RoutingQueryParentComponent} from "./10-routing-query/routing-query-pare
     ConstructorComponentParentComponent,
     ViewChildContainerComponent,
     ViewChildContainerComponent,
-    ViewChildrenComponent,
+    ViewChildrenContainerComponent,
     ParentComponent,
     RoutingQueryParentComponent,
   ],

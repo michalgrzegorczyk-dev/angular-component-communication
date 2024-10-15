@@ -1,14 +1,14 @@
 import {Component} from "@angular/core";
 
 @Component({
-  selector: 'app-7-view-child-old-child',
+  selector: 'app-7-view-children-child',
   standalone: true,
   template: `
-    <h2>Child</h2>
+    <h2>app-7-view-children-child</h2>
   `,
 })
-export class ChildComponent {
-  readonly #someChildField = 'field from child component';
+export class ViewChildrenChildComponent {
+  readonly #someChildField = 'Field Value';
 
   someChildMethod(): void {
     console.log(this.#someChildField);
