@@ -1,32 +1,70 @@
-# 1-input-output
+# Input and Output Decorators
 
-## Input and output decorators
+The most fundamental way of enabling communication between components in Angular is through the use of `@Input()` and `@Output()` decorators.
 
-Most basic way of communication between components is using input and 
-output decorators. To achieve this, we need to have added the `@Input()` and `@Output()` decorators
-to the child component and pass this data from the parent component. 
-We can do it old way, which is using the `@Input()` and `@Output()` decorators, or we can make it
-new way, with signals `input()`
+- `@Input()` allows a child component to receive data from its parent.
+- `@Output()` enables a child component to send data back to its parent.
 
-Moreover, using inputs in old way, we can inherit the value from the parent component if 
-we extend that parent component using ```inputs: ['parentInput'],``` in ```@Component``` metadata. It's not very common practice but for sure it's possible and good to 
-know about it. What's more, it doesn't work like that with signals approach. 
+To implement this communication:
 
+1. Add `@Input()` and `@Output()` decorators to properties in the child component.
+2. Pass data from the parent component to these decorated properties.
+
+## Two Approaches to Component Communication
+
+### 1. Traditional Approach
+
+The traditional method involves using `@Input()` and `@Output()` decorators as
+described above. This approach has been a used in Angular development for 
+years and is widely understood.
+
+### 2. Modern Approach with Signals
+
+With newer versions of Angular, we can now use signals with the `input()`
+and `output()` function instead of decorators.
+
+## Setter Methods
+
+Angular provides an additional layer of control over inputs through setter methods. These setters are called whenever the input value changes, allowing you to:
+
+- Perform validation
+- Transform the incoming data
+- Trigger side effects based on new input values
+
+Here's a quick example:
 
 ```typescript
-// in app-child component
-@Input() input1 = '';
+@Input()
+set name(value: string) {
+  console.log('New name:', value);
+  this._name = value.trim();
+}
 
-// in parent component
-<app-child [input1]="parentInput" />
-
-// vs signals
-  
-// in app-child component
-input1 = input('initial');
-
-// in parent component
-<app-child [input1]="input1Signal()" />
+get name(): string {
+  return this._name;
+}
 ```
 
-You can see full set of examples in ```src/app/1-input-output``` folder.
+## Input Inheritance
+
+In the traditional approach, there's an interesting technique for inheriting input properties from a parent component. 
+While not commonly used, it's a powerful feature to be aware of. It's important to note that this inheritance method is not compatible with the signals approach.
+
+
+1. Extend the parent component in your child component.
+2. Use the `inputs` array in the `@Component` decorator to specify which inputs to inherit.
+
+Example:
+
+```typescript
+@Component({
+  selector: 'app-child',
+  template: '...',
+  inputs: ['parentInput']
+})
+export class ChildComponent extends ParentComponent {
+  // The child now has access to 'parentInput'
+}
+```
+
+Full set of examples you can find in the [src/app/1-input-output](src/app/1-input-output) folder.
