@@ -37,13 +37,13 @@ class TodoListComponent {
 // parent component
 @Component({
   template: `
-    <app-4-template-variable-todo-list #todoList/>
+    <todo-list #todoList/>
     <button (click)="addTodo(todoList)">Add Todo</button>
   `,
-  imports: [TemplateVariableTodoListComponent]
+  imports: [TodoListComponent]
 })
-export class TemplateVariableParentComponent {
-  addTodo(todoList: TemplateVariableTodoListComponent) {
+export class TodoListComponent {
+  addTodo(todoList: TodoListComponent) {
     todoList.addTodo();
   }
 }
