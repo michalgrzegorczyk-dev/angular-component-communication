@@ -6,7 +6,7 @@ import {InputOutputParentOldComponent} from "./1-input-output/old/input-output-p
 import {InputNgOnChangesComponent} from "./2-input-ng-on-changes/input-ng-on-changes.component";
 import {ServiceComponent} from "./3-service/service.component";
 import {TemplateVariableParentComponent} from "./4-template-variable/template-variable-container.component";
-import {ConstructorComponentParentComponent} from "./5-injected-component/injected-component-parent.component";
+import {InjectedComponentContainer} from "./5-injected-component/injected-component-container.component";
 import {ViewChildContainerComponent} from "./6-view-child/view-child-container.component";
 import {ViewChildrenContainerComponent} from "./7-view-children/view-children-container.component";
 import {RoutingParamContainerComponent} from "./8-routing-param/routing-param-container.component";
@@ -23,7 +23,7 @@ import {RoutingQueryContainerComponent} from "./9-routing-query/routing-query-co
     InputNgOnChangesComponent,
     ServiceComponent,
     TemplateVariableParentComponent,
-    ConstructorComponentParentComponent,
+    InjectedComponentContainer,
     ViewChildContainerComponent,
     ViewChildrenContainerComponent,
     RoutingParamContainerComponent,
@@ -62,7 +62,7 @@ import {RoutingQueryContainerComponent} from "./9-routing-query/routing-query-co
       </div>
 
       <div *ngSwitchCase="5" class="box">
-        <app-5-injected-component-parent/>
+        <app-5-injected-component-container/>
       </div>
 
       <div *ngSwitchCase="6" class="box">
