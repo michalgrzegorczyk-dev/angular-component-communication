@@ -32,7 +32,7 @@ share information.
 Some of these ways are better than others. But it's good to know all
 of them. This way, you can pick the best one for your project.
 
-<u>The key here is a critical thinking and understanding of the problem.</u>
+<u>The key here is a critical thinking and understanding context of the problem.</u>
 
 I'll show you examples of each way. By the end, you'll know lots of
 ways to make your Angular app's parts work together. Also, you can
