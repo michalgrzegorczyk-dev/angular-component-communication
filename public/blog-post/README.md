@@ -5,9 +5,8 @@ When you build apps with Angular, you need to know how different
 parts of your app can share information. This is called component
 communication. 
 
-In this blog post, I'll cover possible ways to make 
-components talk to each other, such as: also i will talk about 
-features that are not taken into account ragarding to communication 
+In this blog post, I'll cover all possible ways to make 
+components talk to each other, such as:
 
 - Simple ways that are used most often
   - `@Input` and `@Output`, 
@@ -25,18 +24,18 @@ features that are not taken into account ragarding to communication
   - Injecting parent components into child components
   - `@Input` inheritance
 
-I'll also highlight some Angular features that aren't usually 
-thought of as communication features, but can actually help components 
+I'll also highlight some features that aren't usually 
+thought of as component communication, but can actually help to 
 share information.
 
 Some of these ways are better than others. But it's good to know all
-of them. This way, you can pick the best one for your project.
+of them. This way, you can pick the best one for your case.
 
-<u>The key here is a critical thinking and understanding context of the problem.</u>
+❗<u>The key here is a critical thinking and understanding context of the problem.</u>
 
 I'll show you examples of each way. By the end, you'll know lots of
 ways to make your Angular app's parts work together. Also, you can
-check every example by yourself here: xxxx<link to github and live demo>.
+check every example by yourself [under this link.](https://github.com/michalgrzegorczyk-dev/angular-component-communication)
 
 Ready to learn? Let's start!
 
