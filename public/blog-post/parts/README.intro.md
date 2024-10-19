@@ -23,7 +23,7 @@ features that are not taken into account ragarding to communication
   - router input //todo
 - Rarely used techniques that can be helpful sometimes
   - Injecting parent components into child components
-  - `@Input` Inheritance
+  - `@Input` inheritance
 
 I'll also highlight some Angular features that aren't usually 
 thought of as communication features, but can actually help components 

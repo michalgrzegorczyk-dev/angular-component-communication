@@ -67,7 +67,7 @@ export class ChildComponent extends ParentComponent {
 }
 ```
 
-Full set of examples you can find in the [src/app/1-input-output](../../../src/app/1-input-output) folder.
+Full set of examples you can find in the [1-input-output](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/1-input-output) folder.
 
 
 # 2-input-ng-on-changes

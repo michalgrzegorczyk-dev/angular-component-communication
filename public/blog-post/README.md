@@ -23,7 +23,7 @@ features that are not taken into account ragarding to communication
   - router input //todo
 - Rarely used techniques that can be helpful sometimes
   - Injecting parent components into child components
-  - `@Input` Inheritance
+  - `@Input` inheritance
 
 I'll also highlight some Angular features that aren't usually 
 thought of as communication features, but can actually help components 
@@ -110,7 +110,7 @@ export class ChildComponent extends ParentComponent {
 }
 ```
 
-Full set of examples you can find in the [src/app/1-input-output](../../../src/app/1-input-output) folder.
+Full set of examples you can find in the [1-input-output](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/1-input-output) folder.
 
 
 # 2-input-ng-on-changes
