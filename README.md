@@ -2,20 +2,16 @@
 
 ## Introduction
 Repository used to show examples from a blog post about ways to communicate 
-between components in Angular.
+between components in Angular. Blog post is located in `public/` directory
+and has 3 parts: intro, content, outro.
 
-### Install dependencies:
+### Project
 ```typescript
-npm install
-```
-
-### Run the project:
-```typescript
-npm start
+npm install && ng serve
 ```
 
 ## Scripts
-To combine all README files into one, run the following command from root folder:
+To combine all README files from all examples into one, run the following command from root folder:
 ```typescript
 node combineRedme.js
 ```
