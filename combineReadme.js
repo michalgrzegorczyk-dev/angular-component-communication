@@ -1,11 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-// Define the paths
-const mainReadmePath = path.join(__dirname, 'src/app/README.md');  // Save combined README here
-const appDir = path.join(__dirname, 'src/app');  // Directory to search for sub-READMEs
+const mainReadmePath = path.join(__dirname, 'src/app/README.md');
+const appDir = path.join(__dirname, 'src/app');
 
-// Function to get all README.md files from the app directory
 function getReadmeFiles(dir) {
   let readmeFiles = [];
   const files = fs.readdirSync(dir);
@@ -22,16 +20,13 @@ function getReadmeFiles(dir) {
   return readmeFiles;
 }
 
-// Combine the content of the readme files
 function combineReadmeFiles() {
   const readmeFiles = getReadmeFiles(appDir);
-  let combinedContent = '# Combined Documentation\n\n';
+  let combinedContent = '# Components Communication in Angular\n\n';
 
   readmeFiles.forEach(filePath => {
-    const relativePath = path.relative(__dirname, filePath);
     const content = fs.readFileSync(filePath, 'utf-8');
-    const sectionTitle = `## ${relativePath}\n\n`;
-    combinedContent += sectionTitle + content + '\n\n';
+    combinedContent += content + '\n\n';
   });
 
   fs.writeFileSync(mainReadmePath, combinedContent, 'utf-8');

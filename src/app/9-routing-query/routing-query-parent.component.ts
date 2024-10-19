@@ -11,11 +11,11 @@ import {RouterOutlet, Router} from "@angular/router";
   `,
   imports: [RouterOutlet]
 })
-export class RoutingQueryContainerComponent implements OnInit {
+export class RoutingQueryParentComponent implements OnInit {
   readonly #router = inject(Router);
 
-  ngOnInit(): void {
-    this.#router.navigate(['/']);
+  async ngOnInit(): Promise<void> {
+    await this.#router.navigate(['/']);
   }
 
   async goToDetails(): Promise<void> {

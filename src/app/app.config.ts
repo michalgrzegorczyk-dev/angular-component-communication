@@ -4,7 +4,7 @@ import {RoutingParamChildComponent} from "./8-routing-param/routing-param-child.
 import {RoutingQueryChildComponent as QueryChildComponent} from "./9-routing-query/routing-query-child.component";
 
 const routes: Routes = [
-  {path: 'detail/:id', component: RoutingParamChildComponent},
+  {path: 'details/:id', component: RoutingParamChildComponent},
   {path: 'detail-query', component: QueryChildComponent}
 ];
 

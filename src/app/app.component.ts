@@ -9,8 +9,8 @@ import {TemplateVariableParentComponent} from "./4-template-variable/template-va
 import {InjectedComponentContainer} from "./5-injected-component/injected-component-container.component";
 import {ViewChildContainerComponent} from "./6-view-child/view-child-container.component";
 import {ViewChildrenContainerComponent} from "./7-view-children/view-children-container.component";
-import {RoutingParamContainerComponent} from "./8-routing-param/routing-param-container.component";
-import {RoutingQueryContainerComponent} from "./9-routing-query/routing-query-container.component";
+import {RoutingParamParentComponent} from "./8-routing-param/routing-param-parent.component";
+import {RoutingQueryParentComponent} from "./9-routing-query/routing-query-parent.component";
 
 @Component({
   selector: 'app-root',
@@ -26,8 +26,8 @@ import {RoutingQueryContainerComponent} from "./9-routing-query/routing-query-co
     InjectedComponentContainer,
     ViewChildContainerComponent,
     ViewChildrenContainerComponent,
-    RoutingParamContainerComponent,
-    RoutingQueryContainerComponent,
+    RoutingParamParentComponent,
+    RoutingQueryParentComponent,
   ],
   template: `
     <div class="pagination">

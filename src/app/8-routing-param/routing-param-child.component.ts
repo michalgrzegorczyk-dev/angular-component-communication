@@ -10,7 +10,7 @@ import {ActivatedRoute} from "@angular/router";
   `,
 })
 export class RoutingParamChildComponent implements OnInit {
-  readonly id = signal('000');
+  readonly id = signal('foo');
   #activatedRoute = inject(ActivatedRoute);
 
   ngOnInit(): void {
