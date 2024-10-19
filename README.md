@@ -1,3 +1,6 @@
+todo:
+[ ] add input router
+
 # Components Communication in Angular
 
 ## Introduction
