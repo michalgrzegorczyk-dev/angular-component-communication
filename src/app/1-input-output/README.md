@@ -67,4 +67,4 @@ export class ChildComponent extends ParentComponent {
 }
 ```
 
-Full set of examples you can find in the [src/app/1-input-output](1-input-output) folder.
+Full set of examples you can find in the [src/app/1-input-output](../../../src/app/1-input-output) folder.
