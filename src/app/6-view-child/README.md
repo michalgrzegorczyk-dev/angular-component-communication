@@ -1,11 +1,17 @@
 # 6-view-child
 
 ## View Child
-ViewChild is a powerful decorator in Angular that allows a parent component 
+`@ViewChild` is a powerful decorator in Angular that allows a parent component 
 to access and interact with its child components directly. This technique 
 provides a way to establish communication between components in a 
-parent-child relationship through the template. In Angular v17+, there is a 
-new way to use ViewChild feature, with signals `viewChild()`
+parent-child relationship through the template. 
+
+### 1. Traditional Approach
+The traditional method involves using `@ViewChild()` decorator as described above.
+
+### 2. Modern Approach with Signals
+In Angular v17+, there is a
+new way to use ViewChild feature, with signals `viewChild()`.
 
 ### How ViewChild Works
 
@@ -17,8 +23,7 @@ child component instance to a property in the parent.
 - The parent can then access public properties and methods of the child component.
 // todo do we need #?
 
-Let's examine an example of how to implement this technique, including both the traditional 
-approach and the new signals approach introduced in Angular 17+.
+Let's take a look at the code example:
 
 ```typescript
 // parent component
