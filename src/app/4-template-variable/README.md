@@ -1,6 +1,8 @@
-# 4-template-variable
+## 4-template-variable
 
-## Template Variables
+![x](/public/img/template.png)
+
+### Template Variables
 
 Template variables are a powerful feature in Angular that enable direct 
 communication between parent and child components through the template. 
@@ -9,12 +11,12 @@ allowing for more dynamic and interactive component interactions.
 For example, you can use template variables to access child component
 and invoke its methods from the parent component.
 
-### How Template Variables Work
+#### How Template Variables Work
 
 - Template variables are declared using the # symbol in the template.
 - They can be assigned to elements, components, or directives.
 
-### Example 
+#### Example 
 Let's examine an example where we use a template variable to communicate 
 between a parent component and a child TodoListComponent.
 

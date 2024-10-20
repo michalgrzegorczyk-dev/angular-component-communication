@@ -1,6 +1,7 @@
-# 6-view-child
-
 ## View Child
+
+![x](/public/img/view-child.png)
+
 `@ViewChild` is a powerful decorator in Angular that allows a parent component 
 to access and interact with its child components directly. This technique 
 provides a way to establish communication between components in a 
@@ -34,7 +35,7 @@ Let's take a look at the code example:
   `,
   imports: [ChildComponent]
 })
-class ContainerComponent {
+class ParentComponent {
   // old way of using ViewChild
   @ViewChild(ChildComponent)
   childComponentOld!: ChildComponent;

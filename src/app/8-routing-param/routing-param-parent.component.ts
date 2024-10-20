@@ -2,7 +2,7 @@ import {Component, inject, OnInit} from "@angular/core";
 import {RouterOutlet, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-8-routing-param-container',
+  selector: 'app-8-routing-param-parent',
   standalone: true,
   template: `
     <h1>app-8-routing-param-parent</h1>

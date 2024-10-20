@@ -1,6 +1,6 @@
 import {Component, signal} from "@angular/core";
 import {NgForOf} from "@angular/common";
-import {InjectedComponentContainer} from "./injected-component-container.component";
+import {InjectedComponentParentComponent} from "./injected-component-parent.component";
 
 @Component({
   selector: 'app-5-injected-component-todo-list',
@@ -20,7 +20,7 @@ import {InjectedComponentContainer} from "./injected-component-container.compone
 export class InjectedComponentTodoListComponent {
   readonly todos = signal(['Learn Angular', 'Learn TypeScript', 'Build Angular App']);
 
-  constructor(private readonly constructorComponentParentComponent: InjectedComponentContainer) {
+  constructor(private readonly constructorComponentParentComponent: InjectedComponentParentComponent) {
   }
 
   addTodo(): void {

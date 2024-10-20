@@ -2,10 +2,10 @@ import {Component, inject, OnInit} from "@angular/core";
 import {RouterOutlet, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-9-routing-query-container',
+  selector: 'app-9-routing-query-parent',
   standalone: true,
   template: `
-    <h1>app-9-routing-query-container</h1>
+    <h1>app-9-routing-query-parent</h1>
     <button (click)="goToDetails()">Go to details</button>
     <router-outlet/>
   `,

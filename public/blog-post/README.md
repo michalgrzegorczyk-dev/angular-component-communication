@@ -3,9 +3,7 @@
 ## Intro
 When you build apps with Angular, you need to know how different
 parts of your app can share information. This is called component
-communication. 
-
-In this blog post, I'll cover all possible ways to make 
+communication. In this blog post, I'll cover all possible ways to make 
 components talk to each other, such as:
 
 - Simple ways that are used most often
@@ -40,7 +38,9 @@ check every example by yourself [under this link.](https://github.com/michalgrze
 Ready to learn? Let's start!
 
 
-## Input and Output Decorators
+## Inputs and Outputs
+
+![x](/public/img/input.png)
 
 The most fundamental way of enabling communication between components in Angular is through the use of `@Input()` and `@Output()` decorators.
 
@@ -154,20 +154,22 @@ Let's look at how `ngOnChanges` can be implemented in a component:
 Full set of examples you can find in the [src/app/2-input-ng-on-changes](src/app/2-input-ng-on-changes) folder.
 
 
-# 3-service
+## Services
 
-## Component Communication via Services
+![x](/public/img/services.png)
+
+### Component Communication via Services
 
 Services in Angular provide a powerful way to share data and functionality across components. They represent the third major method of component communication, alongside inputs/outputs and the ngOnChanges lifecycle hook.
 
 While services can be a complex topic, especially when considering different provision strategies and scopes, we'll focus on the most common and straightforward approach: providing a service at the root level.
 
-### Root-Level Service Provision
+#### Root-Level Service Provision
 When a service is provided at the root level, it becomes available to the 
 entire application. This makes it an excellent choice for sharing data 
 between components that aren't directly related in the component tree.
 
-### Key Benefits:
+#### Key Benefits:
 
 Global Accessibility: Any component can inject and use the service.
 Singleton Instance: Only one instance of the service exists application-wide.
@@ -198,9 +200,11 @@ export class ServiceComponent {
 Full set of examples you can find in the [src/app/3-service](src/app/3-service) folder.
 
 
-# 4-template-variable
+## 4-template-variable
 
-## Template Variables
+![x](/public/img/template.png)
+
+### Template Variables
 
 Template variables are a powerful feature in Angular that enable direct 
 communication between parent and child components through the template. 
@@ -209,12 +213,12 @@ allowing for more dynamic and interactive component interactions.
 For example, you can use template variables to access child component
 and invoke its methods from the parent component.
 
-### How Template Variables Work
+#### How Template Variables Work
 
 - Template variables are declared using the # symbol in the template.
 - They can be assigned to elements, components, or directives.
 
-### Example 
+#### Example 
 Let's examine an example where we use a template variable to communicate 
 between a parent component and a child TodoListComponent.
 
@@ -246,20 +250,21 @@ export class TodoListComponent {
 Full set of examples you can find in the [src/app/4-template-variable](src/app/4-template-variable) folder.
 
 
-# 5-injected-component
+## Injected Components
 
-## Injected Component
+![x](/public/img/injected-components.png)
+
 Injecting components is an advanced technique in Angular that
-allows a child component to access its parent (container) 
+allows a child component to access its parent 
 component directly. This method provides a powerful way to 
 establish communication between components in a parent-child 
 relationship.
 
-### How Injected Components Work
+#### How Injected Components Work
 - The child component declares the parent component as a dependency in its constructor.
 - The child can then access public properties and methods of the parent.
 
-### Important Considerations
+#### Important Considerations
 - This technique only works within the component hierarchy. A child can only inject its direct parent or an ancestor in its component tree.
 - It's not possible to inject "random" components that are not in the direct lineage.
 - This approach can lead to tight coupling between components, so it should be used judiciously.
@@ -267,11 +272,11 @@ relationship.
 
 Let's examine an example of how to implement this technique:
 ```typescript
-// container component
+// parent component
 @Component({
   template: `<app-child-component/>`,
 })
-class ContainerComponent {
+class ParentComponent {
   foo() {
     alert('bar');
   }
@@ -279,8 +284,8 @@ class ContainerComponent {
 
 // child component
 class ChildComponent {
-  constructor(private containerComponent: ContainerComponent) {
-    this.containerComponent.foo(); // <- calling foo method from child component
+  constructor(private parentComponent: ParentComponent) {
+    this.parentComponent.foo(); // <- calling foo method from child component
   }
 }
 ```
@@ -288,9 +293,10 @@ class ChildComponent {
 Full set of examples you can find in the [src/app/5-injected-component](src/app/5-injected-component) folder.
 
 
-# 6-view-child
-
 ## View Child
+
+![x](/public/img/view-child.png)
+
 `@ViewChild` is a powerful decorator in Angular that allows a parent component 
 to access and interact with its child components directly. This technique 
 provides a way to establish communication between components in a 
@@ -324,7 +330,7 @@ Let's take a look at the code example:
   `,
   imports: [ChildComponent]
 })
-class ContainerComponent {
+class ParentComponent {
   // old way of using ViewChild
   @ViewChild(ChildComponent)
   childComponentOld!: ChildComponent;
@@ -523,8 +529,24 @@ ngOnInit() {
 
 Full set of examples you can find in the [src/app/9-routing-query](src/app/9-routing-query) folder.
 
-## Outro
+## When it can feel like communication
 
+### `@ContentChild` and `@ContentChildren`
+While `@ContentChild` involves interaction with projected content, it's 
+not traditionally considered component communication in the same way as 
+`@ViewChild`. In `@ViewChild`, there’s a direct line between the parent and 
+child components for controlling behavior, but `@ContentChild` is more about 
+a child adapting to or interacting with content passed down from the parent, 
+typically through `<ng-content>`.
+
+### `*ngTemplateOutlet`
+I wouldn't consider using `*ngTemplateOutlet` as traditional component 
+communication because it's more about template projection and dynamic 
+rendering than direct interaction between components. However, it does 
+involve data passing between the parent and the dynamically rendered 
+template, which can be seen as a form of indirect communication.
+
+## Outro
 That's it, we  finally reached to the end of the blog post. I covered all the 
 ways of component communication in Angular, showed cases for old syntax and
 most recent with usage of signals. I really hope you enjoyed reading it. 

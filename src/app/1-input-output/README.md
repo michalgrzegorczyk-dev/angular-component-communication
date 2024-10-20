@@ -1,4 +1,6 @@
-## Input and Output Decorators
+## Inputs and Outputs
+
+![x](/public/img/input.png)
 
 The most fundamental way of enabling communication between components in Angular is through the use of `@Input()` and `@Output()` decorators.
 

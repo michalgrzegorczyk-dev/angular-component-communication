@@ -3,9 +3,7 @@
 ## Intro
 When you build apps with Angular, you need to know how different
 parts of your app can share information. This is called component
-communication. 
-
-In this blog post, I'll cover all possible ways to make 
+communication. In this blog post, I'll cover all possible ways to make 
 components talk to each other, such as:
 
 - Simple ways that are used most often

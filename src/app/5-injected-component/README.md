@@ -1,17 +1,18 @@
-# 5-injected-component
+## Injected Components
 
-## Injected Component
+![x](/public/img/injected-components.png)
+
 Injecting components is an advanced technique in Angular that
-allows a child component to access its parent (container) 
+allows a child component to access its parent 
 component directly. This method provides a powerful way to 
 establish communication between components in a parent-child 
 relationship.
 
-### How Injected Components Work
+#### How Injected Components Work
 - The child component declares the parent component as a dependency in its constructor.
 - The child can then access public properties and methods of the parent.
 
-### Important Considerations
+#### Important Considerations
 - This technique only works within the component hierarchy. A child can only inject its direct parent or an ancestor in its component tree.
 - It's not possible to inject "random" components that are not in the direct lineage.
 - This approach can lead to tight coupling between components, so it should be used judiciously.
@@ -19,11 +20,11 @@ relationship.
 
 Let's examine an example of how to implement this technique:
 ```typescript
-// container component
+// parent component
 @Component({
   template: `<app-child-component/>`,
 })
-class ContainerComponent {
+class ParentComponent {
   foo() {
     alert('bar');
   }
@@ -31,8 +32,8 @@ class ContainerComponent {
 
 // child component
 class ChildComponent {
-  constructor(private containerComponent: ContainerComponent) {
-    this.containerComponent.foo(); // <- calling foo method from child component
+  constructor(private parentComponent: ParentComponent) {
+    this.parentComponent.foo(); // <- calling foo method from child component
   }
 }
 ```
