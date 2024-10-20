@@ -1,4 +1,4 @@
-## Injected Components
+### Injected Components
 
 ![x](/public/img/injected-components.png)
 

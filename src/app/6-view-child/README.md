@@ -1,4 +1,6 @@
-## View Child
+## ViewChild and ViewChildren
+
+### View Child
 
 ![x](/public/img/view-child.png)
 
@@ -7,17 +9,17 @@ to access and interact with its child components directly. This technique
 provides a way to establish communication between components in a 
 parent-child relationship through the template. 
 
-### 1. Traditional Approach
+#### 1. Traditional Approach
 The traditional method involves using `@ViewChild()` decorator as described above.
 
-### 2. Modern Approach with Signals
+#### 2. Modern Approach with Signals
 In Angular v17+, there is a
 new way to use ViewChild feature, with signals `viewChild()`.
 
-### How ViewChild Works
+#### How ViewChild Works
 
-- The parent component uses the `@ViewChild` decorator to query its template for a 
-- child component.
+- The parent component uses the `@ViewChild` decorator to query its 
+template for a child component.
 - The query can be based on the child component's class or a template reference variable.
 - Once the view is initialized (in the ngAfterViewInit lifecycle hook), Angular assigns the 
 child component instance to a property in the parent.

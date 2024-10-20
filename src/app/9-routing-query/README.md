@@ -1,17 +1,17 @@
-## Routing Query 
+### Routing Queries 
 
-Routing query parameters provide a flexible way to pass optional data between
+Routing queries provide a flexible way to pass optional data between
 components in Angular applications. Unlike route parameters, which are part of
 the route path, query parameters are appended to the URL after a question
 mark (?) and are typically used for optional information such as sorting, 
 filtering, or pagination.
 
-### How Routing Query Parameters Work
+#### How Routing Query Parameters Work
 1. Query parameters are added to the URL after the route path.
 2. They can be added, modified, or removed without changing the route.
 3. Components can read these parameters to adjust their behavior or display.
 
-### Key Differences from Route Parameters
+#### Key Differences from Route Parameters
 
 1. URL Structure:
    - Route params: /details/123

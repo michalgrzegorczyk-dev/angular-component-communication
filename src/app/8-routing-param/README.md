@@ -1,11 +1,15 @@
-## Routing Params
+## Routing Params, Routing Queries
+
+### Routing Parameters
+
+![x](/public/img/router.png)
 
 Routing parameters provide a powerful way to pass data between components in 
 Angular applications. This method is particularly useful when you need to 
 share information across different views or components that are not 
 directly related in the component tree.
 
-### How Routing Parameters Work
+#### How Routing Parameters Work
 1. Parameters are defined in the route configuration and routes should be passed 
 to `provideRouter(routes)` function.
 2. When navigating to a route, you can pass values for these parameters.

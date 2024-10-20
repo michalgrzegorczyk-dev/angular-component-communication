@@ -1,16 +1,14 @@
-7-view-children
-
-## View Children
+### View Children
 The `@ViewChildren` decorator in Angular is a powerful tool that allows a 
 parent component to query and interact with multiple child components or 
 elements in its template. It's similar to `@ViewChild`, but it returns a 
 `QueryList` of elements or components instead of a single instance.
 
-### 1. Traditional Approach
+#### 1. Traditional Approach
 The traditional method involves using `@ViewChildren()` decorator as 
 described above.
 
-### 2. Modern Approach with Signals
+#### 2. Modern Approach with Signals
 Similar to `@ViewChild`, in Angular v17+ there is a new way to use 
 `@ViewChildren` feature, with signal approach `viewChildren()`.
 

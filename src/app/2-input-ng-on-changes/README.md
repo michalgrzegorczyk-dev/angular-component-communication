@@ -1,6 +1,4 @@
-# 2-input-ng-on-changes
-
-## Input handled by ngOnChanges lifecycle hook
+### Input handled by ngOnChanges lifecycle hook
 
 While we've explored various ways to handle inputs in Angular, 
 there's another powerful method that deserves attention: the 
@@ -8,12 +6,12 @@ there's another powerful method that deserves attention: the
 perspective on managing input changes, providing more control and flexibility.
 
 
-### Understanding `ngOnChanges`
+#### Understanding `ngOnChanges`
 The `ngOnChanges` lifecycle hook is a method that gets called whenever 
 an input property of a component changes. It allows you to react 
 to these changes and perform actions based on the new values.
 
-### Key Features:
+#### Key Features:
 
 - Triggered for all input property changes
 - Provides access to both current and previous values
