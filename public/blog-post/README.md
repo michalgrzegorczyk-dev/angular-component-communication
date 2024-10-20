@@ -38,9 +38,11 @@ check every example by yourself [under this link.](https://github.com/michalgrze
 Ready to learn? Let's start!
 
 
-## Inputs and Outputs
+## Inputs, Outputs, Setters, ngOnChanges 
 
-![x](/public/img/input.png)
+### Inputs and Outputs
+
+[![x](/public/img/input.png)]()
 
 The most fundamental way of enabling communication between components in Angular is through the use of `@Input()` and `@Output()` decorators.
 
@@ -112,9 +114,7 @@ export class ChildComponent extends ParentComponent {
 Full set of examples you can find in the [1-input-output](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/1-input-output) folder.
 
 
-# 2-input-ng-on-changes
-
-## Input handled by ngOnChanges lifecycle hook
+### Input handled by ngOnChanges lifecycle hook
 
 While we've explored various ways to handle inputs in Angular, 
 there's another powerful method that deserves attention: the 
@@ -122,12 +122,12 @@ there's another powerful method that deserves attention: the
 perspective on managing input changes, providing more control and flexibility.
 
 
-### Understanding `ngOnChanges`
+#### Understanding `ngOnChanges`
 The `ngOnChanges` lifecycle hook is a method that gets called whenever 
 an input property of a component changes. It allows you to react 
 to these changes and perform actions based on the new values.
 
-### Key Features:
+#### Key Features:
 
 - Triggered for all input property changes
 - Provides access to both current and previous values
@@ -154,15 +154,18 @@ Let's look at how `ngOnChanges` can be implemented in a component:
 Full set of examples you can find in the [src/app/2-input-ng-on-changes](src/app/2-input-ng-on-changes) folder.
 
 
-## Services
+### Services
 
 ![x](/public/img/services.png)
 
-### Component Communication via Services
 
-Services in Angular provide a powerful way to share data and functionality across components. They represent the third major method of component communication, alongside inputs/outputs and the ngOnChanges lifecycle hook.
+Services in Angular provide a powerful way to share data and 
+functionality across components. They represent the third major method 
+of component communication, alongside inputs/outputs and the `ngOnChanges` 
+lifecycle hook.
 
-While services can be a complex topic, especially when considering different provision strategies and scopes, we'll focus on the most common and straightforward approach: providing a service at the root level.
+While services can be a complex topic, especially when 
+considering different provision strategies and scopes, we'll focus on the most common and straightforward approach: providing a service at the root level.
 
 #### Root-Level Service Provision
 When a service is provided at the root level, it becomes available to the 
@@ -200,11 +203,10 @@ export class ServiceComponent {
 Full set of examples you can find in the [src/app/3-service](src/app/3-service) folder.
 
 
-## 4-template-variable
+### Template Variables
 
 ![x](/public/img/template.png)
 
-### Template Variables
 
 Template variables are a powerful feature in Angular that enable direct 
 communication between parent and child components through the template. 
@@ -250,7 +252,7 @@ export class TodoListComponent {
 Full set of examples you can find in the [src/app/4-template-variable](src/app/4-template-variable) folder.
 
 
-## Injected Components
+### Injected Components
 
 ![x](/public/img/injected-components.png)
 
@@ -293,7 +295,9 @@ class ChildComponent {
 Full set of examples you can find in the [src/app/5-injected-component](src/app/5-injected-component) folder.
 
 
-## View Child
+## ViewChild and ViewChildren
+
+### View Child
 
 ![x](/public/img/view-child.png)
 
@@ -302,17 +306,17 @@ to access and interact with its child components directly. This technique
 provides a way to establish communication between components in a 
 parent-child relationship through the template. 
 
-### 1. Traditional Approach
+#### 1. Traditional Approach
 The traditional method involves using `@ViewChild()` decorator as described above.
 
-### 2. Modern Approach with Signals
+#### 2. Modern Approach with Signals
 In Angular v17+, there is a
 new way to use ViewChild feature, with signals `viewChild()`.
 
-### How ViewChild Works
+#### How ViewChild Works
 
-- The parent component uses the `@ViewChild` decorator to query its template for a 
-- child component.
+- The parent component uses the `@ViewChild` decorator to query its 
+template for a child component.
 - The query can be based on the child component's class or a template reference variable.
 - Once the view is initialized (in the ngAfterViewInit lifecycle hook), Angular assigns the 
 child component instance to a property in the parent.
@@ -358,19 +362,17 @@ class ChildComponent {
 Full set of examples you can find in the [src/app/6-view-child](src/app/6-view-child) folder.
 
 
-7-view-children
-
-## View Children
+### View Children
 The `@ViewChildren` decorator in Angular is a powerful tool that allows a 
 parent component to query and interact with multiple child components or 
 elements in its template. It's similar to `@ViewChild`, but it returns a 
 `QueryList` of elements or components instead of a single instance.
 
-### 1. Traditional Approach
+#### 1. Traditional Approach
 The traditional method involves using `@ViewChildren()` decorator as 
 described above.
 
-### 2. Modern Approach with Signals
+#### 2. Modern Approach with Signals
 Similar to `@ViewChild`, in Angular v17+ there is a new way to use 
 `@ViewChildren` feature, with signal approach `viewChildren()`.
 
@@ -416,14 +418,18 @@ export class ChildComponent {
 Full set of examples you can find in the [src/app/7-view-children](src/app/7-view-children) folder.
 
 
-## Routing Params
+## Routing Params, Routing Queries
+
+### Routing Parameters
+
+![x](/public/img/router.png)
 
 Routing parameters provide a powerful way to pass data between components in 
 Angular applications. This method is particularly useful when you need to 
 share information across different views or components that are not 
 directly related in the component tree.
 
-### How Routing Parameters Work
+#### How Routing Parameters Work
 1. Parameters are defined in the route configuration and routes should be passed 
 to `provideRouter(routes)` function.
 2. When navigating to a route, you can pass values for these parameters.
@@ -478,20 +484,20 @@ Full set of examples you can find in the [src/app/8-routing-param](src/app/8-rou
 
 
 
-## Routing Query 
+### Routing Queries 
 
-Routing query parameters provide a flexible way to pass optional data between
+Routing queries provide a flexible way to pass optional data between
 components in Angular applications. Unlike route parameters, which are part of
 the route path, query parameters are appended to the URL after a question
 mark (?) and are typically used for optional information such as sorting, 
 filtering, or pagination.
 
-### How Routing Query Parameters Work
+#### How Routing Query Parameters Work
 1. Query parameters are added to the URL after the route path.
 2. They can be added, modified, or removed without changing the route.
 3. Components can read these parameters to adjust their behavior or display.
 
-### Key Differences from Route Parameters
+#### Key Differences from Route Parameters
 
 1. URL Structure:
    - Route params: /details/123
