@@ -1,6 +1,6 @@
 ## Routing Params & Queries
 
-<img src="/public/img/router.png" alt="x" style="width: 300px; height: auto;">
+<img src="/public/img/router.png" alt="x" style="width: 500px; height: auto;">
 
 ### Routing Parameters
 

@@ -1,6 +1,6 @@
 ### Injected Components
 
-<img src="/public/img/injected-components.png" alt="x" style="width: 300px; height: auto;">
+<img src="/public/img/injected-components.png" alt="x" style="width: 500px; height: auto;">
 
 Injecting components is an advanced technique in Angular that
 allows a child component to access its parent 

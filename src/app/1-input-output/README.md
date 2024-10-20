@@ -1,6 +1,6 @@
 ## Inputs & Outputs, Setters and OnChanges
 
-<img src="/public/img/input.png" alt="x" style="width: 300px; height: auto;">
+<img src="/public/img/input.png" alt="x" style="width: 500px; height: auto;">
 
 ### Inputs & Outputs
 

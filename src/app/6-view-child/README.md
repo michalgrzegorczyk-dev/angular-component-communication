@@ -1,5 +1,5 @@
 ## ViewChild and ViewChildren
-<img src="/public/img/view-child.png" alt="x" style="width: 300px; height: auto;">
+<img src="/public/img/view-child.png" alt="x" style="width: 500px; height: auto;">
 
 ### View Child
 `@ViewChild` is a powerful decorator in Angular that allows a parent component 
