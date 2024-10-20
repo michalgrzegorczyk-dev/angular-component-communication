@@ -1,8 +1,8 @@
-## Routing Params, Routing Queries
+## Routing Params & Queries
+
+<img src="/public/img/router.png" alt="x" style="width: 300px; height: auto;">
 
 ### Routing Parameters
-
-![x](/public/img/router.png)
 
 Routing parameters provide a powerful way to pass data between components in 
 Angular applications. This method is particularly useful when you need to 

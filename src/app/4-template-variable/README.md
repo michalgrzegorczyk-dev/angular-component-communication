@@ -1,7 +1,6 @@
 ### Template Variables
 
-![x](/public/img/template.png)
-
+<img src="/public/img/template.png" alt="x" style="width: 300px; height: auto;">
 
 Template variables are a powerful feature in Angular that enable direct 
 communication between parent and child components through the template. 

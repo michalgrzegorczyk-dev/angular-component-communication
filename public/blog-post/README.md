@@ -1,6 +1,6 @@
 # Mastering Component Communication in Angular
 
-## Intro
+## Introduction
 When you build apps with Angular, you need to know how different
 parts of your app can share information. This is called component
 communication. In this blog post, I'll cover all possible ways to make 
@@ -156,8 +156,7 @@ Full set of examples you can find in the [src/app/2-input-ng-on-changes](src/app
 
 ### Services
 
-![x](/public/img/services.png)
-
+<img src="/public/img/services.png" alt="x" style="width: 300px; height: auto;">
 
 Services in Angular provide a powerful way to share data and 
 functionality across components. They represent the third major method 
@@ -205,8 +204,7 @@ Full set of examples you can find in the [src/app/3-service](src/app/3-service) 
 
 ### Template Variables
 
-![x](/public/img/template.png)
-
+<img src="/public/img/template.png" alt="x" style="width: 300px; height: auto;">
 
 Template variables are a powerful feature in Angular that enable direct 
 communication between parent and child components through the template. 
@@ -254,7 +252,7 @@ Full set of examples you can find in the [src/app/4-template-variable](src/app/4
 
 ### Injected Components
 
-![x](/public/img/injected-components.png)
+<img src="/public/img/injected-components.png" alt="x" style="width: 300px; height: auto;">
 
 Injecting components is an advanced technique in Angular that
 allows a child component to access its parent 
@@ -296,11 +294,9 @@ Full set of examples you can find in the [src/app/5-injected-component](src/app/
 
 
 ## ViewChild and ViewChildren
+<img src="/public/img/view-child.png" alt="x" style="width: 300px; height: auto;">
 
 ### View Child
-
-![x](/public/img/view-child.png)
-
 `@ViewChild` is a powerful decorator in Angular that allows a parent component 
 to access and interact with its child components directly. This technique 
 provides a way to establish communication between components in a 
@@ -418,11 +414,11 @@ export class ChildComponent {
 Full set of examples you can find in the [src/app/7-view-children](src/app/7-view-children) folder.
 
 
-## Routing Params, Routing Queries
+## Routing Params & Queries
+
+<img src="/public/img/router.png" alt="x" style="width: 300px; height: auto;">
 
 ### Routing Parameters
-
-![x](/public/img/router.png)
 
 Routing parameters provide a powerful way to pass data between components in 
 Angular applications. This method is particularly useful when you need to 

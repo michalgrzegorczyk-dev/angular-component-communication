@@ -1,9 +1,7 @@
 ## ViewChild and ViewChildren
+<img src="/public/img/view-child.png" alt="x" style="width: 300px; height: auto;">
 
 ### View Child
-
-![x](/public/img/view-child.png)
-
 `@ViewChild` is a powerful decorator in Angular that allows a parent component 
 to access and interact with its child components directly. This technique 
 provides a way to establish communication between components in a 
