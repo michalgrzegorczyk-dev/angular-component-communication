@@ -40,7 +40,7 @@ Ready to learn? Let's start!
 
 ## Inputs & Outputs, Setters and OnChanges
 
-<img src="/public/img/input.png" alt="x" style="width: 300px; height: auto;">
+<img src="/public/img/input.png" alt="x" style="width: 500px; height: auto;">
 
 ### Inputs & Outputs
 
@@ -156,7 +156,7 @@ Full set of examples you can find in the [src/app/2-input-ng-on-changes](src/app
 
 ### Services
 
-<img src="/public/img/services.png" alt="x" style="width: 300px; height: auto;">
+<img src="/public/img/services.png" alt="x" style="width: 500px; height: auto;">
 
 Services in Angular provide a powerful way to share data and 
 functionality across components. They represent the third major method 
@@ -204,7 +204,7 @@ Full set of examples you can find in the [src/app/3-service](src/app/3-service) 
 
 ### Template Variables
 
-<img src="/public/img/template.png" alt="x" style="width: 300px; height: auto;">
+<img src="/public/img/template.png" alt="x" style="width: 500px; height: auto;">
 
 Template variables are a powerful feature in Angular that enable direct 
 communication between parent and child components through the template. 
@@ -252,7 +252,7 @@ Full set of examples you can find in the [src/app/4-template-variable](src/app/4
 
 ### Injected Components
 
-<img src="/public/img/injected-components.png" alt="x" style="width: 300px; height: auto;">
+<img src="/public/img/injected-components.png" alt="x" style="width: 500px; height: auto;">
 
 Injecting components is an advanced technique in Angular that
 allows a child component to access its parent 
@@ -294,7 +294,7 @@ Full set of examples you can find in the [src/app/5-injected-component](src/app/
 
 
 ## ViewChild and ViewChildren
-<img src="/public/img/view-child.png" alt="x" style="width: 300px; height: auto;">
+<img src="/public/img/view-child.png" alt="x" style="width: 500px; height: auto;">
 
 ### View Child
 `@ViewChild` is a powerful decorator in Angular that allows a parent component 
@@ -416,7 +416,7 @@ Full set of examples you can find in the [src/app/7-view-children](src/app/7-vie
 
 ## Routing Params & Queries
 
-<img src="/public/img/router.png" alt="x" style="width: 300px; height: auto;">
+<img src="/public/img/router.png" alt="x" style="width: 500px; height: auto;">
 
 ### Routing Parameters
 
