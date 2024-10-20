@@ -1,8 +1,8 @@
 ## Inputs & Outputs, Setters and OnChanges
 
-### Inputs & Outputs
+<img src="/public/img/input.png" alt="x" style="width: 300px; height: auto;">
 
-[![x](/public/img/input.png)]()
+### Inputs & Outputs
 
 The most fundamental way of enabling communication between components in Angular is through the use of `@Input()` and `@Output()` decorators.
 
