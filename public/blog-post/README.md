@@ -38,9 +38,9 @@ check every example by yourself [under this link.](https://github.com/michalgrze
 Ready to learn? Let's start!
 
 
-## Inputs, Outputs, Setters, ngOnChanges 
+## Inputs & Outputs, Setters and OnChanges
 
-### Inputs and Outputs
+### Inputs & Outputs
 
 [![x](/public/img/input.png)]()
 

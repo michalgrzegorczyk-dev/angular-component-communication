@@ -1,6 +1,6 @@
-## Inputs, Outputs, Setters, ngOnChanges 
+## Inputs & Outputs, Setters and OnChanges
 
-### Inputs and Outputs
+### Inputs & Outputs
 
 [![x](/public/img/input.png)]()
 
