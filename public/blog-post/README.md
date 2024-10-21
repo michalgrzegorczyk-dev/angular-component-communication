@@ -1,79 +1,140 @@
 # Mastering Component Communication in Angular
 
 ## Introduction
-When you build apps with Angular, you need to know how different
-parts of your app can share information. This is called component
-communication. In this blog post, I'll cover all possible ways to make 
-components talk to each other, such as:
+When building applications with Angular, it's important to know how 
+different parts of your app can share information. This is called 
+component communication. This blog post covers all possible 
+ways to make components talk to each other and also points
+out the ones that are not typically considered as component
+communication, but can actually help to share information.
 
-- Simple ways that are used most often
-  - `@Input` and `@Output`, 
+Here's the list of topics that will be covered:
+
+- Approaches frequently used, and recommended
+  - `@Input` and `@Output`
   - Setter methods
   - `OnChanges` lifecycle hook
   - Services
   - `@ViewChild` and `@ViewChildren`
   - Routing Params and Queries
   - Template reference variables
-- Modern approaches (signals)
+  - Injecting parent components into child components
+  - `@Input` and `@Output` inheritance
+- Modern approaches, Angular V17+
   - `input()` and `output()`
   - `viewChild()` and `viewChildren()`
-  - router input //todo
-- Rarely used techniques that can be helpful sometimes
-  - Injecting parent components into child components
-  - `@Input` inheritance
+  - `withComponentInputBinding()`
+- Approaches not considered as component communication
+  - Component projection
+  - Using `@ContentChild` and `@ContentChildren`
+  - `*ngTemplateOutlet`
+  - Passing data via router resolvers
+  - Using `@HostListener` and `@HostBinding`
+  - WebAPI, like `localStorage`, `broadcastChannel`, etc.
 
-I'll also highlight some features that aren't usually 
-thought of as component communication, but can actually help to 
-share information.
+Some of these approaches are better than others in specific cases.
+But for sure it's good to know all of them. This way, you can pick 
+the best one for your case. <u>The key here is a critical 
+thinking and understanding context of the problem.</u>
 
-Some of these ways are better than others. But it's good to know all
-of them. This way, you can pick the best one for your case.
+Every approach will be explained in detail, with
+[code examples](https://github.com/michalgrzegorczyk-dev/angular-component-communication)
+that you can run and test by yourself.
 
-❗<u>The key here is a critical thinking and understanding context of the problem.</u>
-
-I'll show you examples of each way. By the end, you'll know lots of
-ways to make your Angular app's parts work together. Also, you can
-check every example by yourself [under this link.](https://github.com/michalgrzegorczyk-dev/angular-component-communication)
-
-Ready to learn? Let's start!
+Ready to learn? Let's start! 💪
 
 
 ## Inputs & Outputs, Setters and OnChanges
 
-<img src="/public/img/input.png" alt="x" style="width: 500px; height: auto;">
+<img src="/public/img/input.png" alt="x" style="width: 500px; height:auto;">
 
-### Inputs & Outputs
+### 1. Inputs & Outputs
 
-The most fundamental way of enabling communication between components in Angular is through the use of `@Input()` and `@Output()` decorators.
+The most fundamental way of enabling communication between components
+in Angular is through the use of <b>Input</b> and <b>Output</b> functionality.
+It can be achieved in many ways, old and new, most common and less known, 
+directly and indirectly. All scenarios will be covered but for now let's start 
+with the basics.
 
-- `@Input()` allows a child component to receive data from its parent.
-- `@Output()` enables a child component to send data back to its parent.
+#### Traditional & Non-traditional Approach 
 
-To implement this communication:
+The traditional approach involves using `@Input()` and `@Output()` 
+decorators that allows a child components to receive passed data and enables
+child components to send data back to its parents. This approach has been 
+a used in Angular development for years and is the most basic way to 
+communicate between components.
 
-1. Add `@Input()` and `@Output()` decorators to properties in the child component.
-2. Pass data from the parent component to these decorated properties.
+```typescript
+// Example of inputs and outputs without using decorators.
+@Component()
+class Component {
+  thisIsInputProperty = '';
+  thisIsOutputProperty = new EventEmitter<string>();
+} 
+```
 
-#### 1. Traditional Approach
+Actually, we don't need decorators for inputs and outputs, did you know it?
+We can use `@Component` metadata `inputs` or `outputs` arrays and pass 
+the names of variables that we want to work as inputs or outputs. It 
+will work the same way as using decorators.
 
-The traditional method involves using `@Input()` and `@Output()` decorators as
-described above. This approach has been a used in Angular development for 
-years and is widely understood.
+| Status | Description                                                                                                                          |
+|--------|--------------------------------------------------------------------------------------------------------------------------------------|
+| ❌ | Approach with providing inputs and outputs via metadata properties can be harder to understand for not experienced Angular Developers ||
+| ✅ | Most common way to communicate between components                                                                                    |
+| ✅ | In newest version of Angular, you can transform data as well in inline @Input decorators                                             | |
+| ✅ | Always good to use                                                                                                                   | |
 
+
+```typescript
+// Example of inputs and outputs without using decorators.
+@Component({
+  inputs: ['thisIsInputProperty'],
+  outputs: ['thisIsOutputProperty']
+})
+class Component {
+  thisIsInputProperty: string;
+  thisIsOutputProperty = new EventEmitter<string>();
+} 
+```
 #### 2. Modern Approach with Signals
 
 With newer versions of Angular, we can now use signals with the `input()`
-and `output()` function instead of decorators.
+and `output()` functions instead of decorators. There is no difference
+in passing the data except that we don't need to use decorators and 
+now we're working with signals.
+
+
+| Status | Description                            |
+|--------|----------------------------------------|
+| ❌ | Doesnt work with component inheritance ||
+| ✅ | Except above, always good to use       | |
+
+
+```typescript
+// Example of inputs and outputs without using decorators.
+@Component({
+})
+class Component {
+  thisIsInputProperty = input<string>();
+  thisIsOutputProperty = output<string>();
+} 
+```
 
 #### Setter Methods
 
-Angular provides an additional layer of control over inputs through setter methods. These setters are called whenever the input value changes, allowing you to:
+Angular provides an additional layer of control over inputs through 
+setter methods. These setters are called whenever the input value 
+changes, allowing you to:
 
-- Perform validation
-- Transform the incoming data
-- Trigger side effects based on new input values
 
-Here's a quick example:
+| Status | Description                                               |
+|--------|-----------------------------------------------------------|
+| ❌ | Need to create aditional property to show value           |
+| ❌ | More code, than inline @Input                             |
+| ✅ | Perform advanced validation                               |
+| ✅ | Transform the incoming data                               |
+| ✅ | Trigger side effects                                      |
 
 ```typescript
 @Input()
@@ -81,27 +142,35 @@ set name(value: string) {
   console.log('New name:', value);
   this._name = value.trim();
 }
-
-get name(): string {
-  return this._name;
-}
 ```
 
 #### Input Inheritance
 
-In the traditional approach, there's an interesting technique for inheriting input properties from a parent component. 
-While not commonly used, it's a powerful feature to be aware of. It's important to note that this inheritance method is not compatible with the signals approach.
+In the traditional approach, there's an interesting technique for 
+inheriting input and output properties from a parent component. 
+While not commonly used it's always good to know more than less.
+Also, it's important to note that this inheritance method is not compatible 
+with the signals approach.
 
-
-1. Extend the parent component in your child component.
-2. Use the `inputs` array in the `@Component` decorator to specify which inputs to inherit.
-
-Example:
+| Status | Description                                           |
+|--------|-------------------------------------------------------|
+| ❌ | Component inheritance is rarely used in Angular       |
+| ❌ | This approach is not compatible with the signals approach |
+| ✅ | Good to know more than less                           |
 
 ```typescript
+// parent component
+@Component({
+  selector: 'app-parent',
+})
+export class ChildComponent extends ParentComponent {
+  @Input()
+  parentInput: string;
+}
+
+// child component
 @Component({
   selector: 'app-child',
-  template: '...',
   inputs: ['parentInput']
 })
 export class ChildComponent extends ParentComponent {
@@ -109,7 +178,7 @@ export class ChildComponent extends ParentComponent {
 }
 ```
 
-Full set of examples you can find in the [1-input-output](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/1-input-output) folder.
+Full set of examples around this topic you can find in the [1-input-output](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/1-input-output) folder.
 
 
 ### Input handled by ngOnChanges lifecycle hook
