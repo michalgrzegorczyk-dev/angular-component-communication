@@ -19,7 +19,6 @@ a used in Angular development for years and is the most basic way to
 communicate between components.
 
 ```typescript
-// Example of inputs and outputs without using decorators.
 @Component()
 class Component {
   thisIsInputProperty = '';
@@ -41,7 +40,6 @@ will work the same way as using decorators.
 
 
 ```typescript
-// Example of inputs and outputs without using decorators.
 @Component({
   inputs: ['thisIsInputProperty'],
   outputs: ['thisIsOutputProperty']
@@ -66,9 +64,7 @@ now we're working with signals.
 
 
 ```typescript
-// Example of inputs and outputs without using decorators.
-@Component({
-})
+@Component()
 class Component {
   thisIsInputProperty = input<string>();
   thisIsOutputProperty = output<string>();

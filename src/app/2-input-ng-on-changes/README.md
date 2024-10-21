@@ -14,16 +14,19 @@ properties change. It's similar to input setter methods but more powerful.
 | ✅ | You can compare new and old values.                                         | |
 
 ```typescript
-input1 = input('initial');
-value = signal('');
+@Component()
+class Component implements OnChanges {
+  input1 = input('initial');
+  value = signal('');
 
-ngOnChanges(changes: SimpleChanges) {
-  if (changes['input1'].isFirstChange()) {
-    console.log(changes['input1'].currentValue);
-  } else {
-    console.log(changes['input1'].previousValue);
-    console.log(changes['input1'].currentValue);
-    this.value.set(changes['input1'].currentValue);
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['input1'].isFirstChange()) {
+      console.log(changes['input1'].currentValue);
+    } else {
+      console.log(changes['input1'].previousValue);
+      console.log(changes['input1'].currentValue);
+      this.value.set(changes['input1'].currentValue);
+    }
   }
 }
 ```
