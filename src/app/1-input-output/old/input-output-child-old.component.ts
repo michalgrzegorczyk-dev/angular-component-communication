@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter} from "@angular/core";
+import {Component, Input, Output, EventEmitter, OnInit} from "@angular/core";
 import {InputOutputParentOldComponent} from "./input-output-parent-old.component";
 
 @Component({
@@ -11,19 +11,26 @@ import {InputOutputParentOldComponent} from "./input-output-parent-old.component
     <p>Input 3: {{ input3Internal }}</p>
     <p>Input 4: {{ parentInput }}</p>
   `,
-  // inherited from parent component
-  inputs: ['parentInput'],
 })
-export class InputOutputChildOldComponent extends InputOutputParentOldComponent {
+export class InputOutputChildOldComponent extends InputOutputParentOldComponent implements OnInit {
   @Input() input1 = '';
+  @Input({
+    required: true,
+    alias: 'aliasInput',
+    transform: (val: string) => val + '!'
+  })
+  input2 = '';
 
-  @Input({required: true, alias: 'aliasInput', transform: (val: string) => val + '!'}) input2 = '';
-  @Output()
-  output = new EventEmitter<void>();
-  input3Internal = '';
+  @Output() output = new EventEmitter<void>();
 
   @Input()
   set inputSetter(val: string) {
     this.input3Internal = val;
+  }
+
+  input3Internal = '';
+
+  ngOnInit(): void {
+    this.parentOutput.emit('ParentOutput from Child');
   }
 }

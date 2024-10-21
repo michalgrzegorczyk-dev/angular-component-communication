@@ -1,38 +1,44 @@
 # Mastering Component Communication in Angular
 
 ## Introduction
-When you build apps with Angular, you need to know how different
-parts of your app can share information. This is called component
-communication. In this blog post, I'll cover all possible ways to make 
-components talk to each other, such as:
+When building applications with Angular, it's important to know how 
+different parts of your app can share information. This is called 
+component communication. This blog post covers all possible 
+ways to make components talk to each other and also points
+out the ones that are not typically considered as component
+communication, but can actually help to share information.
 
-- Simple ways that are used most often
-  - `@Input` and `@Output`, 
+Here's the list of topics that will be covered:
+
+- Approaches frequently used, and recommended
+  - `@Input` and `@Output`
   - Setter methods
   - `OnChanges` lifecycle hook
   - Services
   - `@ViewChild` and `@ViewChildren`
   - Routing Params and Queries
   - Template reference variables
-- Modern approaches (signals)
+  - Injecting parent components into child components
+  - `@Input` and `@Output` inheritance
+- Modern approaches, Angular V17+
   - `input()` and `output()`
   - `viewChild()` and `viewChildren()`
-  - router input //todo
-- Rarely used techniques that can be helpful sometimes
-  - Injecting parent components into child components
-  - `@Input` inheritance
+  - `withComponentInputBinding()`
+- Approaches not considered as component communication
+  - Component projection
+  - Using `@ContentChild` and `@ContentChildren`
+  - `*ngTemplateOutlet`
+  - Passing data via router resolvers
+  - Using `@HostListener` and `@HostBinding`
+  - WebAPI, like `localStorage`, `broadcastChannel`, etc.
 
-I'll also highlight some features that aren't usually 
-thought of as component communication, but can actually help to 
-share information.
+Some of these approaches are better than others in specific cases.
+But for sure it's good to know all of them. This way, you can pick 
+the best one for your case. <u>The key here is a critical 
+thinking and understanding context of the problem.</u>
 
-Some of these ways are better than others. But it's good to know all
-of them. This way, you can pick the best one for your case.
+Every approach will be explained in detail, with
+[code examples](https://github.com/michalgrzegorczyk-dev/angular-component-communication)
+that you can run and test by yourself.
 
-❗<u>The key here is a critical thinking and understanding context of the problem.</u>
-
-I'll show you examples of each way. By the end, you'll know lots of
-ways to make your Angular app's parts work together. Also, you can
-check every example by yourself [under this link.](https://github.com/michalgrzegorczyk-dev/angular-component-communication)
-
-Ready to learn? Let's start!
+Ready to learn? Let's start! 💪

@@ -49,7 +49,9 @@ import {ViewChildParentNewComponent} from "./6-view-child/new/view-child-parent-
                                       aliasInput="World"
                                       inputSetter="Example"
                                       parentInput="ParentInput"
-                                      (output)="outputHandler()"/>
+                                      (output)="outputHandler()"
+                                      (parentOutput)="outputHandler()"
+        />
         <app-1-input-output-child-new [input1]="input1Signal()" [aliasNameInput]="input2Signal()"/>
       </div>
 
@@ -99,6 +101,7 @@ export class AppComponent implements OnInit {
 
   outputHandler() {
     // Handle output
+    console.log('Output')
   }
 
   ngOnInit(): void {
