@@ -1,18 +1,50 @@
 ### View Children
-The `@ViewChildren` decorator in Angular is a powerful tool that allows a 
-parent component to query and interact with multiple child components or 
-elements in its template. It's similar to `@ViewChild`, but it returns a 
-`QueryList` of elements or components instead of a single instance.
+As we know already how View Child works, let's take a look at View Children.
+ViewChildren allows a parent component to query and interact with multiple 
+child components or elements in its template. It's similar to `@ViewChild`,
+but it returns a`QueryList` of elements or components instead of a first element.
 
-#### 1. Traditional Approach
-The traditional method involves using `@ViewChildren()` decorator as 
-described above.
+#### Traditional Approach
+The traditional method involves using `@ViewChildren()` decorator to access
+child components directly from the parent. This allows the parent to interact
+with the child components' methods and properties through the template.
 
-#### 2. Modern Approach with Signals
-Similar to `@ViewChild`, in Angular v17+ there is a new way to use 
-`@ViewChildren` feature, with signal approach `viewChildren()`.
+```typescript
+// parent component
+@Component({
+  selector: 'app-parent',
+  template: `
+    @for (val of [1, 2, 3]; track $index) {
+      <app-7-child/>
+    }
+    <button (click)="click()">Call Child Methods</button>
+  `,
+  imports: [ChildComponent]
+})
+class ParentComponent {
+  @ViewChildren(ChildComponent) children!: QueryList<ChildComponent>;
 
-Let's take a look at the code example: 
+  click() {
+    this.children.forEach(child => child.foo());
+  }
+}
+
+// child component
+@Component({
+  selector: 'app-child',
+})
+class ChildComponent {
+  foo() {
+    console.log('bar');
+  }
+}
+```
+
+#### Modern Approach with Signals
+In Angular v17+ there is a new way to use`@ViewChildren` feature, with signal 
+approach `viewChildren()`. Everything works the same as with the traditional
+approach, but with signals, we can access the child components in a more
+straightforward way.
 
 ```typescript
 // parent component
@@ -27,14 +59,9 @@ Let's take a look at the code example:
   imports: [ChildComponent]
 })
 export class ParentComponent {
-  // old way of using ViewChildren
-  @ViewChildren(ChildComponent) children!: QueryList<ChildComponent>;
-
-  // new way with signals of using ViewChildren
   childrenNew = viewChildren<ChildComponent>(ChildComponent);
 
   click() {
-    this.children.forEach(child => child.foo());
     this.childrenNew().forEach(child => child.foo());
   }
 }
@@ -44,11 +71,11 @@ export class ParentComponent {
   selector: 'app-child',
   template: `<h2>app-child</h2>`,
 })
-export class ChildComponent {
+class ChildComponent {
   foo() {
     console.log('bar');
   }
 }
 ```
 
-Full set of examples you can find in the [src/app/7-view-children](src/app/7-view-children) folder.
+Full set of examples around this topic you can find in the [src/app/7-view-children](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/src/app/7-view-children) folder.

@@ -62,13 +62,13 @@ of the child component. This way we can access the child component directly from
 @Component({
   selector: 'app-6-parent',
   template: `
-    <app-6-child #child/>
+    <app-6-child/>
     <button (click)="click()">Call Child Method</button>
   `,
   imports: [ChildComponent]
 })
 class ViewChildParentNewComponent {
-  child = viewChild<ChildComponent>('child');
+  child = viewChild<ChildComponent>(ChildComponent);
 
   click() {
     // runs foo method from child component
