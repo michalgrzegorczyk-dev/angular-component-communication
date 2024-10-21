@@ -1,38 +1,31 @@
-### Input handled by ngOnChanges lifecycle hook
+### `ngOnChanges` Lifecycle Hook
 
-While we've explored various ways to handle inputs in Angular, 
-there's another powerful method that deserves attention: the 
-`ngOnChanges` lifecycle hook. This approach offers a different 
-perspective on managing input changes, providing more control and flexibility.
+Angular offers another way to handle input changes: the `ngOnChanges` 
+lifecycle hook. This method runs when a component's input 
+properties change. It's similar to input setter methods but more powerful.
 
-
-#### Understanding `ngOnChanges`
-The `ngOnChanges` lifecycle hook is a method that gets called whenever 
-an input property of a component changes. It allows you to react 
-to these changes and perform actions based on the new values.
-
-#### Key Features:
-
-- Triggered for all input property changes
-- Provides access to both current and previous values
-- Allows for complex logic based on input changes
-
-
-Let's look at how `ngOnChanges` can be implemented in a component:
+| Status | Description                                                                 |
+|--------|-----------------------------------------------------------------------------|
+| ❌ | Runs for every input change, which may impact performance if overused.      |
+| ❌ | Triggers for any input change, even if you only care about specific inputs. |
+| ❌ | Need to hold additional property to show it on the view                     |
+| ✅ | It can handle multiple inputs at once                                       |
+| ✅ | It lets you check if it's the first change                                  | |
+| ✅ | You can compare new and old values.                                         | |
 
 ```typescript
-    input1 = input('initial');
-    readonly value = signal('');
-  
-    ngOnChanges(changes: SimpleChanges): void {
-      if (changes['input1'].isFirstChange()) {
-        console.log('input1, currentValue:', changes['input1'].currentValue);
-      } else {
-        console.log('input1, previousValue', changes['input1'].previousValue);
-        console.log('input1, currentValue:', changes['input1'].currentValue);
-        this.value.set(changes['input1'].currentValue);
-      }
-    }
+input1 = input('initial');
+value = signal('');
+
+ngOnChanges(changes: SimpleChanges) {
+  if (changes['input1'].isFirstChange()) {
+    console.log(changes['input1'].currentValue);
+  } else {
+    console.log(changes['input1'].previousValue);
+    console.log(changes['input1'].currentValue);
+    this.value.set(changes['input1'].currentValue);
+  }
+}
 ```
 
-Full set of examples you can find in the [src/app/2-input-ng-on-changes](src/app/2-input-ng-on-changes) folder.
+Full set of examples around this topic you can find in the [2-input-ng-on-changes](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/2-input-ng-on-changes) folder.
