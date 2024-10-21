@@ -1,4 +1,4 @@
-### 5. Injected Components
+### Injected Components
 
 <img src="/public/img/injected-components.png" alt="x" style="width: 500px; height: auto;">
 

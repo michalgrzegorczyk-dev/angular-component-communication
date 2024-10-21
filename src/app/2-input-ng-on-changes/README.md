@@ -1,4 +1,4 @@
-### 2. `ngOnChanges` Lifecycle Hook
+### `ngOnChanges` Lifecycle Hook
 
 Angular offers another way to handle input changes: the `ngOnChanges` 
 lifecycle hook. This method runs when a component's input 

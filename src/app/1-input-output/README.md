@@ -2,7 +2,7 @@
 
 <img src="/public/img/input.png" alt="x" style="width: 500px; height:auto;">
 
-### 1. Inputs & Outputs
+### Inputs & Outputs
 
 The most fundamental way of enabling communication between components
 in Angular is through the use of <b>Input</b> and <b>Output</b> functionality.
@@ -49,7 +49,7 @@ class Component {
   thisIsOutputProperty = new EventEmitter<string>();
 } 
 ```
-#### 2. Modern Approach with Signals
+#### Modern Approach with Signals
 
 With newer versions of Angular, we can now use signals with the `input()`
 and `output()` functions instead of decorators. There is no difference

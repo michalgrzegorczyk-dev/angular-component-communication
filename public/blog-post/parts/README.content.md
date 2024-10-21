@@ -2,7 +2,7 @@
 
 <img src="/public/img/input.png" alt="x" style="width: 500px; height:auto;">
 
-### 1. Inputs & Outputs
+### Inputs & Outputs
 
 The most fundamental way of enabling communication between components
 in Angular is through the use of <b>Input</b> and <b>Output</b> functionality.
@@ -49,7 +49,7 @@ class Component {
   thisIsOutputProperty = new EventEmitter<string>();
 } 
 ```
-#### 2. Modern Approach with Signals
+#### Modern Approach with Signals
 
 With newer versions of Angular, we can now use signals with the `input()`
 and `output()` functions instead of decorators. There is no difference
@@ -131,7 +131,7 @@ export class ChildComponent extends ParentComponent {
 Full set of examples around this topic you can find in the [1-input-output](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/1-input-output) folder.
 
 
-### 2. `ngOnChanges` Lifecycle Hook
+### `ngOnChanges` Lifecycle Hook
 
 Angular offers another way to handle input changes: the `ngOnChanges` 
 lifecycle hook. This method runs when a component's input 
@@ -167,7 +167,7 @@ class Component implements OnChanges {
 Full set of examples around this topic you can find in the [2-input-ng-on-changes](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/2-input-ng-on-changes) folder.
 
 
-### 3. Services
+### Services
 
 <img src="/public/img/services.png" alt="x" style="width: 500px; height: auto;">
 
@@ -215,7 +215,7 @@ class ServiceComponent {
 Full set of examples around this topic you can find in the [3-service](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/3-service) folder.
 
 
-### 4. Template Variables
+### Template Variables
 
 <img src="/public/img/template.png" alt="x" style="width: 500px; height: auto;">
 
@@ -264,7 +264,7 @@ class TodoListComponent {
 Full set of examples around this topic you can find in the [4-template-variable](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/4-template-variable) folder.
 
 
-### 5. Injected Components
+### Injected Components
 
 <img src="/public/img/injected-components.png" alt="x" style="width: 500px; height: auto;">
 
