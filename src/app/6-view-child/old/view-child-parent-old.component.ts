@@ -6,7 +6,7 @@ import {ViewChildChildComponent} from "../view-child.component";
   standalone: true,
   template: `
     <h1>app-6-view-child-parent-old</h1>
-    <app-6-view-child #viewChildChildComponent/>
+    <app-6-view-child/>
     <button (click)="click()">Call Child Method</button>
   `,
   imports: [ViewChildChildComponent]

@@ -21,7 +21,10 @@ communicate between components.
 ```typescript
 @Component()
 class Component {
+  @Input()
   thisIsInputProperty = '';
+  
+  @Output()
   thisIsOutputProperty = new EventEmitter<string>();
 } 
 ```

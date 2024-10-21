@@ -11,10 +11,20 @@ While services can be a complex topic, we'll focus on the
 most common and straightforward approach, which is providing a service at 
 the root level and focus on how we can communicate between components.
 
+The most common way to use services in Angular is by using BehaviorSubject and
+Observable, or with the newer signals. A service can store a value, and any 
+component that needs to use or update that value can subscribe to it. Components 
+can also send new values to the service.
+
+In newer versions of Angular, signals make this process easier. Signals are a 
+simpler way to work with observables, making it easier to subscribe to and update 
+values in a more straightforward way.
+
 | Status | Description                                                            |
 |--------|------------------------------------------------------------------------|
 | ❌ | Requires understanding of dependency injection and (often) observables |
 | ❌ | Can introduce additional complexity for simple applications            |
+| ❌ | Requires understanding of RxJS or signals to handle data properly      |
 | ✅ | Allow components to communicate without direct dependencies            |
 | ✅ | Can be used across multiple components                                 |
 
