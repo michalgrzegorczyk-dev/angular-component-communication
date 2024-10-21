@@ -11,17 +11,25 @@ directly related in the component tree.
 
 #### How Routing Parameters Work
 1. Parameters are defined in the route configuration and routes should be passed 
-to `provideRouter(routes)` function.
+to `provideRouter(routes)` function or in RouterModule (old approach).
 2. When navigating to a route, you can pass values for these parameters.
 3. The component associated with the route can then access these parameters.
 
-To use routing parameters, you need to set up your routing configuration and 
-implement the necessary components. Let's see how this works in practice.
+| Status | Description                                                                                                                     |
+|--------|---------------------------------------------------------------------------------------------------------------------------------|
+| ❌ | Routing params are always strings, so you may need to parse or convert complex data types.                                      ||
+| ❌ | Params are primarily for passing simple data; handling large or complex data structures through URLs can be cumbersome.         ||
+| ❌ | Sensitive data passed through the URL can be visible and prone to tampering.                                                    ||
+| ✅ | Allows passing data between components without direct parent-child relationships, enabling more flexible component interaction. |
+| ✅ | Data in URL params is preserved during navigation and can be shared easily through links.                                       | |
+| ✅ | Components can easily access params via Angular’s ActivatedRoute service.                                                       | |
+
+
 
 ```typescript
 // app.config.ts
 const routes = [
-  {path: 'details/:id', component: RoutingParamChildComponent},
+  { path: 'details/:id', component: ChildComponent },
 ];
 
 const appConfig = {
@@ -34,7 +42,7 @@ const appConfig = {
   template: `<router-outlet/>`,
   imports: [RouterOutlet]
 })
-class RoutingParamParentComponent {
+class ParentComponent {
   router = inject(Router);
 
   goToDetails() {
@@ -53,12 +61,12 @@ class ChildComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
-      this.id.set(params['id']); // <- '123'
+      this.id.set(params['id']); // <- returns '123'
     });
   }
 }
 ```
 
-Full set of examples you can find in the [src/app/8-routing-param](src/app/8-routing-param) folder.
+Full set of examples around this topic you can find in the [src/app/8-routing-param](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/src/app/8-routing-param) folder.
 
 
