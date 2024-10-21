@@ -1,14 +1,15 @@
 # Mastering Component Communication in Angular
 
 ## Introduction
+
 When building applications with Angular, it's important to know how 
 different parts of your app can share information. This is called 
-component communication. This blog post covers all possible 
+component communication, and today I'll cover all possible 
 ways to make components talk to each other and also points
 out the ones that are not typically considered as component
 communication, but can actually help to share information.
 
-Here's the list of topics that will be covered:
+### Here's the list of topics that will be covered:
 
 - Approaches frequently used, and recommended
   - `@Input` and `@Output`
@@ -25,21 +26,21 @@ Here's the list of topics that will be covered:
   - `viewChild()` and `viewChildren()`
   - `withComponentInputBinding()`
 - Approaches not considered as component communication
-  - Component projection
+  - Component projection, `<ng-content>`, `*ngTemplateOutlet`, etc.
   - Using `@ContentChild` and `@ContentChildren`
-  - `*ngTemplateOutlet`
   - Passing data via router resolvers
   - Using `@HostListener` and `@HostBinding`
   - WebAPI, like `localStorage`, `broadcastChannel`, etc.
 
-Some of these approaches are better than others in specific cases.
-But for sure it's good to know all of them. This way, you can pick 
-the best one for your case. <u>The key here is a critical 
-thinking and understanding context of the problem.</u>
+It's worth to remember that some of these approaches are better than 
+others in specific cases, but for sure it's good to know all of them. 
+This way, you can pick the best one for your case. <u>The key here is a 
+critical thinking and understanding context of the problem.</u>
 
 Every approach will be explained in detail, with
 [code examples](https://github.com/michalgrzegorczyk-dev/angular-component-communication)
-that you can run and test by yourself.
+that you can run and test by yourself. FYI, code examples in the blog post will be simplified, 
+so I really recommend you to check the full examples in the repository.
 
 Ready to learn? Let's start! 💪
 
@@ -181,79 +182,67 @@ export class ChildComponent extends ParentComponent {
 Full set of examples around this topic you can find in the [1-input-output](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/1-input-output) folder.
 
 
-### Input handled by ngOnChanges lifecycle hook
+### 2. `ngOnChanges` Lifecycle Hook
 
-While we've explored various ways to handle inputs in Angular, 
-there's another powerful method that deserves attention: the 
-`ngOnChanges` lifecycle hook. This approach offers a different 
-perspective on managing input changes, providing more control and flexibility.
+Angular offers another way to handle input changes: the `ngOnChanges` 
+lifecycle hook. This method runs when a component's input 
+properties change. It's similar to input setter methods but more powerful.
 
-
-#### Understanding `ngOnChanges`
-The `ngOnChanges` lifecycle hook is a method that gets called whenever 
-an input property of a component changes. It allows you to react 
-to these changes and perform actions based on the new values.
-
-#### Key Features:
-
-- Triggered for all input property changes
-- Provides access to both current and previous values
-- Allows for complex logic based on input changes
-
-
-Let's look at how `ngOnChanges` can be implemented in a component:
+| Status | Description                                                                 |
+|--------|-----------------------------------------------------------------------------|
+| ❌ | Runs for every input change, which may impact performance if overused.      |
+| ❌ | Triggers for any input change, even if you only care about specific inputs. |
+| ❌ | Need to hold additional property to show it on the view                     |
+| ✅ | It can handle multiple inputs at once                                       |
+| ✅ | It lets you check if it's the first change                                  | |
+| ✅ | You can compare new and old values.                                         | |
 
 ```typescript
-    input1 = input('initial');
-    readonly value = signal('');
-  
-    ngOnChanges(changes: SimpleChanges): void {
-      if (changes['input1'].isFirstChange()) {
-        console.log('input1, currentValue:', changes['input1'].currentValue);
-      } else {
-        console.log('input1, previousValue', changes['input1'].previousValue);
-        console.log('input1, currentValue:', changes['input1'].currentValue);
-        this.value.set(changes['input1'].currentValue);
-      }
-    }
+input1 = input('initial');
+value = signal('');
+
+ngOnChanges(changes: SimpleChanges) {
+  if (changes['input1'].isFirstChange()) {
+    console.log(changes['input1'].currentValue);
+  } else {
+    console.log(changes['input1'].previousValue);
+    console.log(changes['input1'].currentValue);
+    this.value.set(changes['input1'].currentValue);
+  }
+}
 ```
 
-Full set of examples you can find in the [src/app/2-input-ng-on-changes](src/app/2-input-ng-on-changes) folder.
+Full set of examples around this topic you can find in the [2-input-ng-on-changes](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/2-input-ng-on-changes) folder.
 
 
-### Services
+### 3. Services
 
 <img src="/public/img/services.png" alt="x" style="width: 500px; height: auto;">
 
 Services in Angular provide a powerful way to share data and 
-functionality across components. They represent the third major method 
+functionality across components. They represent the third major approach 
 of component communication, alongside inputs/outputs and the `ngOnChanges` 
 lifecycle hook.
 
-While services can be a complex topic, especially when 
-considering different provision strategies and scopes, we'll focus on the most common and straightforward approach: providing a service at the root level.
+While services can be a complex topic, we'll focus on the 
+most common and straightforward approach, which is providing a service at 
+the root level and focus on how we can communicate between components.
 
-#### Root-Level Service Provision
-When a service is provided at the root level, it becomes available to the 
-entire application. This makes it an excellent choice for sharing data 
-between components that aren't directly related in the component tree.
+| Status | Description                                                            |
+|--------|------------------------------------------------------------------------|
+| ❌ | Requires understanding of dependency injection and (often) observables |
+| ❌ | Can introduce additional complexity for simple applications            |
+| ✅ | Allow components to communicate without direct dependencies            |
+| ✅ | Can be used across multiple components                                 |
 
-#### Key Benefits:
-
-Global Accessibility: Any component can inject and use the service.
-Singleton Instance: Only one instance of the service exists application-wide.
-Centralized State Management: Ideal for managing application-wide state.
-
-Let's take a look at how to create a service that can be used in 
-components after being injected.
 
 ```typescript
 // service
 @Injectable({
   providedIn: 'root'
 })
-export class NewService {
-  readonly value = signal('initial');
+class NewService {
+  value = signal('initial');
 
   setValue(value: string) {
     this.value.set(value);
@@ -261,33 +250,39 @@ export class NewService {
 }
 
 // component
-export class ServiceComponent {
-  readonly #valueFromService = inject(NewService).value;
+class ServiceComponent {
+  service = inject(NewService);
+  valueFromService = this.service.value;
+  
+  setValue(value: string) {
+    this.service.setValue(value);
+  }
 }
 ```
 
-Full set of examples you can find in the [src/app/3-service](src/app/3-service) folder.
+Full set of examples around this topic you can find in the [3-service](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/3-service) folder.
 
 
-### Template Variables
+### 4. Template Variables
 
 <img src="/public/img/template.png" alt="x" style="width: 500px; height: auto;">
 
-Template variables are a powerful feature in Angular that enable direct 
-communication between parent and child components through the template. 
-They provide a way to reference elements or components in the template, 
-allowing for more dynamic and interactive component interactions. 
-For example, you can use template variables to access child component
-and invoke its methods from the parent component.
+Template variables are a powerful feature in Angular that let parent and child 
+components communicate directly through the template by using special sign `#`. 
+They allow to reference elements or components within the template,
+making it easier to create dynamic and interactive interactions between components. 
 
-#### How Template Variables Work
 
-- Template variables are declared using the # symbol in the template.
-- They can be assigned to elements, components, or directives.
+| Status | Description                                                           |
+|--------|-----------------------------------------------------------------------|
+| ❌ | Not scalable, creates tightly coupled components                      |
+| ❌ | Only accessible within the template                                   |
+| ❌ | Only allow communication one-way, from parent to child                |
+| ✅ | Simple and direct access                                              |
+| ✅ | No need for extra code for inputs, outputs or services to communicate |
+| ✅ | Parent can call child methods                                         |
 
-#### Example 
-Let's examine an example where we use a template variable to communicate 
-between a parent component and a child TodoListComponent.
+
 
 ```typescript
 // child component
@@ -307,37 +302,38 @@ class TodoListComponent {
   `,
   imports: [TodoListComponent]
 })
-export class TodoListComponent {
+class TodoListComponent {
   addTodo(todoList: TodoListComponent) {
     todoList.addTodo();
   }
 }
 ```
 
-Full set of examples you can find in the [src/app/4-template-variable](src/app/4-template-variable) folder.
+Full set of examples around this topic you can find in the [4-template-variable](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/4-template-variable) folder.
 
 
-### Injected Components
+### 5. Injected Components
 
 <img src="/public/img/injected-components.png" alt="x" style="width: 500px; height: auto;">
 
-Injecting components is an advanced technique in Angular that
-allows a child component to access its parent 
-component directly. This method provides a powerful way to 
+Injecting components is rarely used technique and personally, I haven't
+seen that, but it's great discover to elaborate. It allows a child component to 
+access its parent component directly. This method provides a way to 
 establish communication between components in a parent-child 
-relationship.
+relationship. What you need to do is to inject one of the parent component
+into the child component constructor.
 
-#### How Injected Components Work
-- The child component declares the parent component as a dependency in its constructor.
-- The child can then access public properties and methods of the parent.
 
-#### Important Considerations
-- This technique only works within the component hierarchy. A child can only inject its direct parent or an ancestor in its component tree.
-- It's not possible to inject "random" components that are not in the direct lineage.
-- This approach can lead to tight coupling between components, so it should be used judiciously.
-- Also, this technique is a showcase and from my observation is not widely used in real-world applications.
+| Status | Description                                                                                                                                                               |
+|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ❌ | Not widely used in real-world applications                                                                                                                                ||
+| ❌ | Makes components tightly coupled                                                                                                                                          |
+| ❌ | Only allow communication one-way, from parent to child                                                                                                                    |
+| ❌ | Can only inject components that are part of the direct parent hierarchy                                                                                                   |
+| ✅ | For very specific cases, this technique can simplify communication between tightly related components by eliminating the need for intermediate services or event emitters |
+| ✅ | Allow a child component to call methods or access properties directly from the parent component                                                                           |
 
-Let's examine an example of how to implement this technique:
+
 ```typescript
 // parent component
 @Component({
@@ -357,7 +353,7 @@ class ChildComponent {
 }
 ```
 
-Full set of examples you can find in the [src/app/5-injected-component](src/app/5-injected-component) folder.
+Full set of examples around this topic you can find in the [5-injected-component](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/5-injected-component) folder.
 
 
 ## ViewChild and ViewChildren
