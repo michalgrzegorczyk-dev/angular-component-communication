@@ -1,22 +1,23 @@
-### Template Variables
+### 4. Template Variables
 
 <img src="/public/img/template.png" alt="x" style="width: 500px; height: auto;">
 
-Template variables are a powerful feature in Angular that enable direct 
-communication between parent and child components through the template. 
-They provide a way to reference elements or components in the template, 
-allowing for more dynamic and interactive component interactions. 
-For example, you can use template variables to access child component
-and invoke its methods from the parent component.
+Template variables are a powerful feature in Angular that let parent and child 
+components communicate directly through the template by using special sign `#`. 
+They allow to reference elements or components within the template,
+making it easier to create dynamic and interactive interactions between components. 
 
-#### How Template Variables Work
 
-- Template variables are declared using the # symbol in the template.
-- They can be assigned to elements, components, or directives.
+| Status | Description                                                           |
+|--------|-----------------------------------------------------------------------|
+| ❌ | Not scalable, creates tightly coupled components                      |
+| ❌ | Only accessible within the template                                   |
+| ❌ | Only allow communication one-way, from parent to child                |
+| ✅ | Simple and direct access                                              |
+| ✅ | No need for extra code for inputs, outputs or services to communicate |
+| ✅ | Parent can call child methods                                         |
 
-#### Example 
-Let's examine an example where we use a template variable to communicate 
-between a parent component and a child TodoListComponent.
+
 
 ```typescript
 // child component
@@ -36,11 +37,11 @@ class TodoListComponent {
   `,
   imports: [TodoListComponent]
 })
-export class TodoListComponent {
+class TodoListComponent {
   addTodo(todoList: TodoListComponent) {
     todoList.addTodo();
   }
 }
 ```
 
-Full set of examples you can find in the [src/app/4-template-variable](src/app/4-template-variable) folder.
+Full set of examples around this topic you can find in the [4-template-variable](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/4-template-variable) folder.
