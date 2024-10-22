@@ -9,11 +9,16 @@ import {TemplateVariableParentComponent} from "./4-template-variable/template-va
 import {InjectedComponentParentComponent} from "./5-injected-component/injected-component-parent.component";
 import {ViewChildParentOldComponent} from "./6-view-child/old/view-child-parent-old.component";
 import {ViewChildrenParentNewComponent} from "./7-view-children/new/view-children-parent-new.component";
-import {RoutingParamParentComponent} from "./8-routing-param/routing-param-parent.component";
-import {RoutingQueryParentComponent} from "./9-routing-query/routing-query-parent.component";
+import {RoutingParamsParentComponent} from "./9-routing-params/routing-params-parent.component";
+import {RoutingQueriesParentComponent} from "./10-routing-queries/routing-queries-parent.component";
 import {ViewChildrenParentOldComponent} from "./7-view-children/old/view-children-parent-old.component";
 import {ViewChildParentNewComponent} from "./6-view-child/new/view-child-parent-new.component";
-import {RoutingInputParentComponent} from "./10-routing-input/routing-input-parent.component";
+import {RoutingInputParentComponent} from "./11-routing-input/routing-input-parent.component";
+import {
+  ContentProjectionParentNewComponent
+} from "./8-content-projection/old/content-projection-parent-old.component";
+import {ContentProjectionChildComponent} from "./8-content-projection/content-projection-child.component";
+import {ContentProjectionParentOldComponent} from "./8-content-projection/new/content-projection-parent-new.component";
 
 @Component({
   selector: 'app-root',
@@ -29,11 +34,15 @@ import {RoutingInputParentComponent} from "./10-routing-input/routing-input-pare
     InjectedComponentParentComponent,
     ViewChildParentOldComponent,
     ViewChildrenParentNewComponent,
-    RoutingParamParentComponent,
-    RoutingQueryParentComponent,
+    RoutingParamsParentComponent,
+    RoutingQueriesParentComponent,
     ViewChildrenParentOldComponent,
     ViewChildParentNewComponent,
     RoutingInputParentComponent,
+    ContentProjectionParentOldComponent,
+    ContentProjectionChildComponent,
+    ContentProjectionParentOldComponent,
+    ContentProjectionParentNewComponent,
   ],
   template: `
     <div class="pagination">
@@ -84,21 +93,36 @@ import {RoutingInputParentComponent} from "./10-routing-input/routing-input-pare
       </div>
 
       <div *ngSwitchCase="8" class="box">
-        <app-8-routing-param-parent/>
+
+        <app-8-content-projection-parent-old>
+          <h1 #header>My Header</h1>
+          <app-8-content-projection-child title="Item 1" />
+          <app-8-content-projection-child title="Item 2" />
+        </app-8-content-projection-parent-old>
+
+        <app-8-content-projection-parent-new>
+          <h1 #header>My Header</h1>
+          <app-8-content-projection-child title="Item 1" />
+          <app-8-content-projection-child title="Item 2" />
+        </app-8-content-projection-parent-new>
       </div>
 
       <div *ngSwitchCase="9" class="box">
-        <app-9-routing-query-parent/>
+        <app-9-routing-params-parent/>
+
       </div>
 
       <div *ngSwitchCase="10" class="box">
-        <app-10-routing-input-parent />
+        <app-10-routing-queries-parent/>
+
       </div>
-    </div>
-  `,
+      <div *ngSwitchCase="11" class="box">
+        <app-11-routing-input-parent/>
+      </div>
+    </div>`,
 })
 export class AppComponent implements OnInit {
-  pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 11];
 
   readonly input1Signal = signal('input-1-signal');
   readonly input2Signal = signal('input-2-signal');

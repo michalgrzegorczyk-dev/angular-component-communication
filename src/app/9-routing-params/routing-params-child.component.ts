@@ -2,14 +2,14 @@ import {Component, signal, inject, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'app-8-routing-param-child',
+  selector: 'app-9-routing-param-child',
   standalone: true,
   template: `
-    <h2>app-8-routing-param-child</h2>
+    <h2>app-9-routing-param-child</h2>
     {{ id() }}
   `,
 })
-export class RoutingParamChildComponent implements OnInit {
+export class RoutingParamsChildComponent implements OnInit {
   readonly id = signal('foo');
   #activatedRoute = inject(ActivatedRoute);
 

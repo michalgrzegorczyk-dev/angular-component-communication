@@ -3,7 +3,7 @@
 ## Introduction
 
 When building applications with Angular, it's important to know how 
-different parts of your app can share information. This is called 
+different parts of your application can share information. This is called 
 component communication, and today I'll cover all possible 
 ways to make components talk to each other and also points
 out the ones that are not typically considered as component
@@ -21,15 +21,11 @@ communication itself, but can actually help to share information.
   - Template reference variables `#`
   - Injecting parent components into child components
   - `@Input` and `@Output` inheritance
+  - Using `@ContentChild` and `@ContentChildren` with `<ng-content>`
 - Modern approaches, Angular v17+
   - `input()` and `output()`
   - `viewChild()` and `viewChildren()`
   - Routing with `@Input()` and usage of `withComponentInputBinding()`
-- Approaches not considered as component communication
-  - Component projection, `<ng-content>`, `*ngTemplateOutlet`, etc.
-  - Using `@ContentChild` and `@ContentChildren`
-  - Passing data via router resolvers, or passing static data
-  - WebAPI, like `localStorage`, `broadcastChannel`, etc.
 
 It's worth to remember that some of these approaches are better than 
 others in specific cases, but for sure it's always good to know all the 

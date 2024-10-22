@@ -2,16 +2,16 @@ import {Component, OnInit, inject} from "@angular/core";
 import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
-  selector: 'app-9-routing-query-child',
+  selector: 'app-10-routing-queries-child',
   standalone: true,
   template: `
-    <h2>app-9-routing-query-child</h2>
+    <h2>app-10-routing-queries-child</h2>
     <p>ID: {{ id }}</p>
     <p>Name: {{ name }}</p>
     <p>Role: {{ role }}</p>
   `,
 })
-export class RoutingQueryChildComponent implements OnInit {
+export class RoutingQueriesChildComponent implements OnInit {
   id = '';
   name = '';
   role = '';

@@ -2,16 +2,16 @@ import {Component, inject, OnInit} from "@angular/core";
 import {RouterOutlet, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-8-routing-param-parent',
+  selector: 'app-10-routing-queries-parent',
   standalone: true,
   template: `
-    <h1>app-8-routing-param-parent</h1>
-    <button (click)="goToDetails()">Go to detail</button>
+    <h1>app-10-routing-queries-parent</h1>
+    <button (click)="goToDetails()">Go to details</button>
     <router-outlet/>
   `,
   imports: [RouterOutlet]
 })
-export class RoutingParamParentComponent implements OnInit {
+export class RoutingQueriesParentComponent implements OnInit {
   readonly #router = inject(Router);
 
   async ngOnInit(): Promise<void> {
@@ -19,6 +19,12 @@ export class RoutingParamParentComponent implements OnInit {
   }
 
   async goToDetails(): Promise<void> {
-    await this.#router.navigate(['/details', '123']);
+    await this.#router.navigate(['/detail-query'], {
+      queryParams: {
+        id: '123',
+        name: 'John Doe',
+        role: 'Developer'
+      }
+    });
   }
 }

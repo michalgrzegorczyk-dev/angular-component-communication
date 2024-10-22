@@ -1,27 +1,11 @@
-### When it can feel like communication but it isn't
-
-#### `@ContentChild` and `@ContentChildren`
-While `@ContentChild` involves interaction with projected content, it's 
-not traditionally considered component communication in the same way as 
-`@ViewChild`. In `@ViewChild`, there’s a direct line between the parent and 
-child components for controlling behavior, but `@ContentChild` is more about 
-a child adapting to or interacting with content passed down from the parent, 
-typically through `<ng-content>`.
-
-#### `*ngTemplateOutlet`
-I wouldn't consider using `*ngTemplateOutlet` as traditional component 
-communication because it's more about template projection and dynamic 
-rendering than direct interaction between components. However, it does 
-involve data passing between the parent and the dynamically rendered 
-template, which can be seen as a form of indirect communication.
-
-#### WebAPI
-...
-
 ## Outro
-That's it, we finally reached to the end of the blog post. I covered all the 
+That's it, you finally reached to the end of the blog post. We've covered all the 
 ways of component communication in Angular, showed cases for old syntax and
-most recent with usage of signals. I really hope you enjoyed reading it. 
-If you have any questions, feel free to ask in the comments below. 
+most recent with usage of signals. I showed component communication in different variants,
+direct, indirect, commonly used and less known techniques. I really hope you enjoyed 
+reading it. If you have any questions, feel free to ask in the comments below. 
+
+All the examples are available in the [GitHub repository](
 
 Thanks for reading! 🙏
+

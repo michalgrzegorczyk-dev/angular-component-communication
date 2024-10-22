@@ -1,13 +1,13 @@
 import {ApplicationConfig, provideZoneChangeDetection} from '@angular/core';
 import {provideRouter, Routes, withComponentInputBinding} from "@angular/router";
-import {RoutingParamChildComponent} from "./8-routing-param/routing-param-child.component";
-import {RoutingQueryChildComponent as QueryChildComponent} from "./9-routing-query/routing-query-child.component";
-import {RoutingInputChildComponent} from "./10-routing-input/routing-input-child.component";
+import {RoutingParamsChildComponent} from "./9-routing-params/routing-params-child.component";
+import {RoutingQueriesChildComponent as QueryChildComponent} from "./10-routing-queries/routing-queries-child.component";
+import {RoutingInputChildComponent} from "./11-routing-input/routing-input-child.component";
 
 const routes: Routes = [
   {
     path: 'details/:id',
-    component: RoutingParamChildComponent
+    component: RoutingParamsChildComponent
   },
   {
     path: 'router-input/:id',

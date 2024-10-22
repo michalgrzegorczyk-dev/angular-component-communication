@@ -500,6 +500,71 @@ class ChildComponent {
 Full set of examples around this topic you can find in the [src/app/7-view-children](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/src/app/7-view-children) folder.
 
 
+## ContentChild and ContentChildren
+
+<img src="/public/img/projection.png" alt="x" style="width: 500px; height: auto;">
+
+### Component Projection with Content Child & Content Children
+While `ViewChild` and `ViewChildren`, works with elements, in a component's template,
+ `ContentChild` and `ContentChildren` works with projected content (content between 
+component tags). This feature allows a component to query and manipulate content 
+that is projected into it from a parent component.
+
+#### Traditional approach
+The traditional method uses `@ContentChild()` and `@ContentChildren()` decorators to 
+access projected content. These decorators work together with `<ng-content>` tag to 
+enable flexible content projection patterns.
+
+| Status | Description                                                                               |
+|--------|-------------------------------------------------------------------------------------------|
+| ❌ | Only accessible after ngAfterContentInit lifecycle hook.                                  |
+| ❌ | Cannot access projected content during component initialization.                          |
+| ❌ | Multiple ng-content slots can make the template structure complex and hard to understand. |
+| ✅ | Enables flexible component composition through content projection.                        |
+| ✅ | Allows dynamic interaction with projected content.                                        |
+
+```typescript
+// parent component
+@Component({
+  selector: 'app-parent',
+  template: `
+    <div class="parent">
+      <ng-content select="[header]" />
+      <ng-content />
+    </div>
+  `
+})
+class ContainerComponent implements AfterContentInit {
+  @ContentChild('header') 
+  headerContent: ElementRef;
+
+  @ContentChildren(ItemComponent) 
+  items: QueryList<ItemComponent>;
+
+  ngAfterContentInit() {
+    // Access projected content here.
+    this.items.forEach(item => console.log(item.title));
+  }
+}
+
+// Usage in parent.
+@Component({
+  template: `
+    <app-container>
+      <app-item title="Item 1" />
+      <app-item title="Item 2" />
+    </app-container>
+  `
+})
+```
+
+#### Modern Approach with Signals
+In Angular 17+, there is also equivalent `contentChild()` and `contentChildren()` functions, 
+that works the same but again, as signals.
+
+Full set of examples around this topic you can find in the [src/app/8-component-projection](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/8-component-projection) folder.
+
+
 ## Routing Params & Queries
 
 <img src="/public/img/router.png" alt="x" style="width: 500px; height: auto;">
@@ -508,24 +573,20 @@ Full set of examples around this topic you can find in the [src/app/7-view-child
 
 Routing parameters provide a strong way to pass data between components in 
 Angular applications. This method is particularly useful when you need to 
-share information across different views or components that are not 
-directly related in the component tree.
+share information across components that are not directly related in the component tree.
 
-#### How Routing Parameters Work
-1. Parameters are defined in the route configuration and routes should be passed 
-to `provideRouter(routes)` function or in RouterModule (old approach).
-2. When navigating to a route, you can pass values for these parameters.
-3. The component associated with the route can then access these parameters.
+To achieve proper flow you need to define routes in the route configuration pass them 
+to `provideRouter(routes)` function or in `RouterModule` (old approach). When navigating 
+to a route, you're able to pass values for these parameters. The component associated with 
+the route can then access these parameters.
 
-| Status | Description                                                                                                                     |
-|--------|---------------------------------------------------------------------------------------------------------------------------------|
-| ❌ | Routing params are always strings, so you may need to parse or convert complex data types.                                      ||
-| ❌ | Params are primarily for passing simple data; handling large or complex data structures through URLs can be cumbersome.         ||
-| ❌ | Sensitive data passed through the URL can be visible and prone to tampering.                                                    ||
+| Status | Description                                                                                                                    |
+|--------|--------------------------------------------------------------------------------------------------------------------------------|
+| ❌ | Params are always strings, so you may need to parse or convert complex data types.                                             ||
+| ❌ | Sensitive data passed through the URL can be visible and prone to tampering.                                                   ||
 | ✅ | Allows passing data between components without direct parent-child relationships, enabling more flexible component interaction. |
-| ✅ | Data in URL params is preserved during navigation and can be shared easily through links.                                       | |
-| ✅ | Components can easily access params via Angular’s ActivatedRoute service.                                                       | |
-
+| ✅ | Data in URL params is preserved during navigation and can be shared easily through links.                                      | |
+| ✅ | Components can easily access params via `ActivatedRoute` service.                                                       | |
 
 
 ```typescript
@@ -541,7 +602,10 @@ const appConfig = {
 // parent component
 @Component({
   selector: 'app-parent',
-  template: `<router-outlet/>`,
+  template: `
+    <button (click)="goToDetails()">Go to detail</button>
+    <router-outlet/>
+  `,
   imports: [RouterOutlet]
 })
 class ParentComponent {
@@ -569,7 +633,7 @@ class ChildComponent implements OnInit {
 }
 ```
 
-Full set of examples around this topic you can find in the [src/app/8-routing-param](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/src/app/8-routing-param) folder.
+Full set of examples around this topic you can find in the [src/app/9-routing-params](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/src/app/9-routing-params) folder.
 
 
 
@@ -582,32 +646,29 @@ the route path, query parameters are appended to the URL after a question
 mark `?`, e.g. `localhost:4200/table?sort=asc` and are typically used for optional 
 information such as sorting, filtering, or pagination.
 
-#### How Routing Query Parameters Work
-1. Query parameters are added to the URL after the route path.
-2. They can be added, modified, or removed without changing the route.
-3. Components can read these parameters to adjust their behavior or display.
+Query parameters need to be added to the URL after the route path. They can be
+added, modified, or removed without changing the route. Components can read
+these parameters to adjust their behavior or display.
 
-#### Key Differences from Route Parameters
+#### Key differences from Route Parameters
 
-- URL Structure:
-   - Route params: /details/123
-   - Query params: /details?id=123&sort=name&order=asc
-
-- Query params are ideal for optional, changeable data that doesn't define the route.
-- You can easily pass multiple key-value pairs in query params.
+- URL structure:
+   - Route params: `/details/123`
+   - Query params: `/details?id=123&sort=name&order=asc`
 
 
-| Status | Description                                                                                                                  |
-|--------|------------------------------------------------------------------------------------------------------------------------------|
-| ❌     | Can only handle string data, complex data types need parsing or conversion.                                                   |
-| ❌     | Sensitive data is exposed in the URL, making it vulnerable to tampering.                                                      |
-| ❌     | Handling large or nested data with query params can become messy.                                                             |
-| ❌     | Browser URL length limits restrict passing large data sets via query params.                                                  |
-| ❌     | Not suitable for real-time communication, only for passing state during navigation.                                           |
-| ✅     | Easy to share application state across users or sessions.                                                                     |
-| ✅     | Query params persist in the URL, allowing bookmarking and sharing links with current state.                                   |
-| ✅     | Can pass multiple key-value pairs in a single URL, making it flexible for data sharing.                                        |
-| ✅     | Supports passing data without needing a direct parent-child component relationship, offering more flexible communication.      |
+| Status | Description                                                                           |
+|--------|---------------------------------------------------------------------------------------|
+| ❌     | Can only handle string data, complex data types need parsing or conversion.           |
+| ❌     | Sensitive data is exposed in the URL, making it vulnerable to tampering.              |
+| ❌     | Handling large or nested data with query params can become messy.                     |
+| ❌     | Browser URL length limits restrict passing large data sets via query params.          |
+| ❌     | Not suitable for real-time communication, only for passing state during navigation.   |
+| ✅     | Easy to share application state across users or sessions.                             |
+| ✅     | Persist in the URL, allowing bookmarking and sharing links with current state.        |
+| ✅     | Ideal for optional, changeable data that doesn't define the route.                    |
+| ✅     | Can pass multiple key-value pairs in a single URL, making it flexible for data sharing. |
+| ✅     | Can easily pass multiple key-value pairs in query params.                             |
 
 ```typescript
 // parent component
@@ -657,22 +718,60 @@ class ChildComponent implements OnInit {
 }
 ```
 
-Full set of examples you can find in the [src/app/9-routing-query](src/app/9-routing-query) folder.
+Full set of examples around this topic you can find in the [src/app/9-routing-queries](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/9-routing-queries) folder.
 
 
 ### Routing Input with `withComponentInputBinding()` 
 
-Next and last topic is related to routing and input binding that enables 
-params from url to be retrived via input in component. 
-So, in simple words it's combination of routing params and input binding that you've
-read already in this article. It's a modern approach that is available in Angular v17+.
+The final topic covers the combination of routing and input binding, which allows you to 
+retrieve URL parameters directly through component inputs. This modern feature 
+connects routing parameters with input binding, simplifying how components receive URL 
+data. This approach was introduced in Angular version 17 and later.
 
-| Status | Description                                                                             |
-|--------|-----------------------------------------------------------------------------------------|
-| ❌     | Overusing withComponentInputBinding() for communication can clutter the routing configuration by making it more complex and difficult to manage. Each time data needs to be passed between components, the route definition must include the necessary input bindings. As the application grows, this can lead to a routing configuration filled with many input bindings for different components, making the routing file harder to read and maintain.                               |
-| ❌     | ??? Only works with routes, limiting its use for other types of component interactions. |
-| ❌     | Not ideal for handling complex logic or real-time data updates.                         |
-| ❌     | Supports one-way data binding only, requiring extra steps for two-way communication.    |
-| ✅     | Cleaner, centralized logic in route config for easier maintenance.                      |
-| ✅     | Enables decoupled communication between components through routes.                      |
-| ✅     | Directly binds route data to component inputs, reducing extra code.                     |
+To achieve such a connection, you need to use the `withComponentInputBinding()` function
+from the Angular router. This function allows you to define a route configuration with
+input bindings for components. When navigating to a route, the router will automatically
+bind the URL parameters to the component inputs.
+
+| Status | Description                                                   |
+|---------|---------------------------------------------------------------|
+| ❌      | Can make routing config complex when overused                   |
+| ❌      | Limited for complex/real-time data handling                     |
+| ❌      | One-way data binding only                                      |
+| ✅      | Clean, centralized route config                                |
+| ✅      | Components communicate via routes                              |
+| ✅      | Direct route-to-input binding with less code                   |
+
+```typescript
+// parent component
+@Component({
+  selector: 'app--parent',
+  template: `
+    <button (click)="changeRoute('155')">Go to id: 155</button>
+    <router-outlet/>
+  `,
+  imports: [
+    ChildComponent,
+    RouterOutlet
+  ],
+})
+class RoutingInputParentComponent {
+  router = inject(Router);
+
+  changeRoute(id: string) {
+    this.#router.navigate(['/router-input', id]);
+  }
+}
+
+// child component
+@Component({
+  template: `
+    ID: {{ id }}
+  `,
+})
+class RoutingInputChildComponent {
+  // this value is going to change to 155 after click on the button in parent
+  @Input() id = 'default'; 
+}
+
+Full set of examples around this topic you can find in the [src/app/11-routing-input](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/11-routing-input) folder.
