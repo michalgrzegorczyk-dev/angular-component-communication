@@ -1,19 +1,21 @@
 ### `ngOnChanges` Lifecycle Hook
 
-Angular offers another way to handle input changes: the `ngOnChanges` 
-lifecycle hook. This method runs when a component's input 
-properties change. It's similar to input setter methods but more powerful.
+Angular offers another way to handle input changes, the `ngOnChanges` 
+lifecycle hook method. This method runs when a component's input 
+properties change and provide some additional functionality due to SimpleChanges
+parameter that is passed to it. Based on this parameter, you can check if
+the input has changed, if it's the first change, and compare the new and old values.
 
 | Status | Description                                                                 |
 |--------|-----------------------------------------------------------------------------|
 | ❌ | Runs for every input change, which may impact performance if overused.      |
 | ❌ | Triggers for any input change, even if you only care about specific inputs. |
-| ❌ | Need to hold additional property to show it on the view                     |
-| ✅ | It can handle multiple inputs at once                                       |
-| ✅ | It lets you check if it's the first change                                  | |
+| ❌ | Need to set an additional property to set.                                  |
+| ✅ | It can handle multiple inputs at once.                                      |
+| ✅ | It lets you check if it's the first change.                                 | |
 | ✅ | You can compare new and old values.                                         | |
 
-```typescript
+```typescript 
 @Component()
 class Component implements OnChanges {
   input1 = input('initial');
