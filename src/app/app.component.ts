@@ -13,6 +13,7 @@ import {RoutingParamParentComponent} from "./8-routing-param/routing-param-paren
 import {RoutingQueryParentComponent} from "./9-routing-query/routing-query-parent.component";
 import {ViewChildrenParentOldComponent} from "./7-view-children/old/view-children-parent-old.component";
 import {ViewChildParentNewComponent} from "./6-view-child/new/view-child-parent-new.component";
+import {RoutingInputParentComponent} from "./10-routing-input/routing-input-parent.component";
 
 @Component({
   selector: 'app-root',
@@ -32,6 +33,7 @@ import {ViewChildParentNewComponent} from "./6-view-child/new/view-child-parent-
     RoutingQueryParentComponent,
     ViewChildrenParentOldComponent,
     ViewChildParentNewComponent,
+    RoutingInputParentComponent,
   ],
   template: `
     <div class="pagination">
@@ -88,11 +90,15 @@ import {ViewChildParentNewComponent} from "./6-view-child/new/view-child-parent-
       <div *ngSwitchCase="9" class="box">
         <app-9-routing-query-parent/>
       </div>
+
+      <div *ngSwitchCase="10" class="box">
+        <app-10-routing-input-parent />
+      </div>
     </div>
   `,
 })
 export class AppComponent implements OnInit {
-  pages = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   readonly input1Signal = signal('input-1-signal');
   readonly input2Signal = signal('input-2-signal');

@@ -35,8 +35,6 @@ information such as sorting, filtering, or pagination.
 
 ```typescript
 // parent component
-import {Component} from "@angular/core";
-
 @Component({
   selector: 'app-parent',
   template: `
@@ -57,7 +55,7 @@ class ParentComponent {
   }
 }
 
-
+// child component
 @Component({
   selector: 'app-child',
   template: `
