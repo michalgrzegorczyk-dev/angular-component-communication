@@ -9,6 +9,17 @@ ways to make components talk to each other and also points
 out the ones that are not typically considered as component
 communication itself, but can actually help to share information.
 
+It's worth to remember that some of these approaches are better than
+others in specific cases, but for sure it's always good to know all the
+possibilities. This way, you can pick the best solution for your case in you application.
+<u>The key is the critical thinking and understanding context of the problem.</u>
+
+Every approach will be explained in detail, with
+[code examples](https://github.com/michalgrzegorczyk-dev/angular-component-communication)
+that you can run and test by yourself. FYI, code examples in the blog post will be simplified,
+ass possible, so I really recommend you to check the full examples in the repository.
+
+
 ### Here's the list of topics that will be covered
 
 - Most common approaches
@@ -27,15 +38,5 @@ communication itself, but can actually help to share information.
   - `viewChild()` and `viewChildren()`
   - `<ng-content>` with `contentChild()` and `contentChildren()`
   - Routing with `@Input()` and usage of `withComponentInputBinding()`
-
-It's worth to remember that some of these approaches are better than 
-others in specific cases, but for sure it's always good to know all the 
-possibilities. This way, you can pick the best solution for your case in you application. 
-<u>The key is the critical thinking and understanding context of the problem.</u>
-
-Every approach will be explained in detail, with
-[code examples](https://github.com/michalgrzegorczyk-dev/angular-component-communication)
-that you can run and test by yourself. FYI, code examples in the blog post will be simplified, 
-ass possible, so I really recommend you to check the full examples in the repository.
 
 Ready to learn? Let's start! 💪
