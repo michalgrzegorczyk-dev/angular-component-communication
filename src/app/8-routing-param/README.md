@@ -4,7 +4,7 @@
 
 ### Routing Parameters
 
-Routing parameters provide a powerful way to pass data between components in 
+Routing parameters provide a strong way to pass data between components in 
 Angular applications. This method is particularly useful when you need to 
 share information across different views or components that are not 
 directly related in the component tree.

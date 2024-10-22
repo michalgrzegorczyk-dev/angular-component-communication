@@ -2,7 +2,7 @@
 <img src="/public/img/view-child.png" alt="x" style="width: 500px; height: auto;">
 
 ### View Child
-Yet, another powerful tool in Angular that allows a parent component 
+Yet, another big tool in Angular that allows a parent component 
 to access and interact with its child components directly. This technique 
 provides a way to establish communication between components in a 
 parent-child relationship through the template. By default, ViewChild feature in 

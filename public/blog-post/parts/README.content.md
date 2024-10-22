@@ -343,7 +343,7 @@ Full set of examples around this topic you can find in the [5-injected-component
 <img src="/public/img/view-child.png" alt="x" style="width: 500px; height: auto;">
 
 ### View Child
-Yet, another powerful tool in Angular that allows a parent component 
+Yet, another big tool in Angular that allows a parent component 
 to access and interact with its child components directly. This technique 
 provides a way to establish communication between components in a 
 parent-child relationship through the template. By default, ViewChild feature in 
@@ -510,7 +510,7 @@ Full set of examples around this topic you can find in the [src/app/7-view-child
 
 ### Routing Parameters
 
-Routing parameters provide a powerful way to pass data between components in 
+Routing parameters provide a strong way to pass data between components in 
 Angular applications. This method is particularly useful when you need to 
 share information across different views or components that are not 
 directly related in the component tree.
