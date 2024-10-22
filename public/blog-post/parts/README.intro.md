@@ -25,6 +25,7 @@ communication itself, but can actually help to share information.
 - Modern approaches, Angular v17+
   - `input()` and `output()`
   - `viewChild()` and `viewChildren()`
+  - `<ng-content>` with `contentChild()` and `contentChildren()`
   - Routing with `@Input()` and usage of `withComponentInputBinding()`
 
 It's worth to remember that some of these approaches are better than 
