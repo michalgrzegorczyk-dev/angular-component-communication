@@ -38,5 +38,3 @@ ass possible, so I really recommend you to check the full examples in the reposi
   - `viewChild()` and `viewChildren()`
   - `<ng-content>` with `contentChild()` and `contentChildren()`
   - Routing with `@Input()` and usage of `withComponentInputBinding()`
-
-Ready to learn? Let's start! 💪
