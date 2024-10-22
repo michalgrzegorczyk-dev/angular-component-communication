@@ -1,20 +1,23 @@
 ### View Children
-As we know already how View Child works, let's take a look at View Children.
-ViewChildren allows a parent component to query and interact with multiple 
-child components or elements in its template. It's similar to `@ViewChild`,
-but it returns a`QueryList` of elements or components instead of a first element.
+As we already know how `ViewChild` works, let's take a look at `ViewChildren` now.
+`ViewChildren` functionality allows parent component to query and interact with multiple 
+child components or elements in its template. It's very similar to `@ViewChild()` decorator,
+but it returns a`QueryList` of elements or components instead of only the first element.
 
 #### Traditional Approach
 The traditional method involves using `@ViewChildren()` decorator to access
-child components directly from the parent. This allows the parent to interact
-with the child components' methods and properties through the template.
+child components directly from the parent. What you need to do is to access child
+component by its class and adjust `@ViewChildren()` decorator to the child component class.
+Let's see how it works in the example below, and you will understand it immediately
+because you already understood how it works with `@ViewChild()` 😁.
 
 ```typescript
 // parent component
 @Component({
   selector: 'app-parent',
   template: `
-    @for (val of [1, 2, 3]; track $index) {
+    @for (val of [1, 2, 3]) {
+      // our child components that we want to access
       <app-7-child/>
     }
     <button (click)="click()">Call Child Methods</button>
@@ -22,7 +25,8 @@ with the child components' methods and properties through the template.
   imports: [ChildComponent]
 })
 class ParentComponent {
-  @ViewChildren(ChildComponent) children!: QueryList<ChildComponent>;
+  @ViewChildren(ChildComponent) 
+  children!: QueryList<ChildComponent>;
 
   click() {
     this.children.forEach(child => child.foo());
@@ -51,7 +55,7 @@ straightforward way.
 @Component({
   selector: 'app-parent',
   template: `
-    @for (val of [1, 2, 3]; track $index) {
+    @for (val of [1, 2, 3]) {
       <app-7-child/>
     }
     <button (click)="click()">Call Child Methods</button>
