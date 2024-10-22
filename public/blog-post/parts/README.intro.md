@@ -1,6 +1,6 @@
 # Mastering Component Communication in Angular
 
-## Introduction
+## Intro
 
 When building applications with Angular, it's important to know how 
 different parts of your application can share information. This is called 

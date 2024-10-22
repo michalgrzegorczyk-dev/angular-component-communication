@@ -1,4 +1,4 @@
-## Inputs & Outputs, Setters and OnChanges
+## Inputs & Outputs, Setters and `ngOnChanges` lifecycle hook
 
 <img src="/public/img/input.png" alt="x" style="width: 500px; height:auto;">
 
@@ -147,7 +147,7 @@ export class ChildComponent extends ParentComponent {
 Full set of examples around this topic you can find in the [1-input-output](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/1-input-output) folder.
 
 
-### `ngOnChanges` Lifecycle Hook
+### `ngOnChanges` lifecycle Hook
 
 Angular offers another way to handle input changes, the `ngOnChanges` 
 lifecycle hook method. This method runs when a component's input 

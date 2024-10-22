@@ -1,6 +1,6 @@
 # Mastering Component Communication in Angular
 
-## Introduction
+## Intro
 
 When building applications with Angular, it's important to know how 
 different parts of your application can share information. This is called 
@@ -40,7 +40,7 @@ ass possible, so I really recommend you to check the full examples in the reposi
   - Routing with `@Input()` and usage of `withComponentInputBinding()`
 
 
-## Inputs & Outputs, Setters and OnChanges
+## Inputs & Outputs, Setters and `ngOnChanges` lifecycle hook
 
 <img src="/public/img/input.png" alt="x" style="width: 500px; height:auto;">
 
@@ -189,7 +189,7 @@ export class ChildComponent extends ParentComponent {
 Full set of examples around this topic you can find in the [1-input-output](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/1-input-output) folder.
 
 
-### `ngOnChanges` Lifecycle Hook
+### `ngOnChanges` lifecycle Hook
 
 Angular offers another way to handle input changes, the `ngOnChanges` 
 lifecycle hook method. This method runs when a component's input 
@@ -826,6 +826,6 @@ most recent with usage of signals. I showed component communication in different
 direct, indirect, commonly used and less known techniques. I really hope you enjoyed 
 reading it. If you have any questions, feel free to ask in the comments below. 
 
-All the examples are available in the [GitHub repository](
+All the examples are available in the [GitHub repository](https://github.com/michalgrzegorczyk-dev/angular-component-communication).
 
 Thanks for reading! 🙏

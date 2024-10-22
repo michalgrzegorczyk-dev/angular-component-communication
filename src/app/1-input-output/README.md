@@ -1,4 +1,4 @@
-## Inputs & Outputs, Setters and OnChanges
+## Inputs & Outputs, Setters and `ngOnChanges` lifecycle hook
 
 <img src="/public/img/input.png" alt="x" style="width: 500px; height:auto;">
 

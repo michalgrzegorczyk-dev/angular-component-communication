@@ -5,7 +5,7 @@ most recent with usage of signals. I showed component communication in different
 direct, indirect, commonly used and less known techniques. I really hope you enjoyed 
 reading it. If you have any questions, feel free to ask in the comments below. 
 
-All the examples are available in the [GitHub repository](
+All the examples are available in the [GitHub repository](https://github.com/michalgrzegorczyk-dev/angular-component-communication).
 
 Thanks for reading! 🙏
 
