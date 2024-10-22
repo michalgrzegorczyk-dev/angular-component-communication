@@ -50,5 +50,6 @@ class RoutingInputChildComponent {
   // this value is going to change to 155 after click on the button in parent
   @Input() id = 'default'; 
 }
+```
 
 Full set of examples around this topic you can find in the [src/app/11-routing-input](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/11-routing-input) folder.
