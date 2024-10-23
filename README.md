@@ -1,5 +1,10 @@
 todo:
-[ ] add input router
+- [ ] better images
+- [ ] general review
+- [ ] review code examples
+- [ ] logical review
+- [ ] review for grammar issues
+- [ ] review from the perspective of a reader
 
 # Components Communication in Angular
 
