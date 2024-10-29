@@ -138,7 +138,7 @@ class ChildComponent extends ParentComponent {
 Full set of examples around this topic you can find in the [1-input-output](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/1-input-output) folder.
 
 
-## Understanding `ngOnChanges` Lifecycle Hook
+### Understanding `ngOnChanges` Lifecycle Hook
 
 Let's explore `ngOnChanges`, a helpful lifecycle hook in Angular that tracks changes to 
 your component's input values. When inputs change, Angular automatically runs 
