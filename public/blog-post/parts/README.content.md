@@ -138,7 +138,7 @@ class ChildComponent extends ParentComponent {
 Full set of examples around this topic you can find in the [1-input-output](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/1-input-output) folder.
 
 
-### Understanding `ngOnChanges` Lifecycle Hook
+## Understanding `ngOnChanges` Lifecycle Hook
 
 Let's explore `ngOnChanges`, a helpful lifecycle hook in Angular that tracks changes to 
 your component's input values. When inputs change, Angular automatically runs 
@@ -178,7 +178,7 @@ class Component implements OnChanges {
 Full set of examples around this topic you can find in the [2-input-ng-on-changes](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/2-input-ng-on-changes) folder.
 
 
-### Services in Angular
+## Services in Angular
 
 <img src="/public/img/services.png" alt="x" style="width: 500px; height: auto;">
 
@@ -228,7 +228,7 @@ class ServiceComponent {
 Full set of examples around this topic you can find in the [3-service](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/3-service) folder.
 
 
-### Template Variables in Angular
+## Template Variables in Angular
 
 <img src="/public/img/template.png" alt="x" style="width: 500px; height: auto;">
 
@@ -278,7 +278,7 @@ class ParentComponent {
 Full set of examples around this topic you can find in the [4-template-variable](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/4-template-variable) folder.
 
 
-### Injected Components in Angular
+## Injected Components in Angular
 
 <img src="/public/img/injected-components.png" alt="x" style="width: 500px; height: auto;">
 
@@ -492,7 +492,7 @@ While `ViewChild` and `ViewChildren` handle elements in a component's template,
 component tags. This powerful feature helps you manage content passed
 from parent components.
 
-#### Traditional Approach Explained
+### Traditional Approach Explained
 The classic way uses `@ContentChild()` and `@ContentChildren()` decorators along 
 with the `<ng-content>` tag. This combination gives you flexible ways to 
 project and manage content.
@@ -541,7 +541,7 @@ class ContainerComponent implements AfterContentInit {
 })
 ```
 
-#### Modern Signal-Based Approach
+### Modern Signal-Based Approach
 Angular 17+ introduces signal-based versions with `contentChild()` and `contentChildren()`
 functions. They work similarly but give you the power of signals.
 

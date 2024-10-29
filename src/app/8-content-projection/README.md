@@ -8,7 +8,7 @@ While `ViewChild` and `ViewChildren` handle elements in a component's template,
 component tags. This powerful feature helps you manage content passed
 from parent components.
 
-#### Traditional Approach Explained
+### Traditional Approach Explained
 The classic way uses `@ContentChild()` and `@ContentChildren()` decorators along 
 with the `<ng-content>` tag. This combination gives you flexible ways to 
 project and manage content.
@@ -57,7 +57,7 @@ class ContainerComponent implements AfterContentInit {
 })
 ```
 
-#### Modern Signal-Based Approach
+### Modern Signal-Based Approach
 Angular 17+ introduces signal-based versions with `contentChild()` and `contentChildren()`
 functions. They work similarly but give you the power of signals.
 

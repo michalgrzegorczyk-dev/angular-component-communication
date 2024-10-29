@@ -1,4 +1,4 @@
-### Injected Components in Angular
+## Injected Components in Angular
 
 <img src="/public/img/injected-components.png" alt="x" style="width: 500px; height: auto;">
 

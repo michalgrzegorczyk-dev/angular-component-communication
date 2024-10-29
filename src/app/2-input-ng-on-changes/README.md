@@ -1,4 +1,4 @@
-### Understanding `ngOnChanges` Lifecycle Hook
+## Understanding `ngOnChanges` Lifecycle Hook
 
 Let's explore `ngOnChanges`, a helpful lifecycle hook in Angular that tracks changes to 
 your component's input values. When inputs change, Angular automatically runs 
