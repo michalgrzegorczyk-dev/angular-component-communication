@@ -542,7 +542,7 @@ class ContainerComponent implements AfterContentInit {
 
 ### Modern Signal-Based Approach
 Angular 17+ introduces signal-based versions with `contentChild()` and `contentChildren()`
-functions. They work similarly but give you the power of signals.
+functions. They work similarly, but give you the power of signals.
 
 Full set of examples around this topic you can find in the [src/app/8-component-projection](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/8-component-projection) folder.
 
