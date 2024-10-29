@@ -26,7 +26,6 @@ Your components can then read these parameters to adjust what they show or how t
 | ✅     | Persist in the URL, allowing bookmarking and sharing links with current state.        |
 | ✅     | Ideal for optional, changeable data that doesn't define the route.                    |
 | ✅     | Can pass multiple key-value pairs in a single URL, making it flexible for data sharing. |
-| ✅     | Can easily pass multiple key-value pairs in query params.                            |
 
 ```typescript
 // Parent component - handles navigation to details page.

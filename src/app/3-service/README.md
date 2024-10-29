@@ -9,16 +9,14 @@ help components talk to each other when provided at the `root` level.
 Think of a service as a central hub where components can store and access shared data. 
 Any component can read from or write to this hub, creating a smooth two-way flow of information.
 
-While signals offer a simpler way to handle synchronous data compared to observables, 
-we'll focus on the basics of component communication through services.
-
-| Status | Description                                                 |
-|--------|-------------------------------------------------------------|
-| ❌ | Requires understanding of Angular's dependency injection system.  |
-| ✅ | Enables component communication without creating direct dependencies. |
-| ✅ | Works across multiple components throughout your application.                   |
-| ✅ | Provides a centralized place for sharing data and logic.                   |
-| ✅ | Makes testing easier by separating concerns.               |
+| Status | Description                                                                  |
+|--------|------------------------------------------------------------------------------|
+| ❌ | Requires understanding of Angular's dependency injection system.             |
+| ⚠️ | Simple class that can be injected, usually used with Signals or Observables. |
+| ✅ | Enables component communication without creating direct dependencies.        |
+| ✅ | Works across multiple components throughout your application.                |
+| ✅ | Provides a centralized place for sharing data and logic.                     |
+| ✅ | Makes testing easier by separating concerns.                                 |
 
 
 ```typescript

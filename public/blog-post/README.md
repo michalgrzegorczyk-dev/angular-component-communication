@@ -193,31 +193,32 @@ your component's input values. When inputs change, Angular automatically runs
 this method, providing you with `SimpleChanges` that tell you three key things:
 what changed, if it's the first change, and both the old and new values.
 
-| Status | Description                                                                                    |
-|--------|------------------------------------------------------------------------------------------------|
+| Status | Description                                                                         |
+|--------|-------------------------------------------------------------------------------------|
 | ❌ | Executes on every input change, which may affect performance if not used carefully. |
-| ❌ | Runs for all input changes, even when you're interested in specific ones only.              |
-| ❌ | Requires setting up additional properties to track changes.                                                  |
-| ✅ | Efficiently handles multiple input changes in a single lifecycle hook.               |
-| ✅ | Provides easy detection of first-time changes to input properties.                                 | |
-| ✅ | Enables comparison between previous and current input values.                                               | |
+| ❌ | Runs for all input changes, even when you're interested in specific ones only.      |
+| ❌ | Requires setting up additional properties to track changes.                         |
+| ⚠️ | Runs first before `OnInit` Lifecycle Hook                                             |
+| ✅ | Efficiently handles multiple input changes in a single lifecycle hook.              |
+| ✅ | Provides easy detection of first-time changes to input properties.                  | |
+| ✅ | Enables comparison between previous and current input values.                       | |
 
 ```typescript 
 // Component that tracks input changes.
 @Component()
 class Component implements OnChanges {
-  input1 = input('initial');
+  input = input('initial');
   value = signal('');
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['input1'].isFirstChange()) {
-      // Handle first change of input1.
-      console.log(changes['input1'].currentValue);
+    if (changes['input'].isFirstChange()) {
+      // Handle first change of input.
+      console.log(changes['input'].currentValue);
     } else {
       // Compare previous and current values.
-      console.log(changes['input1'].previousValue);
-      console.log(changes['input1'].currentValue);
-      this.value.set(changes['input1'].currentValue);
+      console.log(changes['input'].previousValue);
+      console.log(changes['input'].currentValue);
+      this.value.set(changes['input'].currentValue);
     }
   }
 }
@@ -237,16 +238,14 @@ help components talk to each other when provided at the `root` level.
 Think of a service as a central hub where components can store and access shared data. 
 Any component can read from or write to this hub, creating a smooth two-way flow of information.
 
-While signals offer a simpler way to handle synchronous data compared to observables, 
-we'll focus on the basics of component communication through services.
-
-| Status | Description                                                 |
-|--------|-------------------------------------------------------------|
-| ❌ | Requires understanding of Angular's dependency injection system.  |
-| ✅ | Enables component communication without creating direct dependencies. |
-| ✅ | Works across multiple components throughout your application.                   |
-| ✅ | Provides a centralized place for sharing data and logic.                   |
-| ✅ | Makes testing easier by separating concerns.               |
+| Status | Description                                                                  |
+|--------|------------------------------------------------------------------------------|
+| ❌ | Requires understanding of Angular's dependency injection system.             |
+| ⚠️ | Simple class that can be injected, usually used with Signals or Observables. |
+| ✅ | Enables component communication without creating direct dependencies.        |
+| ✅ | Works across multiple components throughout your application.                |
+| ✅ | Provides a centralized place for sharing data and logic.                     |
+| ✅ | Makes testing easier by separating concerns.                                 |
 
 
 ```typescript
@@ -697,7 +696,6 @@ Your components can then read these parameters to adjust what they show or how t
 | ✅     | Persist in the URL, allowing bookmarking and sharing links with current state.        |
 | ✅     | Ideal for optional, changeable data that doesn't define the route.                    |
 | ✅     | Can pass multiple key-value pairs in a single URL, making it flexible for data sharing. |
-| ✅     | Can easily pass multiple key-value pairs in query params.                            |
 
 ```typescript
 // Parent component - handles navigation to details page.

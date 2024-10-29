@@ -5,31 +5,32 @@ your component's input values. When inputs change, Angular automatically runs
 this method, providing you with `SimpleChanges` that tell you three key things:
 what changed, if it's the first change, and both the old and new values.
 
-| Status | Description                                                                                    |
-|--------|------------------------------------------------------------------------------------------------|
+| Status | Description                                                                         |
+|--------|-------------------------------------------------------------------------------------|
 | ❌ | Executes on every input change, which may affect performance if not used carefully. |
-| ❌ | Runs for all input changes, even when you're interested in specific ones only.              |
-| ❌ | Requires setting up additional properties to track changes.                                                  |
-| ✅ | Efficiently handles multiple input changes in a single lifecycle hook.               |
-| ✅ | Provides easy detection of first-time changes to input properties.                                 | |
-| ✅ | Enables comparison between previous and current input values.                                               | |
+| ❌ | Runs for all input changes, even when you're interested in specific ones only.      |
+| ❌ | Requires setting up additional properties to track changes.                         |
+| ⚠️ | Runs first before `OnInit` Lifecycle Hook                                             |
+| ✅ | Efficiently handles multiple input changes in a single lifecycle hook.              |
+| ✅ | Provides easy detection of first-time changes to input properties.                  | |
+| ✅ | Enables comparison between previous and current input values.                       | |
 
 ```typescript 
 // Component that tracks input changes.
 @Component()
 class Component implements OnChanges {
-  input1 = input('initial');
+  input = input('initial');
   value = signal('');
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['input1'].isFirstChange()) {
-      // Handle first change of input1.
-      console.log(changes['input1'].currentValue);
+    if (changes['input'].isFirstChange()) {
+      // Handle first change of input.
+      console.log(changes['input'].currentValue);
     } else {
       // Compare previous and current values.
-      console.log(changes['input1'].previousValue);
-      console.log(changes['input1'].currentValue);
-      this.value.set(changes['input1'].currentValue);
+      console.log(changes['input'].previousValue);
+      console.log(changes['input'].currentValue);
+      this.value.set(changes['input'].currentValue);
     }
   }
 }
