@@ -63,7 +63,7 @@ import {ContentProjectionParentOldComponent} from "./8-content-projection/new/co
                                       (output)="outputHandler()"
                                       (parentOutput)="outputHandler()"
         />
-        <app-1-input-output-child-new [input1]="input1Signal()" [aliasNameInput]="input2Signal()"/>
+        <app-1-input-output-child-new [parentInput]="input1Signal()" [input1]="input1Signal()" [aliasNameInput]="input2Signal()"/>
       </div>
 
       <div *ngSwitchCase="2" class="box">

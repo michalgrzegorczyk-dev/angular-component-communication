@@ -111,8 +111,7 @@ set name(value: string) {
 In the traditional approach, there's a way for 
 inheriting input and output properties from their parent component. 
 While this approach is not commonly used it's always good to know you can 
-achieve that this way. Also, it's important to note that this inheritance method is 
-compatible only with traditional input/output approach (without signals).
+achieve that this way.
 
 | Status | Description                                                                       |
 |--------|-----------------------------------------------------------------------------------|
