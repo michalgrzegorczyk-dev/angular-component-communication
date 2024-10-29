@@ -62,7 +62,7 @@ straightforward way.
   `,
   imports: [ChildComponent]
 })
-export class ParentComponent {
+class ParentComponent {
   childrenNew = viewChildren<ChildComponent>(ChildComponent);
 
   click() {
