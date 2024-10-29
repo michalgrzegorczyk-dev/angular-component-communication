@@ -67,7 +67,7 @@ import {ContentProjectionParentOldComponent} from "./8-content-projection/new/co
       </div>
 
       <div *ngSwitchCase="2" class="box">
-        <app-2-input-ng-on-changes [input1]="input1Signal()"/>
+        <app-2-input-ng-on-changes [input1]="input1Signal()" [input2]="input1Signal()" />
       </div>
 
       <div *ngSwitchCase="3" class="box">
@@ -135,7 +135,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(() => this.input1Signal.set('Example'), 2000);
+    setTimeout(() => this.input1Signal.set('Example'), 5000);
   }
 
   onPageChange(page: number) {
