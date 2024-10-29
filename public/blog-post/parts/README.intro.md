@@ -2,15 +2,12 @@
 
 ## Intro
 
-During working on this article, I've noticed that there are many ways to
-"communicate" in Angular, but not all of them are considered as component communication
-by some developers - for me, it's the same level of discussion like choosing
-tabs over spaces for indentation and vice versa. I would suggest focus on 
-the main topic and learn as much as possible about it 😉. Also, I would
-like to mention that this article intended for Angular developers who,
-has some experience with the framework and wants to learn more about 
-component communication.
+### Before we start
+<i>Hey Angular devs! This guide explores all the ways components can talk to each other - 
+from simple one-way data passing to more complex interactions. If you've built a 
+few things with Angular and want to level up your skills, you're in the right place! 😉</i>
 
+### Let's begin
 When building applications with Angular, it's important to know how 
 different parts of your application can share information. This is called 
 component communication, and today I'll cover all possible 

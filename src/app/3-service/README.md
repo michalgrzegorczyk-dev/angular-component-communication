@@ -12,11 +12,10 @@ and `Observable`, or with the newer version of Angular, signals. A service can s
 value, and any component that needs to use or update that value can read to it.
 Components can also send new values to the service, so it can be full two-way ecosystem.
 
-In newer versions of Angular, signals make this process easier. Signals are a 
-simpler way to work with observables, making it easier to subscribe to and update 
-values in a more straightforward way, but here we're elaborating about 
-component communication, so we will skip the details about different techniques that
-can be implemented in services.
+When considering only the synchronous approach, signals provide a simpler way to work 
+with observables, making it easier to subscribe to and update 
+values in a more straightforward way, <u>but here we're elaborating about 
+component communication, so I will skip the details about different service implementations</u>.
 
 | Status | Description                                                               |
 |--------|---------------------------------------------------------------------------|
