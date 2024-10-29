@@ -1,19 +1,21 @@
 ### `ngOnChanges` lifecycle Hook
 
-Angular offers another way to handle input changes, the `ngOnChanges` 
-lifecycle hook method. This method runs when a component's input 
-properties change and provide some additional functionality due to SimpleChanges
-parameter that is passed to it. Based on this parameter, you can check if
-the input has changed, if it's the first change, and compare the new and old values.
+The `ngOnChanges` method is a special tool in Angular that helps track when 
+information coming into a component changes. When you use this method in your 
+component, Angular will run it automatically whenever the input values change. 
+The method comes with useful information through something called SimpleChanges. 
+This information tells you three important things: whether any input has actually
+changed, if this is the very first time the input has changed, and what the input
+value was before compared to what it is now.
 
-| Status | Description                                                                      |
-|--------|----------------------------------------------------------------------------------|
-| ❌ | Runs for every input change, which may impact performance if overused.           |
-| ❌ | Triggers for any input change, even if you only care about specific inputs.      |
-| ❌ | Need to set an additional property to set.                                       |
-| ✅ | It can handle multiple inputs at once (but runs only when single input changes). |
-| ✅ | It lets you check if it's the first change in input property.                    | |
-| ✅ | You can compare new and old values of the input.                                 | |
+| Status | Description                                                                                    |
+|--------|------------------------------------------------------------------------------------------------|
+| ❌ | Runs for every input change, which may impact performance if overused. Should be kept minimal. |
+| ❌ | Triggers for any input change, even if you only care about specific inputs.                    |
+| ❌ | Need to set an additional property to set.                                                     |
+| ✅ | It can handle multiple inputs at once (but runs only when single input changes).               |
+| ✅ | It lets you check if it's the first change in input property.                                  | |
+| ✅ | You can compare new and old values of the input.                                               | |
 
 ```typescript 
 @Component()

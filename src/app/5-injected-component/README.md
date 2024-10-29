@@ -13,7 +13,7 @@ into the child component constructor.
 |--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ❌ | Not widely used in real-world applications, therefore can be misleasing.                                                                                                   ||
 | ❌ | Makes components tightly coupled.                                                                                                                                          |
-| ❌ | Only allow communication one-way, from parent to child.                                                                                                                    |
+| ❌ | Only allow communication one-way, parent can be used in child component.                                                                                                   |
 | ❌ | Can only inject components that are part of the direct parent hierarchy.                                                                                                   |
 | ✅ | For very specific cases, this technique can simplify communication between tightly related components by eliminating the need for intermediate services or event emitters. |
 | ✅ | Allow a child component to call methods or access properties directly from the parent component.                                                                           |

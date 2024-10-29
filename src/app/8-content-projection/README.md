@@ -13,13 +13,14 @@ The traditional method uses `@ContentChild()` and `@ContentChildren()` decorator
 access projected content. These decorators work together with `<ng-content>` tag to 
 enable flexible content projection patterns.
 
-| Status | Description                                                                               |
-|--------|-------------------------------------------------------------------------------------------|
-| ❌ | Only accessible after ngAfterContentInit lifecycle hook.                                  |
-| ❌ | Cannot access projected content during component initialization.                          |
-| ❌ | Multiple ng-content slots can make the template structure complex and hard to understand. |
-| ✅ | Enables flexible component composition through content projection.                        |
-| ✅ | Allows dynamic interaction with projected content.                                        |
+| Status | Description                                                                                                                                                                |
+|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ❌ | Only accessible after ngAfterContentInit lifecycle hook.                                                                                                                   |
+| ❌ | Cannot access projected content during component initialization.                                                                                                           |
+| ❌ | Not strongly typed, therefore we don't know what type the child will be.                                                                                                   |
+| ⚠️ | Multiple ng-content slots can make the template structure complex and hard to understand but on the other hand it's good because you want to create advanced compositions. |
+| ✅ | Enables flexible component composition through content projection.                                                                                                         |
+| ✅ | Allows dynamic interaction with projected content.                                                                                                                         |
 
 ```typescript
 // parent component

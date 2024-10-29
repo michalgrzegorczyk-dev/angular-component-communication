@@ -17,12 +17,11 @@ with observables, making it easier to subscribe to and update
 values in a more straightforward way, <u>but here we're elaborating about 
 component communication, so I will skip the details about different service implementations</u>.
 
-| Status | Description                                                               |
-|--------|---------------------------------------------------------------------------|
-| ❌ | Requires understanding of dependency injection, observables, and signals. |
-| ❌ | Can introduce additional complexity for simple applications.              |
-| ✅ | Allow components to communicate without direct dependencies.              |
-| ✅ | Can be used across multiple components.                                   |
+| Status | Description                                                 |
+|--------|-------------------------------------------------------------|
+| ❌ | Requires understanding of dependency injection in Angular.  |
+| ✅ | Allow components to communicate without direct dependencies. |
+| ✅ | Can be used across multiple components.                     |
 
 
 ```typescript

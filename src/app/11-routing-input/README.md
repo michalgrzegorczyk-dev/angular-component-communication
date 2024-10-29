@@ -10,14 +10,15 @@ from the Angular router. This function allows you to define a route configuratio
 input bindings for components. When navigating to a route, the router will automatically
 bind the URL parameters to the component inputs.
 
-| Status | Description                                                   |
-|---------|---------------------------------------------------------------|
-| ❌      | Can make routing config complex when overused                   |
-| ❌      | Limited for complex/real-time data handling                     |
-| ❌      | One-way data binding only                                      |
-| ✅      | Clean, centralized route config                                |
-| ✅      | Components communicate via routes                              |
-| ✅      | Direct route-to-input binding with less code                   |
+| Status | Description                                   |
+|---------|-----------------------------------------------|
+| ❌      | Can make routing config complex when overused |
+| ❌      | Limited for complex/real-time data handling   |
+| ❌      | One-way data binding only                     |
+| ❌      | Not type-safe.                                |
+| ✅      | Clean, centralized route config               |
+| ✅      | Components communicate via routes             |
+| ✅      | Direct route-to-input binding with less code  |
 
 ```typescript
 // parent component

@@ -16,7 +16,7 @@ and adjust `@ViewChild()` decorator to the child component class.
 | Status | Description                                                                                    |
 |--------|------------------------------------------------------------------------------------------------|
 | ❌ | Strong dependency between parent and child, reducing reusability and flexibility.              |
-| ❌ | Only works for direct parent-child relationships, not across siblings or unrelated components.        |
+| ❌ | Only works for direct parent-child relationships.                                              |
 | ❌ | Overusing `@ViewChild()` in large apps can make the structure harder to maintain.              |
 | ✅ | Allows the parent to directly access and control the child component's methods and properties. |
 | ✅ | The parent can access the latest state of the child component whenever needed.                 | 

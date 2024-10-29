@@ -4,8 +4,10 @@
 
 ### Before we start
 <i>Hey Angular devs! This guide explores all the ways components can talk to each other - 
-from simple one-way data passing to more complex interactions. If you've built a 
-few things with Angular and want to level up your skills, you're in the right place! 😉</i>
+from simple one-way data passing to more complex interactions. It only shows the way you can
+achieve communication, the rest is in your hands, because going into details of every approach would
+make this post never ending story. If you've built a 
+few things with Angular and want to level up your skills, you're in the right place 😉!</i>
 
 ### Let's begin
 When building applications with Angular, it's important to know how 

@@ -7,16 +7,16 @@ components communicate directly through the template by using special sign `#`.
 This allows to reference elements or components within the template,
 making it easier to create dynamic and interactive interactions between components.
 
-| Status | Description                                                                                                                               |
-|--------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| ❌      | Not scalable, creates tightly coupled components.                                                                                         |
-| ❌      | `#` is only accessible within the template.                                                                                               |
-| ❌      | Only allow communication one-way, from parent to child.                                                                                   |
-| ❌      | Be careful with accesing it in the component because, e.g. it can be not rendered yet.                                                    |
-| ✅      | You can access the element tagged `#` via other Angular feature called `viewChild`. This will be covered and described in further topics. |
-| ✅      | Simple and direct access.                                                                                                                 |
-| ✅      | No need for extra code for inputs, outputs or services to communicate between.                                                            |
-| ✅      | Parent can call child methods, set and get properties.                                                                                    |
+| Status | Description                                                                                                                                   |
+|-------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| ❌     | Not scalable, creates tightly coupled components.                                                                                             |
+| ❌     | `#` is only accessible within the template. They can't be directly accessed in the component's code unless you pass them through some events. |
+| ❌     | Be careful with accessing it in the component because, e.g. it can be not rendered yet.                                                       |
+|  ✅      | Allow communication within a template and can be used for interactions between parent and child components in multiple directions.            |
+| ✅     | You can access the element tagged `#` via other Angular feature called `viewChild` or via function.                                           |
+| ✅     | Simple and direct access.                                                                                                                     |
+| ✅     | No need for extra code for inputs, outputs or services to communicate between.                                                                |
+| ✅     | Parent can call child methods, set and get properties.                                                                                        |
 
 ```typescript
 // child component
