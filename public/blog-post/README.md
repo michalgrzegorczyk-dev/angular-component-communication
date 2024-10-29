@@ -1,14 +1,11 @@
 # Mastering Component Communication in Angular
 
 ## Intro
-
-### Before we start
-<i>Hey Angular devs! This guide explores the ways components can talk to each other - 
+Hey Angular devs! This guide explores the ways components can talk to each other - 
 from simple one-way data passing to more complex interactions. It focuses on showing you
 different communication methods, without diving too deep into each one (that would make
-this post endless!) 😉</i>
+this post endless!) 😉
 
-### Let's begin
 When building Angular applications, it's important to understand how
 different parts can share information. This is called component communication.
 Today, I'll cover all possible ways to make components talk to each other,
@@ -32,7 +29,6 @@ as possible, so I really recommend you to check the full examples in the reposit
   - `input()` and `output()` with signals
   - Setter methods with `@Input` decorator
   - `@Input` and `@Output` inheritance
-- `ngOnChanges` Lifecycle Hook
   - `OnChanges` lifecycle hook with `@Input` decorators
 - Services
   - `@Injectable` services
