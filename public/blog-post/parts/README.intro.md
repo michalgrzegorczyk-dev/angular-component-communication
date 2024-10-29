@@ -27,20 +27,25 @@ as possible, so I really recommend you to check the full examples in the reposit
 
 ### Here's what we'll cover:
 
-- Common Approaches
+- Input and Output
   - `@Input` and `@Output` decorators
+  - `input()` and `output()` with signals
   - Setter methods with `@Input` decorator
-  - `OnChanges` lifecycle hook with `@Input` decorators
-  - `@Injectable` services
-  - `@ViewChild` and `@ViewChildren` decorators
-  - Routing Parameters and Queries (`/:id` and `?query=param`)
-  - Template reference variables (`#`)
-  - Parent component injection into child components
   - `@Input` and `@Output` inheritance
+- `ngOnChanges` Lifecycle Hook
+  - `OnChanges` lifecycle hook with `@Input` decorators
+- Services
+  - `@Injectable` services
+- Template variables
+  - Template reference variables (`#`)
+- Content Projection
   - `@ContentChild` and `@ContentChildren` with `<ng-content>`
-
-- Modern Approaches (Angular v16/17+)
-  - `input()` and `output()`
-  - `viewChild()` and `viewChildren()`
-  - `<ng-content>` with `contentChild()` and `contentChildren()`
+  - `contentChild()` and `contentChildren()` with signals
+- View and Query List
+  - `@ViewChild` and `@ViewChildren` decorators
+  - `viewChild()` and `viewChildren()` with signals
+- Routing
+  - Routing Parameters and Queries (`/:id` and `?query=param`)
+  - Parent component injection into child components
   - Routing with `@Input()` and `withComponentInputBinding()`
+
