@@ -1,24 +1,23 @@
-### View Children
-As we already know how `ViewChild` works, let's take a look at `ViewChildren` now.
-`ViewChildren` functionality allows parent component to query and interact with multiple 
-child components or elements in its template. It's very similar to `@ViewChild()` decorator,
-but it returns a`QueryList` of elements or components instead of only the first element.
+### Understanding ViewChildren in Angular
+Building on our knowledge of `ViewChild`, let's explore its sibling feature, `ViewChildren`.
+This powerful tool lets a parent component work with multiple 
+child components or elements in its template. While ViewChild gives you one 
+element, `ViewChildren` provides a `QueryList` containing all matching elements.
 
 #### Traditional Approach
-The traditional method involves using `@ViewChildren()` decorator to access
-child components directly from the parent. What you need to do is to access child
-component by its class and adjust `@ViewChildren()` decorator to the child component class.
-Let's see how it works in the example below, and you will understand it immediately
-because you already understood how it works with `@ViewChild()` 😁.
+The classic method uses the `@ViewChildren()` decorator to access multiple 
+child components from the parent. You'll reference the 
+child component's class in the decorator - it's similar to `ViewChild` but gives 
+you access to all instances instead of just one.
 
 ```typescript
-// parent component
+// Parent component that manages multiple children.
 @Component({
   selector: 'app-parent',
   template: `
     @for (val of [1, 2, 3]) {
-      // our child components that we want to access
-      <app-7-child/>
+      // Child components we want to access.
+      <app-child/>
     }
     <button (click)="click()">Call Child Methods</button>
   `,
@@ -33,7 +32,7 @@ class ParentComponent {
   }
 }
 
-// child component
+// Child component with method that parent can call.
 @Component({
   selector: 'app-child',
 })
@@ -44,19 +43,18 @@ class ChildComponent {
 }
 ```
 
-#### Modern Approach with Signals
-In Angular v17+ there is a new way to use`@ViewChildren` feature, with signal 
-approach `viewChildren()`. Everything works the same as with the traditional
-approach, but with signals, we can access the child components in a more
-straightforward way.
+#### Modern Signal-Based Approach
+Angular 17+ introduces a cleaner way to use `ViewChildren` with the `viewChildren()` 
+signal function. It works the same way but leverages Angular's reactive signal 
+system for better performance and cleaner code.
 
 ```typescript
-// parent component
+// Parent component using signal-based ViewChildren.
 @Component({
   selector: 'app-parent',
   template: `
     @for (val of [1, 2, 3]) {
-      <app-7-child/>
+      <app-child/>
     }
     <button (click)="click()">Call Child Methods</button>
   `,
@@ -70,7 +68,7 @@ class ParentComponent {
   }
 }
 
-// child component
+// Parent component using signal-based ViewChildren.
 @Component({
   selector: 'app-child',
   template: `<h2>app-child</h2>`,

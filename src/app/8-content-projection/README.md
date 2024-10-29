@@ -1,29 +1,29 @@
-## ContentChild and ContentChildren
+## ContentChild and ContentChildren in Angular
 
 <img src="/public/img/projection.png" alt="x" style="width: 500px; height: auto;">
 
-### Component Projection with Content Child & Content Children
-While `ViewChild` and `ViewChildren`, works with elements, in a component's template,
- `ContentChild` and `ContentChildren` works with projected content (content between 
-component tags). This feature allows a component to query and manipulate content 
-that is projected into it from a parent component.
+Let's explore how to work with projected content in Angular components! 
+While `ViewChild` and `ViewChildren` handle elements in a component's template,
+`ContentChild` and `ContentChildren` deal with content that's projected between
+component tags. This powerful feature helps you manage content passed
+from parent components.
 
-#### Traditional approach
-The traditional method uses `@ContentChild()` and `@ContentChildren()` decorators to 
-access projected content. These decorators work together with `<ng-content>` tag to 
-enable flexible content projection patterns.
+#### Traditional Approach Explained
+The classic way uses `@ContentChild()` and `@ContentChildren()` decorators along 
+with the `<ng-content>` tag. This combination gives you flexible ways to 
+project and manage content.
 
-| Status | Description                                                                                                                                                                |
-|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ❌ | Only accessible after ngAfterContentInit lifecycle hook.                                                                                                                   |
-| ❌ | Cannot access projected content during component initialization.                                                                                                           |
-| ❌ | Not strongly typed, therefore we don't know what type the child will be.                                                                                                   |
-| ⚠️ | Multiple ng-content slots can make the template structure complex and hard to understand but on the other hand it's good because you want to create advanced compositions. |
-| ✅ | Enables flexible component composition through content projection.                                                                                                         |
-| ✅ | Allows dynamic interaction with projected content.                                                                                                                         |
+| Status | Description                                                                                                                                                               |
+|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ❌ | Content is only available after the `ngAfterContentInit` lifecycle hook, not during initialization.                                                                       |
+| ❌ | Component initialization cannot access or manipulate projected content.                                                                                                   |
+| ❌ | Lacks strong typing, making it harder to ensure type safety for projected content.                                                                                            |
+| ⚠️ | Using multiple ng-content slots adds complexity, but enables powerful component compositions when used carefully. |
+| ✅ | Creates flexible and reusable components through powerful content projection features.                                                                                                      |
+| ✅ | Provides direct access to projected content, making it easy to interact with nested elements.                                                                                                                        |
 
 ```typescript
-// parent component
+// Parent component with content projection slots.
 @Component({
   selector: 'app-parent',
   template: `
@@ -41,12 +41,12 @@ class ContainerComponent implements AfterContentInit {
   items: QueryList<ItemComponent>;
 
   ngAfterContentInit() {
-    // Access projected content here.
+    // Access projected content after initialization.
     this.items.forEach(item => console.log(item.title));
   }
 }
 
-// Usage in parent.
+// Example usage in a parent component.
 @Component({
   template: `
     <app-container>
@@ -57,8 +57,8 @@ class ContainerComponent implements AfterContentInit {
 })
 ```
 
-#### Modern Approach with Signals
-In Angular 17+, there is also equivalent `contentChild()` and `contentChildren()` functions, 
-that works the same but again, as signals.
+#### Modern Signal-Based Approach
+Angular 17+ introduces signal-based versions with `contentChild()` and `contentChildren()`
+functions. They work similarly but give you the power of signals.
 
 Full set of examples around this topic you can find in the [src/app/8-component-projection](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/8-component-projection) folder.

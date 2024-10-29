@@ -1,31 +1,28 @@
-### Services
+### Services in Angular
 
 <img src="/public/img/services.png" alt="x" style="width: 500px; height: auto;">
 
-Services in Angular provide a probably most powerful way to share data across 
-components, therefore while services can be a complex topic, we'll focus on the 
-most common and straightforward approach, which is providing a service at 
-the `root` level and focus on how we can communicate between components in easy way.
+Let's explore one of the most powerful ways to share data between components in 
+Angular - Services! While services can do many things, we'll focus on how they 
+help components talk to each other when provided at the `root` level.
 
-The most common way to use services in Angular is by usage of `BehaviorSubject` 
-and `Observable`, or with the newer version of Angular, signals. A service can store a
-value, and any component that needs to use or update that value can read to it.
-Components can also send new values to the service, so it can be full two-way ecosystem.
+Think of a service as a central hub where components can store and access shared data. 
+Any component can read from or write to this hub, creating a smooth two-way flow of information.
 
-When considering only the synchronous approach, signals provide a simpler way to work 
-with observables, making it easier to subscribe to and update 
-values in a more straightforward way, <u>but here we're elaborating about 
-component communication, so I will skip the details about different service implementations</u>.
+While signals offer a simpler way to handle synchronous data compared to observables, 
+we'll focus on the basics of component communication through services.
 
 | Status | Description                                                 |
 |--------|-------------------------------------------------------------|
-| ❌ | Requires understanding of dependency injection in Angular.  |
-| ✅ | Allow components to communicate without direct dependencies. |
-| ✅ | Can be used across multiple components.                     |
+| ❌ | Requires understanding of Angular's dependency injection system.  |
+| ✅ | Enables component communication without creating direct dependencies. |
+| ✅ | Works across multiple components throughout your application.                   |
+| ✅ | Provides a centralized place for sharing data and logic.                   |
+| ✅ | Makes testing easier by separating concerns.               |
 
 
 ```typescript
-// service
+// Service that manages shared data.
 @Injectable({
   providedIn: 'root'
 })
@@ -37,7 +34,7 @@ class NewService {
   }
 }
 
-// component
+// Component using the shared service.
 class ServiceComponent {
   service = inject(NewService);
   valueFromService = this.service.value;

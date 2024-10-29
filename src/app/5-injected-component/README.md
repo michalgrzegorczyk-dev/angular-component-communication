@@ -1,39 +1,35 @@
-### Injected Components
+### Injected Components in Angular
 
 <img src="/public/img/injected-components.png" alt="x" style="width: 500px; height: auto;">
 
-Injecting components is very rarely used technique and personally, I haven't
-seen that, but it's great discover to elaborate 😁. It allows a child component to 
-access its parent component directly. This method provides a way to 
-establish communication between components in a parent-child 
-relationship. What you need to do is to inject one of the parent component
-into the child component constructor.
+Let's explore an interesting but rarely-used technique of component injection! 
+This approach lets a child component directly access its parent by injecting the 
+parent component into the child's constructor. While not common, it's worth understanding 
+for specific use cases.
 
 | Status | Description                                                                                                                                                                |
 |--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ❌ | Not widely used in real-world applications, therefore can be misleasing.                                                                                                   ||
-| ❌ | Makes components tightly coupled.                                                                                                                                          |
-| ❌ | Only allow communication one-way, parent can be used in child component.                                                                                                   |
-| ❌ | Can only inject components that are part of the direct parent hierarchy.                                                                                                   |
-| ✅ | For very specific cases, this technique can simplify communication between tightly related components by eliminating the need for intermediate services or event emitters. |
-| ✅ | Allow a child component to call methods or access properties directly from the parent component.                                                                           |
+| ❌ | Rare in real-world applications, which may make the code less maintainable for teams.                                                                                                 |
+| ❌ | Creates strong dependencies between components, reducing reusability.                                                                                                                                        |
+| ❌ | Limited to one-way communication from child to parent.                                                                                                  |
+| ❌ | Only works with direct parent components in the hierarchy.                                                                                                 |
+| ✅ | Simplifies parent-child communication in specific cases without extra services. |
+| ✅ | Provides direct access to parent methods and properties from the child component.                                                                           |
 
 
 ```typescript
-// parent component
-@Component({
-  template: `<app-child-component/>`,
-})
+// Parent component that child can access.
+@Component()
 class ParentComponent {
   foo() {
     alert('bar');
   }
 }
 
-// child component
+// Child component with injected parent.
 class ChildComponent {
   constructor(private parentComponent: ParentComponent) {
-    this.parentComponent.foo(); // <- calling foo method from child component
+    this.parentComponent.foo(); // Direct access to parent's methods.
   }
 }
 ```

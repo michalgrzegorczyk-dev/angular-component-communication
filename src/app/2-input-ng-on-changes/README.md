@@ -1,23 +1,21 @@
-### `ngOnChanges` lifecycle Hook
+### Understanding `ngOnChanges` Lifecycle Hook
 
-The `ngOnChanges` method is a special tool in Angular that helps track when 
-information coming into a component changes. When you use this method in your 
-component, Angular will run it automatically whenever the input values change. 
-The method comes with useful information through something called SimpleChanges. 
-This information tells you three important things: whether any input has actually
-changed, if this is the very first time the input has changed, and what the input
-value was before compared to what it is now.
+Let's explore `ngOnChanges`, a helpful lifecycle hook in Angular that tracks changes to 
+your component's input values. When inputs change, Angular automatically runs 
+this method, providing you with `SimpleChanges` that tell you three key things:
+what changed, if it's the first change, and both the old and new values.
 
 | Status | Description                                                                                    |
 |--------|------------------------------------------------------------------------------------------------|
-| ❌ | Runs for every input change, which may impact performance if overused. Should be kept minimal. |
-| ❌ | Triggers for any input change, even if you only care about specific inputs.                    |
-| ❌ | Need to set an additional property to set.                                                     |
-| ✅ | It can handle multiple inputs at once (but runs only when single input changes).               |
-| ✅ | It lets you check if it's the first change in input property.                                  | |
-| ✅ | You can compare new and old values of the input.                                               | |
+| ❌ | Executes on every input change, which may affect performance if not used carefully. |
+| ❌ | Runs for all input changes, even when you're interested in specific ones only.              |
+| ❌ | Requires setting up additional properties to track changes.                                                  |
+| ✅ | Efficiently handles multiple input changes in a single lifecycle hook.               |
+| ✅ | Provides easy detection of first-time changes to input properties.                                 | |
+| ✅ | Enables comparison between previous and current input values.                                               | |
 
 ```typescript 
+// Component that tracks input changes.
 @Component()
 class Component implements OnChanges {
   input1 = input('initial');
@@ -25,8 +23,10 @@ class Component implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['input1'].isFirstChange()) {
+      // Handle first change of input1.
       console.log(changes['input1'].currentValue);
     } else {
+      // Compare previous and current values.
       console.log(changes['input1'].previousValue);
       console.log(changes['input1'].currentValue);
       this.value.set(changes['input1'].currentValue);

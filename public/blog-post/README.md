@@ -39,64 +39,63 @@ as possible, so I really recommend you to check the full examples in the reposit
   - `@Input` and `@Output` inheritance
   - `@ContentChild` and `@ContentChildren` with `<ng-content>`
 
-- Modern Approaches (Angular v16+)
+- Modern Approaches (Angular v16/17+)
   - `input()` and `output()`
   - `viewChild()` and `viewChildren()`
   - `<ng-content>` with `contentChild()` and `contentChildren()`
   - Routing with `@Input()` and `withComponentInputBinding()`
 
 
-## Inputs & Outputs, Setters and `ngOnChanges` lifecycle hook
+## Inputs & Outputs, Setters and `ngOnChanges` Lifecycle Hook
 
 <img src="/public/img/input.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
-### Inputs & Outputs
+### Inputs & Outputs in Angular
 
-The most fundamental way components communicate in Angular is through
-<b>inputs</b> and <b>outputs</b>. There are several approaches to this -
-both traditional and modern - which we'll explore in detail.
+Let's explore the fundamental ways components talk to each other in Angular - through 
+inputs and outputs! We'll look at both traditional and modern 
+approaches to handle this communication.
 
-#### Traditional & Non-traditional Approach 
+#### Traditional Approach with Decorators
 
-The traditional approach uses `@Input()` and `@Output()`
-decorators. These allow child components to receive data and send
-data back to their parents. This approach has been the standard in
-Angular for years.
+The classic way uses `@Input()` and `@Output()` decorators, letting 
+child components receive data and send it back to their parents. 
+This method has been an Angular standard for years.
 
 ```typescript
+// Component with traditional input/output.
 @Component({
   selector: 'app-component'
 })
 class Component {
-  // Input property to receive data from parent
+  // Receives data from parent.
   @Input()
   thisIsInputProperty = '';
 
-  // Output event emitter to send data to parent
+  // Sends data to parent.
   @Output()
   thisIsOutputProperty = new EventEmitter<string>();
-} 
+}
 
-// usage of input and output from parent perspective
+// Using in parent template.
 <app-component thisIsInputProperty="value" 
                (thisIsOutputProperty)="doSomething($event)" />
 ```
 
-Actually, we don't need decorators for inputs and outputs, that's why I call it non-traditional.
-We can use `@Component` metadata `inputs` or `outputs` arrays and pass 
-the names of variables that we want to work with as inputs or outputs. It 
-will work the same way as using decorators.
+#### Alternative Non-Decorator Approach
+Here's something interesting - we don't actually need decorators for inputs and outputs!
+There's a non-traditional way using `@Component` metadata with `inputs` or `outputs` arrays.
+It achieves the same result with a different syntax.
 
 | Status | Description                                                                                                                                                                     |
 |--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ❌ | Providing inputs and outputs via metadata properties can be harder to understand and can be inconcise.                                                                          |
-| ✅ | It's the common way to communicate between components, always good to use, and recommended.                                                                                     |
-| ✅ | In the newest version of Angular, you can transform data as well as in setters (that we will elaborate in the moment) with the usage of @Input decorators metadata `transform`. |
+| ❌ | Providing inputs and outputs via metadata properties can be harder to understand and can be less concise.                                                                          |
+| ✅ | It's the standard way to communicate between components, well-tested and recommended.                                                                                     |
+| ✅ | The newest Angular version lets you transform data through `@Input` decorator's metadata `transform`, similar to setters. |
 
-Let's take a look at non-traditional approach as well. It works the same way as with decorators but 
-has different syntax.
 
 ```typescript
+// Component using metadata for inputs/outputs.
 @Component({
   inputs: ['thisIsInputProperty'],
   outputs: ['thisIsOutputProperty']
@@ -108,21 +107,19 @@ class Component {
 ```
 
 #### Modern Approach with Signals
-In Angular v17+ we can use signals with the `input()`
-and `output()` functions instead of decorators. There is no difference
-in passing the data except that we don't need to use decorators, and 
-now we're working with signal approach. The signal approach in Angular v17+ offers improved performance and
-better change detection, making it the recommended choice for new applications.
+Angular 17+ introduces a powerful new way using signals with `input()` and `output()`
+functions. This approach offers better performance and smarter change detection, 
+making it the go-to choice for new applications.
 
 
 | Status | Description                                           |
 |--------|-------------------------------------------------------|
-| ❌ | Doesn't work with component inheritance.              |
 | ✅ | Always good to use and recommended from Angular v17+. |
+| ✅ | Provides improved performance and change detection. |
 
 
 ```typescript
-// Example with signals.
+// Modern signal-based approach.
 @Component()
 class Component {
   thisIsInputProperty = input<string>();
@@ -131,21 +128,20 @@ class Component {
 ```
 
 #### Setter Methods
-Angular provides an additional layer of control over inputs through 
-setter methods. These setters are called whenever the input value 
-changes, allowing you to handle the value before it's set.
+Want more control over your inputs? Angular's setter 
+methods let you intercept and handle input values before they're set.
 
 
 | Status | Description                                          |
 |--------|------------------------------------------------------|
-| ❌ | Need to create additional property to set the value. |
-| ❌ | More code, than inline `@Input`.                     |
-| ✅ | Can perform advanced validation.                     |
-| ✅ | Can transform the incoming data.                     |
-| ✅ | Can trigger side effects.                            |
+| ❌ | Requires additional property for storing the value. |
+| ❌ |More verbose than simple `@Input` declarations.                |
+| ✅ | Enables input validation on the fly.                    |
+| ✅ | Allows data transformation as values come in.                     |
+| ✅ | Can trigger side effects when values change.                          |
 
 ```typescript
-// Inside of the component.
+// Example of input setter usage.
 @Input()
 set name(value: string) {
   console.log('New name:', value);
@@ -155,34 +151,31 @@ set name(value: string) {
 
 #### Input Inheritance
 
-In the traditional approach, there's a way for 
-inheriting input and output properties from their parent component. 
-While this approach is not commonly used it's always good to know, you can 
-achieve that this way.
+While not common, Angular supports inheriting input and output properties from parent components.
 
 | Status | Description                                                                       |
 |--------|-----------------------------------------------------------------------------------|
-| ❌ | Component inheritance is rarely used in Angular, so probably you'll never use it. |
-| ❌ | This approach is not compatible with the signals inputs and outputs.              |
-| ✅ | Good to know more component communication techniques than less.                  |
+| ❌ | Component inheritance is rarely used in Angular, so you may never need this. |
+| ❌ | Not compatible with the new signals inputs and outputs approach.             |
+| ✅ | Adds to your toolkit of component communication techniques.                 |
 
 ```typescript
-// Parent component.
+// Parent component with input.
 @Component({
   selector: 'app-parent',
 })
-export class ParentComponent {
+class ParentComponent {
   @Input()
   parentInput = 'hello';
 }
 
-// Child component.
+// Child component inheriting parent's input.
 @Component({
   selector: 'app-child',
   inputs: ['parentInput']
 })
-export class ChildComponent extends ParentComponent {
-  // The child now has access to 'parentInput'.
+class ChildComponent extends ParentComponent {
+  // Child gets access to parentInput.
   constructor() {
     super();
     console.log(this.parentInput);
@@ -193,26 +186,24 @@ export class ChildComponent extends ParentComponent {
 Full set of examples around this topic you can find in the [1-input-output](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/1-input-output) folder.
 
 
-### `ngOnChanges` lifecycle Hook
+### Understanding `ngOnChanges` Lifecycle Hook
 
-The `ngOnChanges` method is a special tool in Angular that helps track when 
-information coming into a component changes. When you use this method in your 
-component, Angular will run it automatically whenever the input values change. 
-The method comes with useful information through something called SimpleChanges. 
-This information tells you three important things: whether any input has actually
-changed, if this is the very first time the input has changed, and what the input
-value was before compared to what it is now.
+Let's explore `ngOnChanges`, a helpful lifecycle hook in Angular that tracks changes to 
+your component's input values. When inputs change, Angular automatically runs 
+this method, providing you with `SimpleChanges` that tell you three key things:
+what changed, if it's the first change, and both the old and new values.
 
 | Status | Description                                                                                    |
 |--------|------------------------------------------------------------------------------------------------|
-| ❌ | Runs for every input change, which may impact performance if overused. Should be kept minimal. |
-| ❌ | Triggers for any input change, even if you only care about specific inputs.                    |
-| ❌ | Need to set an additional property to set.                                                     |
-| ✅ | It can handle multiple inputs at once (but runs only when single input changes).               |
-| ✅ | It lets you check if it's the first change in input property.                                  | |
-| ✅ | You can compare new and old values of the input.                                               | |
+| ❌ | Executes on every input change, which may affect performance if not used carefully. |
+| ❌ | Runs for all input changes, even when you're interested in specific ones only.              |
+| ❌ | Requires setting up additional properties to track changes.                                                  |
+| ✅ | Efficiently handles multiple input changes in a single lifecycle hook.               |
+| ✅ | Provides easy detection of first-time changes to input properties.                                 | |
+| ✅ | Enables comparison between previous and current input values.                                               | |
 
 ```typescript 
+// Component that tracks input changes.
 @Component()
 class Component implements OnChanges {
   input1 = input('initial');
@@ -220,8 +211,10 @@ class Component implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['input1'].isFirstChange()) {
+      // Handle first change of input1.
       console.log(changes['input1'].currentValue);
     } else {
+      // Compare previous and current values.
       console.log(changes['input1'].previousValue);
       console.log(changes['input1'].currentValue);
       this.value.set(changes['input1'].currentValue);
@@ -233,34 +226,31 @@ class Component implements OnChanges {
 Full set of examples around this topic you can find in the [2-input-ng-on-changes](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/2-input-ng-on-changes) folder.
 
 
-### Services
+### Services in Angular
 
 <img src="/public/img/services.png" alt="x" style="width: 500px; height: auto;">
 
-Services in Angular provide a probably most powerful way to share data across 
-components, therefore while services can be a complex topic, we'll focus on the 
-most common and straightforward approach, which is providing a service at 
-the `root` level and focus on how we can communicate between components in easy way.
+Let's explore one of the most powerful ways to share data between components in 
+Angular - Services! While services can do many things, we'll focus on how they 
+help components talk to each other when provided at the `root` level.
 
-The most common way to use services in Angular is by usage of `BehaviorSubject` 
-and `Observable`, or with the newer version of Angular, signals. A service can store a
-value, and any component that needs to use or update that value can read to it.
-Components can also send new values to the service, so it can be full two-way ecosystem.
+Think of a service as a central hub where components can store and access shared data. 
+Any component can read from or write to this hub, creating a smooth two-way flow of information.
 
-When considering only the synchronous approach, signals provide a simpler way to work 
-with observables, making it easier to subscribe to and update 
-values in a more straightforward way, <u>but here we're elaborating about 
-component communication, so I will skip the details about different service implementations</u>.
+While signals offer a simpler way to handle synchronous data compared to observables, 
+we'll focus on the basics of component communication through services.
 
 | Status | Description                                                 |
 |--------|-------------------------------------------------------------|
-| ❌ | Requires understanding of dependency injection in Angular.  |
-| ✅ | Allow components to communicate without direct dependencies. |
-| ✅ | Can be used across multiple components.                     |
+| ❌ | Requires understanding of Angular's dependency injection system.  |
+| ✅ | Enables component communication without creating direct dependencies. |
+| ✅ | Works across multiple components throughout your application.                   |
+| ✅ | Provides a centralized place for sharing data and logic.                   |
+| ✅ | Makes testing easier by separating concerns.               |
 
 
 ```typescript
-// service
+// Service that manages shared data.
 @Injectable({
   providedIn: 'root'
 })
@@ -272,7 +262,7 @@ class NewService {
   }
 }
 
-// component
+// Component using the shared service.
 class ServiceComponent {
   service = inject(NewService);
   valueFromService = this.service.value;
@@ -286,28 +276,29 @@ class ServiceComponent {
 Full set of examples around this topic you can find in the [3-service](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/3-service) folder.
 
 
-### Template Variables
+### Template Variables in Angular
 
 <img src="/public/img/template.png" alt="x" style="width: 500px; height: auto;">
 
-Template variables are another feature in Angular that lets parent and child 
-components communicate directly through the template by using special sign `#`. 
-This allows to reference elements or components within the template,
-making it easier to create dynamic and interactive interactions between components.
+Let's talk about template variables. They're a really cool feature in Angular marked by 
+the `#` symbol. Think of them as quick references you can create in your template 
+to connect parent and child components. It's like giving your components nicknames 
+they can use to talk to each other!
 
-| Status | Description                                                                                                                                   |
-|-------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| ❌     | Not scalable, creates tightly coupled components.                                                                                             |
-| ❌     | `#` is only accessible within the template. They can't be directly accessed in the component's code unless you pass them through some events. |
-| ❌     | Be careful with accessing it in the component because, e.g. it can be not rendered yet.                                                       |
-|  ✅      | Allow communication within a template and can be used for interactions between parent and child components in multiple directions.            |
-| ✅     | You can access the element tagged `#` via other Angular feature called `viewChild` or via function.                                           |
-| ✅     | Simple and direct access.                                                                                                                     |
-| ✅     | No need for extra code for inputs, outputs or services to communicate between.                                                                |
-| ✅     | Parent can call child methods, set and get properties.                                                                                        |
+| Status | Description                                                                                                                        |
+|-------|------------------------------------------------------------------------------------------------------------------------------------|
+| ❌     | Limited scalability due to tight coupling between components.                                                                      |
+| ❌     | Variables are only accessible within the template unless passed through events.                                                                                                                                   |
+| ❌     | Timing issues can occur if accessing elements before they're rendered.                                           |
+|  ✅      | Enables bi-directional communication between parent and child components within templates. |
+| ✅     | Works smoothly with `ViewChild` and template functions for element access.                                |
+| ✅     | Provides quick, direct access to component references.                                                                                                        |
+| ✅     | Reduces boilerplate code by eliminating need for inputs, outputs, or services.                                                    |
+| ✅     | Gives parent components full access to child methods and properties.                                                                            |
 
 ```typescript
-// child component
+// Child component with todo management.
+@Component()
 class TodoListComponent {
   todos = ['Learn Angular', 'Build an app'];
 
@@ -316,7 +307,7 @@ class TodoListComponent {
   }
 }
 
-// parent component
+// Parent component using template variable.
 @Component({
   template: `
     <todo-list #todoList/>
@@ -324,8 +315,9 @@ class TodoListComponent {
   `,
   imports: [TodoListComponent]
 })
-class TodoListComponent {
+class ParentComponent {
   addTodo(todoList: TodoListComponent) {
+    // Access child component through template variable.
     todoList.addTodo();
   }
 }
@@ -334,42 +326,38 @@ class TodoListComponent {
 Full set of examples around this topic you can find in the [4-template-variable](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/4-template-variable) folder.
 
 
-### Injected Components
+### Injected Components in Angular
 
 <img src="/public/img/injected-components.png" alt="x" style="width: 500px; height: auto;">
 
-Injecting components is very rarely used technique and personally, I haven't
-seen that, but it's great discover to elaborate 😁. It allows a child component to 
-access its parent component directly. This method provides a way to 
-establish communication between components in a parent-child 
-relationship. What you need to do is to inject one of the parent component
-into the child component constructor.
+Let's explore an interesting but rarely-used technique of component injection! 
+This approach lets a child component directly access its parent by injecting the 
+parent component into the child's constructor. While not common, it's worth understanding 
+for specific use cases.
 
 | Status | Description                                                                                                                                                                |
 |--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ❌ | Not widely used in real-world applications, therefore can be misleasing.                                                                                                   ||
-| ❌ | Makes components tightly coupled.                                                                                                                                          |
-| ❌ | Only allow communication one-way, parent can be used in child component.                                                                                                   |
-| ❌ | Can only inject components that are part of the direct parent hierarchy.                                                                                                   |
-| ✅ | For very specific cases, this technique can simplify communication between tightly related components by eliminating the need for intermediate services or event emitters. |
-| ✅ | Allow a child component to call methods or access properties directly from the parent component.                                                                           |
+| ❌ | Rare in real-world applications, which may make the code less maintainable for teams.                                                                                                 |
+| ❌ | Creates strong dependencies between components, reducing reusability.                                                                                                                                        |
+| ❌ | Limited to one-way communication from child to parent.                                                                                                  |
+| ❌ | Only works with direct parent components in the hierarchy.                                                                                                 |
+| ✅ | Simplifies parent-child communication in specific cases without extra services. |
+| ✅ | Provides direct access to parent methods and properties from the child component.                                                                           |
 
 
 ```typescript
-// parent component
-@Component({
-  template: `<app-child-component/>`,
-})
+// Parent component that child can access.
+@Component()
 class ParentComponent {
   foo() {
     alert('bar');
   }
 }
 
-// child component
+// Child component with injected parent.
 class ChildComponent {
   constructor(private parentComponent: ParentComponent) {
-    this.parentComponent.foo(); // <- calling foo method from child component
+    this.parentComponent.foo(); // Direct access to parent's methods.
   }
 }
 ```
@@ -380,31 +368,29 @@ Full set of examples around this topic you can find in the [5-injected-component
 ## ViewChild and ViewChildren
 <img src="/public/img/view-child.png" alt="x" style="width: 500px; height: auto;">
 
-### View Child
-Yet, another big tool in Angular. This one allows a parent component 
-to access and interact with its child components directly. This technique 
-provides a way to establish communication between components in a 
-parent-child relationship through the template. By default, `ViewChild` feature in 
-Angular selects the first matching element or component in the view.
+### Understanding ViewChild in Angular
+`ViewChild` is a powerful Angular tool that lets parent components interact directly 
+with their child components. By default, it selects the first matching element or 
+component in the view, making it perfect for one-to-one parent-child communication 
+through the template.
 
 #### Traditional approach 
-The traditional method uses `@ViewChild()` to access a child component directly 
-from the parent. What you need to do it access child component by its class
-and adjust `@ViewChild()` decorator to the child component class.
+The classic method uses the `@ViewChild()` decorator to connect a parent with its child component. 
+You'll reference the child component's class in the decorator to establish this connection.
 
 | Status | Description                                                                                    |
 |--------|------------------------------------------------------------------------------------------------|
-| ❌ | Strong dependency between parent and child, reducing reusability and flexibility.              |
-| ❌ | Only works for direct parent-child relationships.                                              |
-| ❌ | Overusing `@ViewChild()` in large apps can make the structure harder to maintain.              |
-| ✅ | Allows the parent to directly access and control the child component's methods and properties. |
-| ✅ | The parent can access the latest state of the child component whenever needed.                 | 
+| ❌ | Creates tight coupling between parent and child components, which can limit reusability.            |
+| ❌ | Limited to direct parent-child relationships only.                                            |
+| ❌ | Extensive use of `ViewChild` can make applications harder to maintain and test.             |
+| ✅ | Provides direct access to child component's public methods and properties. |
+| ✅ | Enables real-time access to child component's state and behavior.                 | 
 
 
 ```typescript
-// child component
+// Child component with a method parent can call.
 @Component({
-  selector: 'app-6-child',
+  selector: 'app-child',
 })
 class ChildComponent {
   foo() {
@@ -412,11 +398,11 @@ class ChildComponent {
   }
 }
 
-// parent component
+// Parent component that controls the child.
 @Component({
-  selector: 'app-6-parent',
+  selector: 'app-parent',
   template: `
-    <app-6-view-child/>
+    <app-child/>
     <button (click)="click()">Call Child Method</button>
   `,
   imports: [ChildComponent]
@@ -426,23 +412,22 @@ class ParentComponent {
   child!: ChildComponent;
 
   click() {
-    // runs foo method from child component
+    // Calls the child component's foo method.
     this.childComponent.foo();
   }
 }
 ```
 
-#### Modern Approach with Signals
-In Angular v17+, there is a new way to use `ViewChild` feature, with signals `viewChild()`.
-In this case we need to specify the string that indicates the template reference variable
-of the child component, or it's locator that is the same as we did with `@ViewChild`.
-This way we can access the child component directly from the parent.
+#### Modern Signal-Based Approach
+Angular 17+ introduces a cleaner way to use `ViewChild` with the `viewChild()` signal function. 
+You can specify either a template reference variable or a component class to locate 
+the child component.
 
 ```typescript
+// Parent component using signal-based ViewChild.
 @Component({
-  selector: 'app-6-parent',
   template: `
-    <app-6-child/>
+    <app-child/>
     <button (click)="click()">Call Child Method</button>
   `,
   imports: [ChildComponent]
@@ -451,7 +436,7 @@ class ViewChildParentNewComponent {
   child = viewChild<ChildComponent>(ChildComponent);
 
   click() {
-    // runs foo method from child component
+    // Calls the child component's foo method using signal syntax.
     this.child().foo(); 
   }
 }
@@ -460,27 +445,26 @@ class ViewChildParentNewComponent {
 Full set of examples around this topic you can find in the [6-view-child](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/6-view-child) folder.
 
 
-### View Children
-As we already know how `ViewChild` works, let's take a look at `ViewChildren` now.
-`ViewChildren` functionality allows parent component to query and interact with multiple 
-child components or elements in its template. It's very similar to `@ViewChild()` decorator,
-but it returns a`QueryList` of elements or components instead of only the first element.
+### Understanding ViewChildren in Angular
+Building on our knowledge of `ViewChild`, let's explore its sibling feature, `ViewChildren`.
+This powerful tool lets a parent component work with multiple 
+child components or elements in its template. While ViewChild gives you one 
+element, `ViewChildren` provides a `QueryList` containing all matching elements.
 
 #### Traditional Approach
-The traditional method involves using `@ViewChildren()` decorator to access
-child components directly from the parent. What you need to do is to access child
-component by its class and adjust `@ViewChildren()` decorator to the child component class.
-Let's see how it works in the example below, and you will understand it immediately
-because you already understood how it works with `@ViewChild()` 😁.
+The classic method uses the `@ViewChildren()` decorator to access multiple 
+child components from the parent. You'll reference the 
+child component's class in the decorator - it's similar to `ViewChild` but gives 
+you access to all instances instead of just one.
 
 ```typescript
-// parent component
+// Parent component that manages multiple children.
 @Component({
   selector: 'app-parent',
   template: `
     @for (val of [1, 2, 3]) {
-      // our child components that we want to access
-      <app-7-child/>
+      // Child components we want to access.
+      <app-child/>
     }
     <button (click)="click()">Call Child Methods</button>
   `,
@@ -495,7 +479,7 @@ class ParentComponent {
   }
 }
 
-// child component
+// Child component with method that parent can call.
 @Component({
   selector: 'app-child',
 })
@@ -506,25 +490,24 @@ class ChildComponent {
 }
 ```
 
-#### Modern Approach with Signals
-In Angular v17+ there is a new way to use`@ViewChildren` feature, with signal 
-approach `viewChildren()`. Everything works the same as with the traditional
-approach, but with signals, we can access the child components in a more
-straightforward way.
+#### Modern Signal-Based Approach
+Angular 17+ introduces a cleaner way to use `ViewChildren` with the `viewChildren()` 
+signal function. It works the same way but leverages Angular's reactive signal 
+system for better performance and cleaner code.
 
 ```typescript
-// parent component
+// Parent component using signal-based ViewChildren.
 @Component({
   selector: 'app-parent',
   template: `
     @for (val of [1, 2, 3]) {
-      <app-7-child/>
+      <app-child/>
     }
     <button (click)="click()">Call Child Methods</button>
   `,
   imports: [ChildComponent]
 })
-export class ParentComponent {
+class ParentComponent {
   childrenNew = viewChildren<ChildComponent>(ChildComponent);
 
   click() {
@@ -532,7 +515,7 @@ export class ParentComponent {
   }
 }
 
-// child component
+// Parent component using signal-based ViewChildren.
 @Component({
   selector: 'app-child',
   template: `<h2>app-child</h2>`,
@@ -547,32 +530,32 @@ class ChildComponent {
 Full set of examples around this topic you can find in the [src/app/7-view-children](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/src/app/7-view-children) folder.
 
 
-## ContentChild and ContentChildren
+## ContentChild and ContentChildren in Angular
 
 <img src="/public/img/projection.png" alt="x" style="width: 500px; height: auto;">
 
-### Component Projection with Content Child & Content Children
-While `ViewChild` and `ViewChildren`, works with elements, in a component's template,
- `ContentChild` and `ContentChildren` works with projected content (content between 
-component tags). This feature allows a component to query and manipulate content 
-that is projected into it from a parent component.
+Let's explore how to work with projected content in Angular components! 
+While `ViewChild` and `ViewChildren` handle elements in a component's template,
+`ContentChild` and `ContentChildren` deal with content that's projected between
+component tags. This powerful feature helps you manage content passed
+from parent components.
 
-#### Traditional approach
-The traditional method uses `@ContentChild()` and `@ContentChildren()` decorators to 
-access projected content. These decorators work together with `<ng-content>` tag to 
-enable flexible content projection patterns.
+#### Traditional Approach Explained
+The classic way uses `@ContentChild()` and `@ContentChildren()` decorators along 
+with the `<ng-content>` tag. This combination gives you flexible ways to 
+project and manage content.
 
-| Status | Description                                                                                                                                                                |
-|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ❌ | Only accessible after ngAfterContentInit lifecycle hook.                                                                                                                   |
-| ❌ | Cannot access projected content during component initialization.                                                                                                           |
-| ❌ | Not strongly typed, therefore we don't know what type the child will be.                                                                                                   |
-| ⚠️ | Multiple ng-content slots can make the template structure complex and hard to understand but on the other hand it's good because you want to create advanced compositions. |
-| ✅ | Enables flexible component composition through content projection.                                                                                                         |
-| ✅ | Allows dynamic interaction with projected content.                                                                                                                         |
+| Status | Description                                                                                                                                                               |
+|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ❌ | Content is only available after the `ngAfterContentInit` lifecycle hook, not during initialization.                                                                       |
+| ❌ | Component initialization cannot access or manipulate projected content.                                                                                                   |
+| ❌ | Lacks strong typing, making it harder to ensure type safety for projected content.                                                                                            |
+| ⚠️ | Using multiple ng-content slots adds complexity, but enables powerful component compositions when used carefully. |
+| ✅ | Creates flexible and reusable components through powerful content projection features.                                                                                                      |
+| ✅ | Provides direct access to projected content, making it easy to interact with nested elements.                                                                                                                        |
 
 ```typescript
-// parent component
+// Parent component with content projection slots.
 @Component({
   selector: 'app-parent',
   template: `
@@ -590,12 +573,12 @@ class ContainerComponent implements AfterContentInit {
   items: QueryList<ItemComponent>;
 
   ngAfterContentInit() {
-    // Access projected content here.
+    // Access projected content after initialization.
     this.items.forEach(item => console.log(item.title));
   }
 }
 
-// Usage in parent.
+// Example usage in a parent component.
 @Component({
   template: `
     <app-container>
@@ -606,39 +589,39 @@ class ContainerComponent implements AfterContentInit {
 })
 ```
 
-#### Modern Approach with Signals
-In Angular 17+, there is also equivalent `contentChild()` and `contentChildren()` functions, 
-that works the same but again, as signals.
+#### Modern Signal-Based Approach
+Angular 17+ introduces signal-based versions with `contentChild()` and `contentChildren()`
+functions. They work similarly but give you the power of signals.
 
 Full set of examples around this topic you can find in the [src/app/8-component-projection](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/8-component-projection) folder.
 
 
-## Routing Params & Queries
+## Routing Parameters & Queries in Angular
 
 <img src="/public/img/router.png" alt="x" style="width: 500px; height: auto;">
 
 ### Routing Parameters
 
-Routing parameters provide a strong way to pass data between components in 
-Angular applications. This method is particularly useful when you need to 
-share information across components that are not directly related in the component tree.
+Let's explore how to pass data between Angular components using route parameters. 
+This is especially helpful when you need to share information between components that aren't 
+directly connected in your component tree.
 
-To achieve proper flow you need to define routes in the route configuration pass them 
-to `provideRouter(routes)` function or in `RouterModule` (old approach). When navigating 
-to a route, you're able to pass values for these parameters. The component associated with 
-the route can then access these parameters.
+To get started, you'll need to set up your routes in the configuration and pass them to the 
+`provideRouter(routes)` function (or `RouterModule` if you're using the older approach). 
+Once set up, you can pass values through these routes when navigating. Your components 
+can then easily access these parameters.
 
 | Status | Description                                                                                                                    |
 |--------|--------------------------------------------------------------------------------------------------------------------------------|
-| ❌ | Params are always strings, so you may need to parse or convert complex data types.                                             ||
-| ❌ | Sensitive data passed through the URL can be visible and prone to tampering.                                                   ||
+| ❌ | Params are always strings, so you may need to parse or convert complex data types.                                           |
+| ❌ | Sensitive data passed through the URL can be visible and prone to tampering.                                                   |
 | ✅ | Allows passing data between components without direct parent-child relationships, enabling more flexible component interaction. |
-| ✅ | Data in URL params is preserved during navigation and can be shared easily through links.                                      | |
-| ✅ | Components can easily access params via `ActivatedRoute` service.                                                       | |
+| ✅ | Data in URL params is preserved during navigation and can be shared easily through links.                                      |
+| ✅ | Components can easily access params via `ActivatedRoute` service.                                                     |
 
 
 ```typescript
-// app.config.ts
+// Sets up the routing configuration.
 const routes = [
   { path: 'details/:id', component: ChildComponent },
 ];
@@ -647,7 +630,7 @@ const appConfig = {
   providers: [provideRouter(routes)]
 };
 
-// parent component
+// Parent component - handles navigation to details.
 @Component({
   selector: 'app-parent',
   template: `
@@ -664,7 +647,7 @@ class ParentComponent {
   }
 }
 
-// child component
+// Child component - displays the route parameter value.
 @Component({
   selector: 'app-child',
   template: `{{ id() }}`,
@@ -675,7 +658,7 @@ class ChildComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
-      this.id.set(params['id']); // <- returns '123'
+      this.id.set(params['id']); // Will display '123'.
     });
   }
 }
@@ -686,40 +669,38 @@ Full set of examples around this topic you can find in the [src/app/9-routing-pa
 
 
 
-### Routing Queries 
+### Routing Queries in Angular
 
-Routing queries provide a flexible way to pass optional data between
-components in Angular applications. Unlike route parameters, which are part of
-the route path, query parameters are appended to the URL after a question
-mark `?`, e.g. `localhost:4200/table?sort=asc` and are typically used for optional 
-information such as sorting, filtering, or pagination.
+Routing queries are perfect for this! Unlike regular route parameters that 
+are part of the URL path, query parameters come after a question mark (`?`) in your URL.
+For example: `localhost:4200/table?sort=asc`. They're great for handling things like sorting,
+filtering, or page numbers.
 
-Query parameters need to be added to the URL after the route path. They can be
-added, modified, or removed without changing the route. Components can read
-these parameters to adjust their behavior or display.
+You can add, change, or remove query parameters without changing your main route path.
+Your components can then read these parameters to adjust what they show or how they behave.
 
-#### Key differences from Route Parameters
+#### How Are Query Parameters Different from Route Parameters?
 
-- URL structure:
-   - Route params: `/details/123`
-   - Query params: `/details?id=123&sort=name&order=asc`
+- URL Structure:
+   - Route parameters look like this:  `/details/123`
+   - Query parameters look like this: `/details?id=123&sort=name&order=asc`
 
 
 | Status | Description                                                                           |
 |--------|---------------------------------------------------------------------------------------|
 | ❌     | Can only handle string data, complex data types need parsing or conversion.           |
-| ❌     | Sensitive data is exposed in the URL, making it vulnerable to tampering.              |
+| ❌     | Sensitive data is exposed in the URL, making it vulnerable to tampering.            |
 | ❌     | Handling large or nested data with query params can become messy.                     |
 | ❌     | Browser URL length limits restrict passing large data sets via query params.          |
 | ❌     | Not suitable for real-time communication, only for passing state during navigation.   |
-| ✅     | Easy to share application state across users or sessions.                             |
+| ✅     | Easy to share application state across users or sessions.                        |
 | ✅     | Persist in the URL, allowing bookmarking and sharing links with current state.        |
 | ✅     | Ideal for optional, changeable data that doesn't define the route.                    |
 | ✅     | Can pass multiple key-value pairs in a single URL, making it flexible for data sharing. |
-| ✅     | Can easily pass multiple key-value pairs in query params.                             |
+| ✅     | Can easily pass multiple key-value pairs in query params.                            |
 
 ```typescript
-// parent component
+// Parent component - handles navigation to details page.
 @Component({
   selector: 'app-parent',
   template: `
@@ -740,7 +721,7 @@ class ParentComponent {
   }
 }
 
-// child component
+// Child component - displays the query parameter values.
 @Component({
   selector: 'app-child',
   template: `
@@ -769,32 +750,32 @@ class ChildComponent implements OnInit {
 Full set of examples around this topic you can find in the [src/app/9-routing-queries](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/9-routing-queries) folder.
 
 
-### Routing Input with `withComponentInputBinding()` 
+### Using `withComponentInputBinding()` for Easier Routing 
 
-The final topic covers the combination of routing and input binding, which allows you to 
-retrieve URL parameters directly through component inputs. This modern feature 
-connects routing parameters with input binding, simplifying how components receive URL 
-data. This approach was introduced in Angular version 16 and later.
+Angular 16+ introduced a game-changing feature that does exactly that! Let's explore how 
+`withComponentInputBinding()` makes routing and data handling much smoother.
 
-To achieve such a connection, you need to use the `withComponentInputBinding()` function
-from the Angular router. This function allows you to define a route configuration with
-input bindings for components. When navigating to a route, the router will automatically
-bind the URL parameters to the component inputs.
+This new approach creates a direct connection between your URL parameters and component inputs. 
+It's like having an automatic pipeline that connects your URLs to your components, saving you 
+from writing extra code!
 
-| Status | Description                                   |
-|---------|-----------------------------------------------|
-| ❌      | Can make routing config complex when overused |
-| ❌      | Limited for complex/real-time data handling   |
-| ❌      | One-way data binding only                     |
-| ❌      | Not type-safe.                                |
-| ✅      | Clean, centralized route config               |
-| ✅      | Components communicate via routes             |
-| ✅      | Direct route-to-input binding with less code  |
+To use this feature, you'll need the withComponentInputBinding() function from the Angular router. 
+Once set up, the router will automatically connect your URL parameters to your component inputs when 
+someone visits a page.
+
+| Status | Description                                     |
+|---------|-------------------------------------------------|
+| ❌      | Can make routing more complex if used too much. |
+| ❌      | Not great for complex data that changes often.  |
+| ❌      | Data only flows one way.                        |
+| ❌      | Types aren't checked automatically.             |
+| ✅      | Clean, organized route setup.                   |
+| ✅      | Components can talk through routes.             |
+| ✅      | Less code needed.                               |
 
 ```typescript
-// parent component
+// Parent component - handles navigation.
 @Component({
-  selector: 'app--parent',
   template: `
     <button (click)="changeRoute('155')">Go to id: 155</button>
     <router-outlet/>
@@ -812,14 +793,14 @@ class RoutingInputParentComponent {
   }
 }
 
-// child component
+// Child component - receives the ID.
 @Component({
   template: `
     ID: {{ id }}
   `,
 })
 class RoutingInputChildComponent {
-  // this value is going to change to 155 after click on the button in parent
+  // Changes to '155' when you click the button in the parent.
   @Input() id = 'default'; 
 }
 ```

@@ -1,25 +1,26 @@
-### Template Variables
+### Template Variables in Angular
 
 <img src="/public/img/template.png" alt="x" style="width: 500px; height: auto;">
 
-Template variables are another feature in Angular that lets parent and child 
-components communicate directly through the template by using special sign `#`. 
-This allows to reference elements or components within the template,
-making it easier to create dynamic and interactive interactions between components.
+Let's talk about template variables. They're a really cool feature in Angular marked by 
+the `#` symbol. Think of them as quick references you can create in your template 
+to connect parent and child components. It's like giving your components nicknames 
+they can use to talk to each other!
 
-| Status | Description                                                                                                                                   |
-|-------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| ❌     | Not scalable, creates tightly coupled components.                                                                                             |
-| ❌     | `#` is only accessible within the template. They can't be directly accessed in the component's code unless you pass them through some events. |
-| ❌     | Be careful with accessing it in the component because, e.g. it can be not rendered yet.                                                       |
-|  ✅      | Allow communication within a template and can be used for interactions between parent and child components in multiple directions.            |
-| ✅     | You can access the element tagged `#` via other Angular feature called `viewChild` or via function.                                           |
-| ✅     | Simple and direct access.                                                                                                                     |
-| ✅     | No need for extra code for inputs, outputs or services to communicate between.                                                                |
-| ✅     | Parent can call child methods, set and get properties.                                                                                        |
+| Status | Description                                                                                                                        |
+|-------|------------------------------------------------------------------------------------------------------------------------------------|
+| ❌     | Limited scalability due to tight coupling between components.                                                                      |
+| ❌     | Variables are only accessible within the template unless passed through events.                                                                                                                                   |
+| ❌     | Timing issues can occur if accessing elements before they're rendered.                                           |
+|  ✅      | Enables bi-directional communication between parent and child components within templates. |
+| ✅     | Works smoothly with `ViewChild` and template functions for element access.                                |
+| ✅     | Provides quick, direct access to component references.                                                                                                        |
+| ✅     | Reduces boilerplate code by eliminating need for inputs, outputs, or services.                                                    |
+| ✅     | Gives parent components full access to child methods and properties.                                                                            |
 
 ```typescript
-// child component
+// Child component with todo management.
+@Component()
 class TodoListComponent {
   todos = ['Learn Angular', 'Build an app'];
 
@@ -28,7 +29,7 @@ class TodoListComponent {
   }
 }
 
-// parent component
+// Parent component using template variable.
 @Component({
   template: `
     <todo-list #todoList/>
@@ -36,8 +37,9 @@ class TodoListComponent {
   `,
   imports: [TodoListComponent]
 })
-class TodoListComponent {
+class ParentComponent {
   addTodo(todoList: TodoListComponent) {
+    // Access child component through template variable.
     todoList.addTodo();
   }
 }

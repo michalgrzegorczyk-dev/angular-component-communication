@@ -1,29 +1,29 @@
-### Routing Input with `withComponentInputBinding()` 
+### Using `withComponentInputBinding()` for Easier Routing 
 
-The final topic covers the combination of routing and input binding, which allows you to 
-retrieve URL parameters directly through component inputs. This modern feature 
-connects routing parameters with input binding, simplifying how components receive URL 
-data. This approach was introduced in Angular version 16 and later.
+Angular 16+ introduced a game-changing feature that does exactly that! Let's explore how 
+`withComponentInputBinding()` makes routing and data handling much smoother.
 
-To achieve such a connection, you need to use the `withComponentInputBinding()` function
-from the Angular router. This function allows you to define a route configuration with
-input bindings for components. When navigating to a route, the router will automatically
-bind the URL parameters to the component inputs.
+This new approach creates a direct connection between your URL parameters and component inputs. 
+It's like having an automatic pipeline that connects your URLs to your components, saving you 
+from writing extra code!
 
-| Status | Description                                   |
-|---------|-----------------------------------------------|
-| ❌      | Can make routing config complex when overused |
-| ❌      | Limited for complex/real-time data handling   |
-| ❌      | One-way data binding only                     |
-| ❌      | Not type-safe.                                |
-| ✅      | Clean, centralized route config               |
-| ✅      | Components communicate via routes             |
-| ✅      | Direct route-to-input binding with less code  |
+To use this feature, you'll need the withComponentInputBinding() function from the Angular router. 
+Once set up, the router will automatically connect your URL parameters to your component inputs when 
+someone visits a page.
+
+| Status | Description                                     |
+|---------|-------------------------------------------------|
+| ❌      | Can make routing more complex if used too much. |
+| ❌      | Not great for complex data that changes often.  |
+| ❌      | Data only flows one way.                        |
+| ❌      | Types aren't checked automatically.             |
+| ✅      | Clean, organized route setup.                   |
+| ✅      | Components can talk through routes.             |
+| ✅      | Less code needed.                               |
 
 ```typescript
-// parent component
+// Parent component - handles navigation.
 @Component({
-  selector: 'app--parent',
   template: `
     <button (click)="changeRoute('155')">Go to id: 155</button>
     <router-outlet/>
@@ -41,14 +41,14 @@ class RoutingInputParentComponent {
   }
 }
 
-// child component
+// Child component - receives the ID.
 @Component({
   template: `
     ID: {{ id }}
   `,
 })
 class RoutingInputChildComponent {
-  // this value is going to change to 155 after click on the button in parent
+  // Changes to '155' when you click the button in the parent.
   @Input() id = 'default'; 
 }
 ```

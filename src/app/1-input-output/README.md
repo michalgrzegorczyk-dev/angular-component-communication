@@ -1,54 +1,53 @@
-## Inputs & Outputs, Setters and `ngOnChanges` lifecycle hook
+## Inputs & Outputs, Setters and `ngOnChanges` Lifecycle Hook
 
 <img src="/public/img/input.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
-### Inputs & Outputs
+### Inputs & Outputs in Angular
 
-The most fundamental way components communicate in Angular is through
-<b>inputs</b> and <b>outputs</b>. There are several approaches to this -
-both traditional and modern - which we'll explore in detail.
+Let's explore the fundamental ways components talk to each other in Angular - through 
+inputs and outputs! We'll look at both traditional and modern 
+approaches to handle this communication.
 
-#### Traditional & Non-traditional Approach 
+#### Traditional Approach with Decorators
 
-The traditional approach uses `@Input()` and `@Output()`
-decorators. These allow child components to receive data and send
-data back to their parents. This approach has been the standard in
-Angular for years.
+The classic way uses `@Input()` and `@Output()` decorators, letting 
+child components receive data and send it back to their parents. 
+This method has been an Angular standard for years.
 
 ```typescript
+// Component with traditional input/output.
 @Component({
   selector: 'app-component'
 })
 class Component {
-  // Input property to receive data from parent
+  // Receives data from parent.
   @Input()
   thisIsInputProperty = '';
 
-  // Output event emitter to send data to parent
+  // Sends data to parent.
   @Output()
   thisIsOutputProperty = new EventEmitter<string>();
-} 
+}
 
-// usage of input and output from parent perspective
+// Using in parent template.
 <app-component thisIsInputProperty="value" 
                (thisIsOutputProperty)="doSomething($event)" />
 ```
 
-Actually, we don't need decorators for inputs and outputs, that's why I call it non-traditional.
-We can use `@Component` metadata `inputs` or `outputs` arrays and pass 
-the names of variables that we want to work with as inputs or outputs. It 
-will work the same way as using decorators.
+#### Alternative Non-Decorator Approach
+Here's something interesting - we don't actually need decorators for inputs and outputs!
+There's a non-traditional way using `@Component` metadata with `inputs` or `outputs` arrays.
+It achieves the same result with a different syntax.
 
 | Status | Description                                                                                                                                                                     |
 |--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ❌ | Providing inputs and outputs via metadata properties can be harder to understand and can be inconcise.                                                                          |
-| ✅ | It's the common way to communicate between components, always good to use, and recommended.                                                                                     |
-| ✅ | In the newest version of Angular, you can transform data as well as in setters (that we will elaborate in the moment) with the usage of @Input decorators metadata `transform`. |
+| ❌ | Providing inputs and outputs via metadata properties can be harder to understand and can be less concise.                                                                          |
+| ✅ | It's the standard way to communicate between components, well-tested and recommended.                                                                                     |
+| ✅ | The newest Angular version lets you transform data through `@Input` decorator's metadata `transform`, similar to setters. |
 
-Let's take a look at non-traditional approach as well. It works the same way as with decorators but 
-has different syntax.
 
 ```typescript
+// Component using metadata for inputs/outputs.
 @Component({
   inputs: ['thisIsInputProperty'],
   outputs: ['thisIsOutputProperty']
@@ -60,21 +59,19 @@ class Component {
 ```
 
 #### Modern Approach with Signals
-In Angular v17+ we can use signals with the `input()`
-and `output()` functions instead of decorators. There is no difference
-in passing the data except that we don't need to use decorators, and 
-now we're working with signal approach. The signal approach in Angular v17+ offers improved performance and
-better change detection, making it the recommended choice for new applications.
+Angular 17+ introduces a powerful new way using signals with `input()` and `output()`
+functions. This approach offers better performance and smarter change detection, 
+making it the go-to choice for new applications.
 
 
 | Status | Description                                           |
 |--------|-------------------------------------------------------|
-| ❌ | Doesn't work with component inheritance.              |
 | ✅ | Always good to use and recommended from Angular v17+. |
+| ✅ | Provides improved performance and change detection. |
 
 
 ```typescript
-// Example with signals.
+// Modern signal-based approach.
 @Component()
 class Component {
   thisIsInputProperty = input<string>();
@@ -83,21 +80,20 @@ class Component {
 ```
 
 #### Setter Methods
-Angular provides an additional layer of control over inputs through 
-setter methods. These setters are called whenever the input value 
-changes, allowing you to handle the value before it's set.
+Want more control over your inputs? Angular's setter 
+methods let you intercept and handle input values before they're set.
 
 
 | Status | Description                                          |
 |--------|------------------------------------------------------|
-| ❌ | Need to create additional property to set the value. |
-| ❌ | More code, than inline `@Input`.                     |
-| ✅ | Can perform advanced validation.                     |
-| ✅ | Can transform the incoming data.                     |
-| ✅ | Can trigger side effects.                            |
+| ❌ | Requires additional property for storing the value. |
+| ❌ |More verbose than simple `@Input` declarations.                |
+| ✅ | Enables input validation on the fly.                    |
+| ✅ | Allows data transformation as values come in.                     |
+| ✅ | Can trigger side effects when values change.                          |
 
 ```typescript
-// Inside of the component.
+// Example of input setter usage.
 @Input()
 set name(value: string) {
   console.log('New name:', value);
@@ -107,19 +103,16 @@ set name(value: string) {
 
 #### Input Inheritance
 
-In the traditional approach, there's a way for 
-inheriting input and output properties from their parent component. 
-While this approach is not commonly used it's always good to know, you can 
-achieve that this way.
+While not common, Angular supports inheriting input and output properties from parent components.
 
 | Status | Description                                                                       |
 |--------|-----------------------------------------------------------------------------------|
-| ❌ | Component inheritance is rarely used in Angular, so probably you'll never use it. |
-| ❌ | This approach is not compatible with the signals inputs and outputs.              |
-| ✅ | Good to know more component communication techniques than less.                  |
+| ❌ | Component inheritance is rarely used in Angular, so you may never need this. |
+| ❌ | Not compatible with the new signals inputs and outputs approach.             |
+| ✅ | Adds to your toolkit of component communication techniques.                 |
 
 ```typescript
-// Parent component.
+// Parent component with input.
 @Component({
   selector: 'app-parent',
 })
@@ -128,13 +121,13 @@ class ParentComponent {
   parentInput = 'hello';
 }
 
-// Child component.
+// Child component inheriting parent's input.
 @Component({
   selector: 'app-child',
   inputs: ['parentInput']
 })
 class ChildComponent extends ParentComponent {
-  // The child now has access to 'parentInput'.
+  // Child gets access to parentInput.
   constructor() {
     super();
     console.log(this.parentInput);
