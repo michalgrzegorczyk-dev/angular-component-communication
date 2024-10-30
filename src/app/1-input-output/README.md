@@ -88,6 +88,7 @@ methods let you intercept and handle input values before they're set.
 |--------|------------------------------------------------------|
 | ❌ | Requires additional property for storing the value. |
 | ❌ |More verbose than simple `@Input` declarations.                |
+| ⚠️  | Improper use can cause side effects that you may not want.                |
 | ✅ | Enables input validation on the fly.                    |
 | ✅ | Allows data transformation as values come in.                     |
 | ✅ | Can trigger side effects when values change.                          |

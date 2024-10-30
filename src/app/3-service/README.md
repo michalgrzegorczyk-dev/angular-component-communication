@@ -2,7 +2,7 @@
 
 <img src="/public/img/services.png" alt="x" style="width: 500px; height: auto;">
 
-Let's explore one of the most powerful ways to share data between components in 
+We'll explore one of the most effective ways to share data between components in 
 Angular - Services! While services can do many things, we'll focus on how they 
 help components talk to each other when provided at the `root` level.
 

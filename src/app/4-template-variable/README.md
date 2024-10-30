@@ -2,8 +2,8 @@
 
 <img src="/public/img/template.png" alt="x" style="width: 500px; height: auto;">
 
-Let's talk about template variables. They're a really cool feature in Angular marked by 
-the `#` symbol. Think of them as quick references you can create in your template 
+Template variables are a really cool feature in Angular marked by the `#` symbol.
+Think of them as quick references you can create in your template 
 to connect parent and child components. It's like giving your components nicknames 
 they can use to talk to each other!
 

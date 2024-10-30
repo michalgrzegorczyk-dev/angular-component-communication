@@ -10,7 +10,8 @@ what changed, if it's the first change, and both the old and new values.
 | ❌ | Executes on every input change, which may affect performance if not used carefully. |
 | ❌ | Runs for all input changes, even when you're interested in specific ones only.      |
 | ❌ | Requires setting up additional properties to track changes.                         |
-| ⚠️ | Runs first before `OnInit` Lifecycle Hook                                             |
+| ⚠️ | Runs first before `OnInit` Lifecycle Hook                                           |
+| ⚠️ | Improper use can cause side effects that you may not want.                                                         |
 | ✅ | Efficiently handles multiple input changes in a single lifecycle hook.              |
 | ✅ | Provides easy detection of first-time changes to input properties.                  | |
 | ✅ | Enables comparison between previous and current input values.                       | |

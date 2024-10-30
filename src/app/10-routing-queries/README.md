@@ -1,9 +1,9 @@
 ### Routing Queries in Angular
 
-Routing queries are perfect for this! Unlike regular route parameters that 
-are part of the URL path, query parameters come after a question mark (`?`) in your URL.
-For example: `localhost:4200/table?sort=asc`. They're great for handling things like sorting,
-filtering, or page numbers.
+Routing queries offer a perfect solution for handling optional parameters!
+Unlike regular route parameters that are part of the URL path, query parameters 
+come after a question mark (`?`) in your URL. For example: `localhost:4200/table?sort=asc`.
+They're great for handling things like sorting, filtering, or page numbers.
 
 You can add, change, or remove query parameters without changing your main route path.
 Your components can then read these parameters to adjust what they show or how they behave.

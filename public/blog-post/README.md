@@ -137,6 +137,7 @@ methods let you intercept and handle input values before they're set.
 |--------|------------------------------------------------------|
 | ❌ | Requires additional property for storing the value. |
 | ❌ |More verbose than simple `@Input` declarations.                |
+| ⚠️  | Improper use can cause side effects that you may not want.                |
 | ✅ | Enables input validation on the fly.                    |
 | ✅ | Allows data transformation as values come in.                     |
 | ✅ | Can trigger side effects when values change.                          |
@@ -199,7 +200,8 @@ what changed, if it's the first change, and both the old and new values.
 | ❌ | Executes on every input change, which may affect performance if not used carefully. |
 | ❌ | Runs for all input changes, even when you're interested in specific ones only.      |
 | ❌ | Requires setting up additional properties to track changes.                         |
-| ⚠️ | Runs first before `OnInit` Lifecycle Hook                                             |
+| ⚠️ | Runs first before `OnInit` Lifecycle Hook                                           |
+| ⚠️ | Improper use can cause side effects that you may not want.                                                         |
 | ✅ | Efficiently handles multiple input changes in a single lifecycle hook.              |
 | ✅ | Provides easy detection of first-time changes to input properties.                  | |
 | ✅ | Enables comparison between previous and current input values.                       | |
@@ -232,7 +234,7 @@ Full set of examples around this topic you can find in the [2-input-ng-on-change
 
 <img src="/public/img/services.png" alt="x" style="width: 500px; height: auto;">
 
-Let's explore one of the most powerful ways to share data between components in 
+We'll explore one of the most effective ways to share data between components in 
 Angular - Services! While services can do many things, we'll focus on how they 
 help components talk to each other when provided at the `root` level.
 
@@ -280,8 +282,8 @@ Full set of examples around this topic you can find in the [3-service](https://g
 
 <img src="/public/img/template.png" alt="x" style="width: 500px; height: auto;">
 
-Let's talk about template variables. They're a really cool feature in Angular marked by 
-the `#` symbol. Think of them as quick references you can create in your template 
+Template variables are a really cool feature in Angular marked by the `#` symbol.
+Think of them as quick references you can create in your template 
 to connect parent and child components. It's like giving your components nicknames 
 they can use to talk to each other!
 
@@ -369,7 +371,7 @@ Full set of examples around this topic you can find in the [5-injected-component
 <img src="/public/img/view-child.png" alt="x" style="width: 500px; height: auto;">
 
 ### Understanding ViewChild in Angular
-`ViewChild` is a powerful Angular tool that lets parent components interact directly 
+`ViewChild` is a versatile Angular tool that lets parent components interact directly 
 with their child components. By default, it selects the first matching element or 
 component in the view, making it perfect for one-to-one parent-child communication 
 through the template.
@@ -446,8 +448,8 @@ Full set of examples around this topic you can find in the [6-view-child](https:
 
 
 ### Understanding ViewChildren in Angular
-Building on our knowledge of `ViewChild`, let's explore its sibling feature, `ViewChildren`.
-This powerful tool lets a parent component work with multiple 
+Building on our knowledge of `ViewChild` comes its sibling feature, `ViewChildren`.
+This robust tool lets a parent component work with multiple 
 child components or elements in its template. While ViewChild gives you one 
 element, `ViewChildren` provides a `QueryList` containing all matching elements.
 
@@ -534,10 +536,10 @@ Full set of examples around this topic you can find in the [src/app/7-view-child
 
 <img src="/public/img/projection.png" alt="x" style="width: 500px; height: auto;">
 
-Let's explore how to work with projected content in Angular components! 
+Here's how to work with projected content in Angular components! 
 While `ViewChild` and `ViewChildren` handle elements in a component's template,
 `ContentChild` and `ContentChildren` deal with content that's projected between
-component tags. This powerful feature helps you manage content passed
+component tags. This advanced feature helps you manage content passed
 from parent components.
 
 ### Traditional Approach Explained
@@ -551,8 +553,8 @@ project and manage content.
 | ❌ | Component initialization cannot access or manipulate projected content.                                                                                                   |
 | ❌ | Lacks strong typing, making it harder to ensure type safety for projected content.                                                                                            |
 | ⚠️ | Using multiple ng-content slots adds complexity, but enables powerful component compositions when used carefully. |
-| ✅ | Creates flexible and reusable components through powerful content projection features.                                                                                                      |
-| ✅ | Provides direct access to projected content, making it easy to interact with nested elements.                                                                                                                        |
+| ✅ | Creates flexible and reusable components through content projection features.                                                                                                      |
+| ✅ | Provides direct access to projected content, making it easy to interact with nested elements.                                                                                                                       |
 
 ```typescript
 // Parent component with content projection slots.
@@ -602,7 +604,7 @@ Full set of examples around this topic you can find in the [src/app/8-component-
 
 ### Routing Parameters
 
-Let's explore how to pass data between Angular components using route parameters. 
+This section explores how to pass data between Angular components using route parameters.
 This is especially helpful when you need to share information between components that aren't 
 directly connected in your component tree.
 
@@ -671,10 +673,10 @@ Full set of examples around this topic you can find in the [src/app/9-routing-pa
 
 ### Routing Queries in Angular
 
-Routing queries are perfect for this! Unlike regular route parameters that 
-are part of the URL path, query parameters come after a question mark (`?`) in your URL.
-For example: `localhost:4200/table?sort=asc`. They're great for handling things like sorting,
-filtering, or page numbers.
+Routing queries offer a perfect solution for handling optional parameters!
+Unlike regular route parameters that are part of the URL path, query parameters 
+come after a question mark (`?`) in your URL. For example: `localhost:4200/table?sort=asc`.
+They're great for handling things like sorting, filtering, or page numbers.
 
 You can add, change, or remove query parameters without changing your main route path.
 Your components can then read these parameters to adjust what they show or how they behave.

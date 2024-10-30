@@ -4,7 +4,7 @@
 
 ### Routing Parameters
 
-Let's explore how to pass data between Angular components using route parameters. 
+This section explores how to pass data between Angular components using route parameters.
 This is especially helpful when you need to share information between components that aren't 
 directly connected in your component tree.
 
