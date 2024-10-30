@@ -3,7 +3,7 @@
 ## Introduction
 Repository used to show examples from a blog post about ways to communicate 
 between components in Angular. Blog post is located in `public/` directory
-and has 3 parts: intro, content, outro.
+and has 3 parts: intro, content and outro.
 
 ### Project
 ```typescript
