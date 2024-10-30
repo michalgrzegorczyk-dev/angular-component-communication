@@ -185,9 +185,10 @@ Full set of examples around this topic you can find in the [2-input-ng-on-change
 
 <img src="/public/img/services.png" alt="x" style="width: 500px; height: auto;">
 
-We'll explore one of the most effective ways to share data between components in 
-Angular - Services! While services can do many things, we'll focus on how they 
-help components talk to each other when provided at the `root` level.
+Services are a fundamental feature in Angular that serve multiple purposes, with one 
+of their most powerful uses being data sharing between components. When provided at
+the `root` level, services create a centralized way for components to communicate and
+exchange information effectively.
 
 Think of a service as a central hub where components can store and access shared data. 
 Any component can read from or write to this hub, creating a smooth two-way flow of information.
