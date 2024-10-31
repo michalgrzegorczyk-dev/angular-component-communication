@@ -1,5 +1,7 @@
 # Mastering Component Communication in Angular
 
+<img src="/public/img/input.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+
 ## Intro
 Hey Angular devs! This guide explores the ways components can talk to each other - 
 from simple one-way data passing to more complex interactions. It focuses on showing you
@@ -128,7 +130,9 @@ class Component {
 } 
 ```
 
-#### Setter Methods
+### Setter Methods
+<img src="/public/img/input.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+
 Want more control over your inputs? Angular's setter 
 methods let you intercept and handle input values before they're set.
 
@@ -189,6 +193,7 @@ Full set of examples around this topic you can find in the [1-input-output](http
 
 
 ### Understanding `ngOnChanges` Lifecycle Hook
+<img src="/public/img/input.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
 Let's explore `ngOnChanges`, a helpful lifecycle hook in Angular that tracks changes to 
 your component's input values. When inputs change, Angular automatically runs 
