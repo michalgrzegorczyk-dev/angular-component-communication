@@ -13,6 +13,12 @@ To get started, you'll need to set up your routes in the configuration and pass 
 Once set up, you can pass values through these routes when navigating. Your components 
 can then easily access these parameters.
 
+#### Practical Uses of Routing Params
+1. Most common use cae is navigation to detailed view of specific item.
+2. Steps in multistep process or workflow, can help to keep track of the current step like `/checkout/step-2`.
+3. Filtering Subsections of data like `products/category/electronics`.
+
+
 | Status | Description                                                                                                                    |
 |--------|--------------------------------------------------------------------------------------------------------------------------------|
 | ❌ | Params are always strings, so you may need to parse or convert complex data types.                                           |

@@ -15,6 +15,14 @@ Your components can then read these parameters to adjust what they show or how t
    - Query parameters look like this: `/details?id=123&sort=name&order=asc`
 
 
+#### Practical Uses of Routing Queries
+1. Filtering and Sorting e.g. list view data are common uses for query parameters.
+2. Pagination - query parameters can be used to store the current page number.
+3. Search terms - useful for any application that has a search feature, enhancing
+user experience by allowing direct navigation to pre-searched results.
+4. Pre-populating forms through link, query parameters can carry the necessary data
+to populate form fields.
+
 | Status | Description                                                                           |
 |--------|---------------------------------------------------------------------------------------|
 | ❌     | Can only handle string data, complex data types need parsing or conversion.           |

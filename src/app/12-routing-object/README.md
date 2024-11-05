@@ -11,7 +11,7 @@ Once you navigate to the destination component, you can access the state from th
 This is typically done in the ngOnInit lifecycle hook or directly in the constructor, depending on 
 when you need to access the data.
 
-### Practical Uses of State Objects
+#### Practical Uses of State Objects
 1. Pre-populating - if you navigate to a form component, and you want pre-populate it with data from
     the previous component, you can pass this data through the state object.
 2. Confirming actions - if a user performs an action, and you need to pass results 
@@ -65,4 +65,4 @@ class RoutingObjectStateChildComponent {
 }
 ```
 
-Full set of examples around this topic you can find in the [src/app/11-routing-input](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/11-routing-input) folder.
+Full set of examples around this topic you can find in the [src/app/12-routing-object](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/12-routing-object) folder.

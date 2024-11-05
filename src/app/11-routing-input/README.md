@@ -7,9 +7,10 @@ This new approach creates a direct connection between your URL parameters and co
 It's like having an automatic pipeline that connects your URLs to your components, saving you 
 from writing extra code!
 
-To use this feature, you'll need the withComponentInputBinding() function from the Angular router. 
+To use this feature, you'll need the `withComponentInputBinding()` function from the Angular router. 
 Once set up, the router will automatically connect your URL parameters to your component inputs when 
 someone visits a page.
+
 
 | Status | Description                                     |
 |---------|-------------------------------------------------|
