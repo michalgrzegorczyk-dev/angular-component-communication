@@ -1,8 +1,12 @@
 import {ApplicationConfig, provideZoneChangeDetection} from '@angular/core';
 import {provideRouter, Routes, withComponentInputBinding} from "@angular/router";
 import {RoutingParamsChildComponent} from "./9-routing-params/routing-params-child.component";
-import {RoutingQueriesChildComponent as QueryChildComponent} from "./10-routing-queries/routing-queries-child.component";
+import {
+  RoutingQueriesChildComponent as QueryChildComponent
+} from "./10-routing-queries/routing-queries-child.component";
 import {RoutingInputChildComponent} from "./11-routing-input/routing-input-child.component";
+import {RoutingObjectParentComponent} from "./12-routing-object/routing-object-parent.component";
+import {RoutingObjectChildComponent} from "./12-routing-object/routing-object-child.component";
 
 const routes: Routes = [
   {
@@ -16,6 +20,10 @@ const routes: Routes = [
   {
     path: 'detail-query',
     component: QueryChildComponent
+  },
+  {
+    path: 'router-object',
+    component: RoutingObjectChildComponent
   }
 ];
 

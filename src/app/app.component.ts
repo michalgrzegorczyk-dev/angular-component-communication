@@ -19,6 +19,8 @@ import {
 } from "./8-content-projection/old/content-projection-parent-old.component";
 import {ContentProjectionChildComponent} from "./8-content-projection/content-projection-child.component";
 import {ContentProjectionParentOldComponent} from "./8-content-projection/new/content-projection-parent-new.component";
+import {RoutingObjectParentComponent} from "./12-routing-object/routing-object-parent.component";
+import {RoutingObjectChildComponent} from "./12-routing-object/routing-object-child.component";
 
 @Component({
   selector: 'app-root',
@@ -43,6 +45,8 @@ import {ContentProjectionParentOldComponent} from "./8-content-projection/new/co
     ContentProjectionChildComponent,
     ContentProjectionParentOldComponent,
     ContentProjectionParentNewComponent,
+    RoutingObjectParentComponent,
+    RoutingObjectChildComponent,
   ],
   template: `
     <div class="pagination">
@@ -119,10 +123,15 @@ import {ContentProjectionParentOldComponent} from "./8-content-projection/new/co
       <div *ngSwitchCase="11" class="box">
         <app-11-routing-input-parent/>
       </div>
+
+      <div *ngSwitchCase="12" class="box">
+        <app-12-routing-object-parent/>
+        <app-12-routing-object-child/>
+      </div>
     </div>`,
 })
 export class AppComponent implements OnInit {
-  pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 11];
+  pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12];
 
   readonly input1Signal = signal('input-1-signal');
   readonly input2Signal = signal('input-2-signal');
