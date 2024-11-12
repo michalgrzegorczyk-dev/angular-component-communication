@@ -20,7 +20,7 @@ possible ways to share the data and choose wisely. This way, you can pick the be
 <u>The key is the critical thinking and understanding context of the problem.</u>
 
 Every approach will be explained in detail, with
-[code examples](https://github.com/michalgrzegorczyk-dev/angular-component-communication)
+[code examples](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app)
 that you can run and test by yourself. The code examples in the blog post will be simplified,
 as possible, so I really recommend you to check the full examples in the repository.
 

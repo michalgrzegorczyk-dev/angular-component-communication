@@ -5,8 +5,14 @@
 ### Inputs & Outputs in Angular
 
 Let's explore the fundamental ways components talk to each other in Angular - through 
-inputs and outputs! We'll look at both traditional and modern 
+inputs and outputs. We'll look at both traditional and modern 
 approaches to handle this communication.
+
+#### Practical Uses of Inputs and Outputs
+1. Navigate from a product list to a detailed view using @Input to pass the selected product ID to the detail component.
+2. Implement dynamic filtering for a list view where filter settings are passed down using `@Input()` and filter changes are communicated back via `@Output()`.
+3. Creating interactive components that need to notify parent of changes (dropdowns, search inputs).
+
 
 #### Traditional Approach with Decorators
 
@@ -38,12 +44,6 @@ class Component {
 Here's something interesting - we don't actually need decorators for inputs and outputs!
 There's a non-traditional way using `@Component` metadata with `inputs` or `outputs` arrays.
 It achieves the same result with a different syntax.
-
-#### Practical Uses of Inputs and Outputs
-1. Navigate from a product list to a detailed view using @Input to pass the selected product ID to the detail component.
-2. Implement dynamic filtering for a list view where filter settings are passed down using `@Input()` and filter changes are communicated back via `@Output()`.
-3. Creating interactive components that need to notify parent of changes (dropdowns, search inputs).
-
 
 | Status | Description                                                                                                                                                                     |
 |--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
