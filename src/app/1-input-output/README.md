@@ -85,31 +85,6 @@ class Component {
 } 
 ```
 
-#### Setter Methods
-<img src="/public/img/img11.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
-
-Want more control over your inputs? Angular's setter 
-methods let you intercept and handle input values before they're set.
-
-
-| Status | Description                                          |
-|--------|------------------------------------------------------|
-| ❌ | Requires additional property for storing the value. |
-| ❌ |More verbose than simple `@Input` declarations.                |
-| ⚠️  | Improper use can cause side effects that you may not want.                |
-| ✅ | Enables input validation on the fly.                    |
-| ✅ | Allows data transformation as values come in.                     |
-| ✅ | Can trigger side effects when values change.                          |
-
-```typescript
-// Example of input setter usage.
-@Input()
-set name(value: string) {
-  console.log('New name:', value);
-  this._name = value.trim();
-}
-```
-
 #### Input Inheritance
 
 While not common, Angular supports inheriting input and output properties from parent components.
@@ -144,4 +119,31 @@ class ChildComponent extends ParentComponent {
 }
 ```
 
+### Setter Methods
+<img src="/public/img/img11.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+
+Want more control over your inputs? Angular's setter
+methods let you intercept and handle input values before they're set.
+
+
+| Status | Description                                          |
+|--------|------------------------------------------------------|
+| ❌ | Requires additional property for storing the value. |
+| ❌ |More verbose than simple `@Input` declarations.                |
+| ⚠️  | Improper use can cause side effects that you may not want.                |
+| ✅ | Enables input validation on the fly.                    |
+| ✅ | Allows data transformation as values come in.                     |
+| ✅ | Can trigger side effects when values change.                          |
+
+```typescript
+// Example of input setter usage.
+@Input()
+set name(value: string) {
+  console.log('New name:', value);
+  this._name = value.trim();
+}
+```
+
 Full set of examples around this topic you can find in the [1-input-output](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/1-input-output) folder.
+
+---

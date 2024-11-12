@@ -40,3 +40,5 @@ class ChildComponent {
 ```
 
 Full set of examples around this topic you can find in the [5-injected-component](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/5-injected-component) folder.
+
+---

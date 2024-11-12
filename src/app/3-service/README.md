@@ -51,3 +51,5 @@ class ServiceComponent {
 ```
 
 Full set of examples around this topic you can find in the [3-service](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/3-service) folder.
+
+---

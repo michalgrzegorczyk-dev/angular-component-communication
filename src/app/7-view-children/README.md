@@ -86,3 +86,5 @@ class ChildComponent {
 ```
 
 Full set of examples around this topic you can find in the [src/app/7-view-children](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/src/app/7-view-children) folder.
+
+---

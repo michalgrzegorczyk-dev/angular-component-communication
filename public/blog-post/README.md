@@ -137,31 +137,6 @@ class Component {
 } 
 ```
 
-#### Setter Methods
-<img src="/public/img/img11.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
-
-Want more control over your inputs? Angular's setter 
-methods let you intercept and handle input values before they're set.
-
-
-| Status | Description                                          |
-|--------|------------------------------------------------------|
-| ❌ | Requires additional property for storing the value. |
-| ❌ |More verbose than simple `@Input` declarations.                |
-| ⚠️  | Improper use can cause side effects that you may not want.                |
-| ✅ | Enables input validation on the fly.                    |
-| ✅ | Allows data transformation as values come in.                     |
-| ✅ | Can trigger side effects when values change.                          |
-
-```typescript
-// Example of input setter usage.
-@Input()
-set name(value: string) {
-  console.log('New name:', value);
-  this._name = value.trim();
-}
-```
-
 #### Input Inheritance
 
 While not common, Angular supports inheriting input and output properties from parent components.
@@ -196,7 +171,34 @@ class ChildComponent extends ParentComponent {
 }
 ```
 
+### Setter Methods
+<img src="/public/img/img11.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+
+Want more control over your inputs? Angular's setter
+methods let you intercept and handle input values before they're set.
+
+
+| Status | Description                                          |
+|--------|------------------------------------------------------|
+| ❌ | Requires additional property for storing the value. |
+| ❌ |More verbose than simple `@Input` declarations.                |
+| ⚠️  | Improper use can cause side effects that you may not want.                |
+| ✅ | Enables input validation on the fly.                    |
+| ✅ | Allows data transformation as values come in.                     |
+| ✅ | Can trigger side effects when values change.                          |
+
+```typescript
+// Example of input setter usage.
+@Input()
+set name(value: string) {
+  console.log('New name:', value);
+  this._name = value.trim();
+}
+```
+
 Full set of examples around this topic you can find in the [1-input-output](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/1-input-output) folder.
+
+---
 
 
 ### Understanding `ngOnChanges` Lifecycle Hook
@@ -246,6 +248,8 @@ class Component implements OnChanges {
 ```
 
 Full set of examples around this topic you can find in the [2-input-ng-on-changes](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/2-input-ng-on-changes) folder.
+
+---
 
 
 ## Services in Angular
@@ -301,6 +305,8 @@ class ServiceComponent {
 ```
 
 Full set of examples around this topic you can find in the [3-service](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/3-service) folder.
+
+---
 
 
 ## Template Variables in Angular
@@ -358,6 +364,8 @@ class ParentComponent {
 
 Full set of examples around this topic you can find in the [4-template-variable](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/4-template-variable) folder.
 
+---
+
 
 ## Injected Components in Angular
 
@@ -401,6 +409,8 @@ class ChildComponent {
 ```
 
 Full set of examples around this topic you can find in the [5-injected-component](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/5-injected-component) folder.
+
+---
 
 
 ## ViewChild and ViewChildren
@@ -489,6 +499,8 @@ class ViewChildParentNewComponent {
 ```
 
 Full set of examples around this topic you can find in the [6-view-child](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/6-view-child) folder.
+
+---
 
 
 ### Understanding ViewChildren in Angular
@@ -580,6 +592,8 @@ class ChildComponent {
 
 Full set of examples around this topic you can find in the [src/app/7-view-children](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/src/app/7-view-children) folder.
 
+---
+
 
 ## ContentChild and ContentChildren in Angular
 
@@ -655,6 +669,8 @@ Angular 17+ introduces signal-based versions with `contentChild()` and `contentC
 functions. They work similarly, but give you the power of signals.
 
 Full set of examples around this topic you can find in the [src/app/8-component-projection](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/8-component-projection) folder.
+
+---
 
 
 ## Routing Parameters & Queries in Angular
@@ -733,7 +749,7 @@ class ChildComponent implements OnInit {
 
 Full set of examples around this topic you can find in the [src/app/9-routing-params](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/src/app/9-routing-params) folder.
 
-
+---
 
 
 ### Routing Queries in Angular
@@ -823,6 +839,8 @@ class ChildComponent implements OnInit {
 
 Full set of examples around this topic you can find in the [src/app/9-routing-queries](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/9-routing-queries) folder.
 
+---
+
 
 ### Using `withComponentInputBinding()` for Easier Routing 
 
@@ -884,6 +902,8 @@ class RoutingInputChildComponent {
 ```
 
 Full set of examples around this topic you can find in the [src/app/11-routing-input](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/11-routing-input) folder.
+
+---
 
 
 ### Routing State Object 
@@ -954,6 +974,8 @@ class RoutingObjectStateChildComponent {
 ```
 
 Full set of examples around this topic you can find in the [src/app/12-routing-object](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/12-routing-object) folder.
+
+---
 
 ## Outro
 That's it, you finally reached to the end of the blog post. We've covered all the ways of 

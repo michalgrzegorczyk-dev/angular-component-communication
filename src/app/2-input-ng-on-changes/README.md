@@ -45,3 +45,5 @@ class Component implements OnChanges {
 ```
 
 Full set of examples around this topic you can find in the [2-input-ng-on-changes](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/2-input-ng-on-changes) folder.
+
+---
