@@ -138,7 +138,7 @@ class Component {
 ```
 
 #### Setter Methods
-<img src="/public/img/img1.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img11.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
 Want more control over your inputs? Angular's setter 
 methods let you intercept and handle input values before they're set.
