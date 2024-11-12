@@ -1,5 +1,9 @@
 ## ViewChild and ViewChildren
-<img src="/public/img/view-child.png" alt="x" style="width: 500px; height: auto;">
+
+[//]: # (<img src="/public/img/view-child.png" alt="x" style="width: 500px; height: auto;">)
+
+<img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+
 
 ### Understanding ViewChild in Angular
 `ViewChild` is a versatile Angular tool that lets parent components interact directly 

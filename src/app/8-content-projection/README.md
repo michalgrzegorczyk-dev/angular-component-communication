@@ -1,6 +1,9 @@
 ## ContentChild and ContentChildren in Angular
 
-<img src="/public/img/projection.png" alt="x" style="width: 500px; height: auto;">
+[//]: # (<img src="/public/img/projection.png" alt="x" style="width: 500px; height: auto;">)
+
+<img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+
 
 Here's how to work with projected content in Angular components! 
 While `ViewChild` and `ViewChildren` handle elements in a component's template,

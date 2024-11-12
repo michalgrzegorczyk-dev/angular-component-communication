@@ -1,6 +1,9 @@
 ## Template Variables in Angular
 
-<img src="/public/img/template.png" alt="x" style="width: 500px; height: auto;">
+[//]: # (<img src="/public/img/template.png" alt="x" style="width: 500px; height: auto;">)
+
+<img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+
 
 Template variables are a really cool feature in Angular marked by the `#` symbol.
 Think of them as quick references you can create in your template 

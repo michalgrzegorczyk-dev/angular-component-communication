@@ -1,6 +1,9 @@
 ## Injected Components in Angular
 
-<img src="/public/img/injected-components.png" alt="x" style="width: 500px; height: auto;">
+[//]: # (<img src="/public/img/injected-components.png" alt="x" style="width: 500px; height: auto;">)
+
+<img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+
 
 Let's explore an interesting but rarely-used technique of component injection! 
 This approach lets a child component directly access its parent by injecting the 

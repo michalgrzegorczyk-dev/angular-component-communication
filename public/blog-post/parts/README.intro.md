@@ -1,5 +1,8 @@
 # Mastering Component Communication in Angular
 
+<img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+
+
 ## Intro
 Hey Angular devs! This guide explores the ways components can talk to each other - 
 from simple one-way data passing to more complex interactions. It focuses on showing you

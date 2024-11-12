@@ -1,6 +1,8 @@
 ## Services in Angular
 
-<img src="/public/img/services.png" alt="x" style="width: 500px; height: auto;">
+[//]: # (<img src="/public/img/services.png" alt="x" style="width: 500px; height: auto;">)
+<img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+
 
 Services are a fundamental feature in Angular that serve multiple purposes, with one 
 of their most powerful uses being data sharing between components. When provided at
