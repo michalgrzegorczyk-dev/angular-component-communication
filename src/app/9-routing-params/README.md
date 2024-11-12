@@ -16,7 +16,7 @@ can then easily access these parameters.
 #### Practical Uses of Routing Params
 1. Most common use cae is navigation to detailed view of specific item.
 2. Steps in multistep process or workflow, can help to keep track of the current step like `/checkout/step-2`.
-3. Filtering Subsections of data like `products/category/electronics`.
+3. Filtering subsections of data like `products/category/electronics`.
 
 
 | Status | Description                                                                                                                    |

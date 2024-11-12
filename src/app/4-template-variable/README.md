@@ -9,9 +9,9 @@ to connect parent and child components. It's like giving your components nicknam
 they can use to talk to each other!
 
 #### Practical Uses of Template Variables
-1. Quickly access and manipulate DOM elements directly from the template without additional logic in the component class.
+1. Managing component state from parent templates (expand/collapse panels, pagination controls).
 2. Form manipulation (accessing form values, triggering validation, resetting forms).
-3. Managing component state from parent templates (expand/collapse panels, pagination controls).
+3. Quickly access and manipulate DOM elements directly from the template without additional logic in the component class.
 
 | Status | Description                                                                                                                        |
 |-------|------------------------------------------------------------------------------------------------------------------------------------|
