@@ -5,18 +5,18 @@
 
 ## Intro
 Hey Angular devs! This guide explores the ways components can talk to each other - 
-from simple one-way data passing to more complex interactions. It focuses on showing you
-different communication methods, without diving too deep into each one (that would make
-this post endless!) 😉
+from simple one-way data passing to more complex interactions, like passing the data via router. It focuses on showing you
+different communication methods, without diving too deep into each one, because that would make
+this post endless! 😉
 
 When building Angular applications, it's important to understand how
-different parts can share information. This is called component communication.
-Today, I'll cover all possible ways to make components talk to each other,
+different parts can share information. This is called component communication and
+today, I'll cover all possible ways to make components talk to each other,
 including some less obvious methods that can help share information.
 
 It's worth remembering that some of these approaches are better than
 others in specific cases, but for sure it's always good to know all the
-possibilities. This way, you can pick the best solution for your case in you application.
+possible ways to share the data and choose wisely. This way, you can pick the best solution for your case in you application.
 <u>The key is the critical thinking and understanding context of the problem.</u>
 
 Every approach will be explained in detail, with
