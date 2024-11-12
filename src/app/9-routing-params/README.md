@@ -1,7 +1,6 @@
 ## Routing Parameters & Queries in Angular
 
-<img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
-
+<img src="/public/img/img9.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
 ### Routing Parameters
 

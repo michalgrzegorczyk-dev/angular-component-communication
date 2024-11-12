@@ -1,6 +1,6 @@
 # Mastering Component Communication in Angular
 
-<img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img0.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
 
 ## Intro
@@ -52,7 +52,7 @@ as possible, so I really recommend you to check the full examples in the reposit
 
 ## Inputs & Outputs, Setters and `ngOnChanges` Lifecycle Hook
 
-<img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img1.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
 ### Inputs & Outputs in Angular
 
@@ -90,6 +90,12 @@ class Component {
 Here's something interesting - we don't actually need decorators for inputs and outputs!
 There's a non-traditional way using `@Component` metadata with `inputs` or `outputs` arrays.
 It achieves the same result with a different syntax.
+
+#### Practical Uses of Inputs and Outputs
+1. Navigate from a product list to a detailed view using @Input to pass the selected product ID to the detail component.
+2. Implement dynamic filtering for a list view where filter settings are passed down using `@Input()` and filter changes are communicated back via `@Output()`.
+3. Creating interactive components that need to notify parent of changes (dropdowns, search inputs).
+
 
 | Status | Description                                                                                                                                                                     |
 |--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -132,6 +138,8 @@ class Component {
 ```
 
 #### Setter Methods
+<img src="/public/img/img1.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+
 Want more control over your inputs? Angular's setter 
 methods let you intercept and handle input values before they're set.
 
@@ -193,10 +201,17 @@ Full set of examples around this topic you can find in the [1-input-output](http
 
 ### Understanding `ngOnChanges` Lifecycle Hook
 
+<img src="/public/img/img12.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+
 Let's explore `ngOnChanges`, a helpful lifecycle hook in Angular that tracks changes to 
 your component's input values. When inputs change, Angular automatically runs 
 this method, providing you with `SimpleChanges` that tell you three key things:
 what changed, if it's the first change, and both the old and new values.
+
+#### Practical Uses of `ngOnChanges`
+1. Implementing undo/redo functionality by tracking previous values.
+2. Validating dependent inputs when multiple inputs change together (like form validation rules).
+3. Synchronize the state of two or more components that depend on shared data inputs, ensuring consistency across the user interface.
 
 | Status | Description                                                                         |
 |--------|-------------------------------------------------------------------------------------|
@@ -235,7 +250,7 @@ Full set of examples around this topic you can find in the [2-input-ng-on-change
 
 ## Services in Angular
 
-<img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img3.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
 
 Services are a fundamental feature in Angular that serve multiple purposes, with one 
@@ -245,6 +260,11 @@ exchange information effectively.
 
 Think of a service as a central hub where components can store and access shared data. 
 Any component can read from or write to this hub, creating a smooth two-way flow of information.
+
+#### Practical Uses of Services
+1. Store user login states, preferences, and session tokens, providing a consistent user experience across different parts of the application.
+2. Manage all backend API calls from a single service, simplifying the process of fetching, posting, and handling data across components.
+3. Creating utility functions used across multiple components (formatters, validators).
 
 | Status | Description                                                                  |
 |--------|------------------------------------------------------------------------------|
@@ -285,13 +305,18 @@ Full set of examples around this topic you can find in the [3-service](https://g
 
 ## Template Variables in Angular
 
-<img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img4.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
 
 Template variables are a really cool feature in Angular marked by the `#` symbol.
 Think of them as quick references you can create in your template 
 to connect parent and child components. It's like giving your components nicknames 
 they can use to talk to each other!
+
+#### Practical Uses of Template Variables
+1. Quickly access and manipulate DOM elements directly from the template without additional logic in the component class.
+2. Form manipulation (accessing form values, triggering validation, resetting forms).
+3. Managing component state from parent templates (expand/collapse panels, pagination controls).
 
 | Status | Description                                                                                                                        |
 |-------|------------------------------------------------------------------------------------------------------------------------------------|
@@ -336,13 +361,17 @@ Full set of examples around this topic you can find in the [4-template-variable]
 
 ## Injected Components in Angular
 
-<img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img5.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
 
 Let's explore an interesting but rarely-used technique of component injection! 
 This approach lets a child component directly access its parent by injecting the 
 parent component into the child's constructor. While not common, it's worth understanding 
 for specific use cases.
+
+#### Practical Uses of Injected Components
+1. Complex form components where child fields need parent form context.
+2. Nested menu structures where child items need parent menu state.
 
 | Status | Description                                                                                                                                                                |
 |--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -376,7 +405,7 @@ Full set of examples around this topic you can find in the [5-injected-component
 
 ## ViewChild and ViewChildren
 
-<img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img6.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
 
 ### Understanding ViewChild in Angular
@@ -384,6 +413,12 @@ Full set of examples around this topic you can find in the [5-injected-component
 with their child components. By default, it selects the first matching element or 
 component in the view, making it perfect for one-to-one parent-child communication 
 through the template.
+
+
+#### Practical Uses of ViewChild
+1. Controlling UI components programmatically (modal dialogs, accordion panels).
+2. Interacting with third-party components (maps, charts, date pickers).
+3. Managing multiple similar components (tabs, carousel slides, list items).
 
 #### Traditional approach 
 The classic method uses the `@ViewChild()` decorator to connect a parent with its child component. 
@@ -461,6 +496,11 @@ Building on our knowledge of `ViewChild` comes its sibling feature, `ViewChildre
 This robust tool lets a parent component work with multiple 
 child components or elements in its template. While ViewChild gives you one 
 element, `ViewChildren` provides a `QueryList` containing all matching elements.
+
+#### Practical Uses of ViewChildren
+1. Managing dynamic lists of components (todo items, form fields, list items).
+2. Managing form array elements for dynamic forms.
+3. Controlling multiple tab panels or accordion sections.
 
 #### Traditional Approach
 The classic method uses the `@ViewChildren()` decorator to access multiple 
@@ -543,8 +583,7 @@ Full set of examples around this topic you can find in the [src/app/7-view-child
 
 ## ContentChild and ContentChildren in Angular
 
-<img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
-
+<img src="/public/img/img8.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
 Here's how to work with projected content in Angular components! 
 While `ViewChild` and `ViewChildren` handle elements in a component's template,
@@ -620,8 +659,7 @@ Full set of examples around this topic you can find in the [src/app/8-component-
 
 ## Routing Parameters & Queries in Angular
 
-<img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
-
+<img src="/public/img/img9.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
 ### Routing Parameters
 
@@ -799,6 +837,9 @@ To use this feature, you'll need the `withComponentInputBinding()` function from
 Once set up, the router will automatically connect your URL parameters to your component inputs when 
 someone visits a page.
 
+#### Practical Uses of Routing Input Binding
+1. Product detail pages with product information in route (e.g., /products/:productId)
+2. Blog post pages with slug parameters (e.g., /blog/:category/:slug)
 
 | Status | Description                                     |
 |---------|-------------------------------------------------|

@@ -1,6 +1,6 @@
 ## Inputs & Outputs, Setters and `ngOnChanges` Lifecycle Hook
 
-<img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img1.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
 ### Inputs & Outputs in Angular
 
@@ -38,6 +38,12 @@ class Component {
 Here's something interesting - we don't actually need decorators for inputs and outputs!
 There's a non-traditional way using `@Component` metadata with `inputs` or `outputs` arrays.
 It achieves the same result with a different syntax.
+
+#### Practical Uses of Inputs and Outputs
+1. Navigate from a product list to a detailed view using @Input to pass the selected product ID to the detail component.
+2. Implement dynamic filtering for a list view where filter settings are passed down using `@Input()` and filter changes are communicated back via `@Output()`.
+3. Creating interactive components that need to notify parent of changes (dropdowns, search inputs).
+
 
 | Status | Description                                                                                                                                                                     |
 |--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -80,6 +86,8 @@ class Component {
 ```
 
 #### Setter Methods
+<img src="/public/img/img1.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+
 Want more control over your inputs? Angular's setter 
 methods let you intercept and handle input values before they're set.
 

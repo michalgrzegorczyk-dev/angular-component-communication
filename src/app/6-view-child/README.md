@@ -1,6 +1,6 @@
 ## ViewChild and ViewChildren
 
-<img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img6.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
 
 ### Understanding ViewChild in Angular
@@ -8,6 +8,12 @@
 with their child components. By default, it selects the first matching element or 
 component in the view, making it perfect for one-to-one parent-child communication 
 through the template.
+
+
+#### Practical Uses of ViewChild
+1. Controlling UI components programmatically (modal dialogs, accordion panels).
+2. Interacting with third-party components (maps, charts, date pickers).
+3. Managing multiple similar components (tabs, carousel slides, list items).
 
 #### Traditional approach 
 The classic method uses the `@ViewChild()` decorator to connect a parent with its child component. 

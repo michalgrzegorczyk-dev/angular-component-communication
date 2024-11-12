@@ -1,6 +1,6 @@
 ## Services in Angular
 
-<img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img3.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
 
 Services are a fundamental feature in Angular that serve multiple purposes, with one 
@@ -10,6 +10,11 @@ exchange information effectively.
 
 Think of a service as a central hub where components can store and access shared data. 
 Any component can read from or write to this hub, creating a smooth two-way flow of information.
+
+#### Practical Uses of Services
+1. Store user login states, preferences, and session tokens, providing a consistent user experience across different parts of the application.
+2. Manage all backend API calls from a single service, simplifying the process of fetching, posting, and handling data across components.
+3. Creating utility functions used across multiple components (formatters, validators).
 
 | Status | Description                                                                  |
 |--------|------------------------------------------------------------------------------|
