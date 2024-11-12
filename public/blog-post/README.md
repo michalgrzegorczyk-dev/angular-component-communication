@@ -49,7 +49,8 @@ as possible, so I really recommend you to check the full examples in the reposit
 
 ## Inputs & Outputs, Setters and `ngOnChanges` Lifecycle Hook
 
-<img src="/public/img/input.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+[//]: # (<img src="/public/img/input.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">)
+<img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
 ### Inputs & Outputs in Angular
 
