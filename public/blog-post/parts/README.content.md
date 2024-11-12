@@ -163,6 +163,19 @@ what changed, if it's the first change, and both the old and new values.
 2. Validating dependent inputs when multiple inputs change together (like form validation rules).
 3. Synchronize the state of two or more components that depend on shared data inputs, ensuring consistency across the user interface.
 
+
+| Status | Description                                                                         |
+|--------|-------------------------------------------------------------------------------------|
+| ❌ | Executes on every input change, which may affect performance if not used carefully. |
+| ❌ | Runs for all input changes, even when you're interested in specific ones only.      |
+| ❌ | Requires setting up additional properties to track changes.                         |
+| ⚠️ | Runs first before `OnInit` Lifecycle Hook                                           |
+| ⚠️ | Improper use can cause side effects that you may not want.                                                         |
+| ✅ | Efficiently handles multiple input changes in a single lifecycle hook.              |
+| ✅ | Provides easy detection of first-time changes to input properties.                  | |
+| ✅ | Enables comparison between previous and current input values.                       | |
+
+
 ```typescript 
 // Component that tracks input changes.
 @Component()
@@ -183,19 +196,6 @@ class Component implements OnChanges {
   }
 }
 ```
-
-
-| Status | Description                                                                         |
-|--------|-------------------------------------------------------------------------------------|
-| ❌ | Executes on every input change, which may affect performance if not used carefully. |
-| ❌ | Runs for all input changes, even when you're interested in specific ones only.      |
-| ❌ | Requires setting up additional properties to track changes.                         |
-| ⚠️ | Runs first before `OnInit` Lifecycle Hook                                           |
-| ⚠️ | Improper use can cause side effects that you may not want.                                                         |
-| ✅ | Efficiently handles multiple input changes in a single lifecycle hook.              |
-| ✅ | Provides easy detection of first-time changes to input properties.                  | |
-| ✅ | Enables comparison between previous and current input values.                       | |
-
 
 Full set of examples around this topic you can find in the [2-input-ng-on-changes](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/2-input-ng-on-changes) folder.
 
@@ -381,9 +381,6 @@ through the template.
 2. Interacting with third-party components (maps, charts, date pickers).
 3. Managing multiple similar components (tabs, carousel slides, list items).
 
-#### Traditional approach 
-The classic method uses the `@ViewChild()` decorator to connect a parent with its child component. 
-You'll reference the child component's class in the decorator to establish this connection.
 
 | Status | Description                                                                                    |
 |--------|------------------------------------------------------------------------------------------------|
@@ -393,6 +390,11 @@ You'll reference the child component's class in the decorator to establish this 
 | ✅ | Provides direct access to child component's public methods and properties. |
 | ✅ | Enables real-time access to child component's state and behavior.                 | 
 
+
+
+#### Traditional approach 
+The classic method uses the `@ViewChild()` decorator to connect a parent with its child component. 
+You'll reference the child component's class in the decorator to establish this connection.
 
 ```typescript
 // Child component with a method parent can call.
@@ -885,7 +887,6 @@ when you need to access the data.
 | ❌      | Impossible to share a link to a specific application state with another user.                                           | |
 | ❌      | State object is not inherently type-safe by default.                                                                    | |
 | ⚠️      | Data passed in the state object is not retained after a refresh or if the navigation history is modified.               |
-| ✅      | Ability to pass complex data objects between components during navigation.                                              |
 | ✅      | Ability to pass complex data objects between components during navigation.                                              |
 | ✅      | The router state object allows you to pass sensitive or personal data between components without exposing it in the URL |
 

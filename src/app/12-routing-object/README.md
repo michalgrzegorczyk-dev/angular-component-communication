@@ -27,7 +27,6 @@ when you need to access the data.
 | ❌      | State object is not inherently type-safe by default.                                                                    | |
 | ⚠️      | Data passed in the state object is not retained after a refresh or if the navigation history is modified.               |
 | ✅      | Ability to pass complex data objects between components during navigation.                                              |
-| ✅      | Ability to pass complex data objects between components during navigation.                                              |
 | ✅      | The router state object allows you to pass sensitive or personal data between components without exposing it in the URL |
 
 ```typescript

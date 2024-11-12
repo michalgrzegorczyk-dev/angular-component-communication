@@ -15,9 +15,6 @@ through the template.
 2. Interacting with third-party components (maps, charts, date pickers).
 3. Managing multiple similar components (tabs, carousel slides, list items).
 
-#### Traditional approach 
-The classic method uses the `@ViewChild()` decorator to connect a parent with its child component. 
-You'll reference the child component's class in the decorator to establish this connection.
 
 | Status | Description                                                                                    |
 |--------|------------------------------------------------------------------------------------------------|
@@ -27,6 +24,11 @@ You'll reference the child component's class in the decorator to establish this 
 | ✅ | Provides direct access to child component's public methods and properties. |
 | ✅ | Enables real-time access to child component's state and behavior.                 | 
 
+
+
+#### Traditional approach 
+The classic method uses the `@ViewChild()` decorator to connect a parent with its child component. 
+You'll reference the child component's class in the decorator to establish this connection.
 
 ```typescript
 // Child component with a method parent can call.
