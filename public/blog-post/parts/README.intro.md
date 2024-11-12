@@ -48,3 +48,4 @@ as possible, so I really recommend you to check the full examples in the reposit
   - Parent component injection into child components
   - Routing with `@Input()` and `withComponentInputBinding()`
 
+---
