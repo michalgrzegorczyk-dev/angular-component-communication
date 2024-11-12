@@ -2,8 +2,6 @@
 
 <img src="/public/img/img.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
-[//]: # (<img src="/public/img/input.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">)
-
 ### Inputs & Outputs in Angular
 
 Let's explore the fundamental ways components talk to each other in Angular - through 
