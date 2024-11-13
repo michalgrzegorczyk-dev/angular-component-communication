@@ -8,7 +8,7 @@ While `ViewChild` and `ViewChildren` handle elements in a component's template,
 component tags. This advanced feature helps you manage content passed
 from parent components.
 
-### Practical Uses of Content Projection
+#### Practical Uses of Content Projection
 1. Card component might have a predefined style and layout
    (like header, body, and footer areas), but the actual content of these areas
    can be projected by the parent component, allowing for versatile reuse across
@@ -27,7 +27,7 @@ from parent components.
 | ✅ | Provides direct access to projected content, making it easy to interact with nested elements.                                                                                                                       |
 
 
-### Traditional Approach Explained
+#### Traditional Approach Explained
 The classic way uses `@ContentChild()` and `@ContentChildren()` decorators along 
 with the `<ng-content>` tag. This combination gives you flexible ways to 
 project and manage content.
@@ -67,7 +67,7 @@ class ContainerComponent implements AfterContentInit {
 })
 ```
 
-### Modern Signal-Based Approach
+#### Modern Signal-Based Approach
 Angular 17+ introduces signal-based versions with `contentChild()` and `contentChildren()`
 functions. They work similarly, but give you the power of signals.
 
