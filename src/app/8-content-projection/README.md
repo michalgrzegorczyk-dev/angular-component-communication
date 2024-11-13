@@ -1,4 +1,4 @@
-## ContentChild and ContentChildren in Angular
+### ContentChild and ContentChildren in Angular
 
 <img src="/public/img/img8.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 

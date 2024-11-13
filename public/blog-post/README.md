@@ -601,7 +601,7 @@ Full set of examples around this topic you can find in the [src/app/7-view-child
 ---
 
 
-## ContentChild and ContentChildren in Angular
+### ContentChild and ContentChildren in Angular
 
 <img src="/public/img/img8.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
