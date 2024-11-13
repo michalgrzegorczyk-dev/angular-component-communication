@@ -601,7 +601,7 @@ Full set of examples around this topic you can find in the [src/app/7-view-child
 ---
 
 
-### ContentChild and ContentChildren in Angular
+## ContentChild and ContentChildren in Angular
 
 <img src="/public/img/img8.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
@@ -611,7 +611,7 @@ While `ViewChild` and `ViewChildren` handle elements in a component's template,
 component tags. This advanced feature helps you manage content passed
 from parent components.
 
-#### Practical Uses of Content Projection
+### Practical Uses of Content Projection
 1. Card component might have a predefined style and layout
    (like header, body, and footer areas), but the actual content of these areas
    can be projected by the parent component, allowing for versatile reuse across
