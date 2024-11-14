@@ -1,6 +1,6 @@
 ## Injected Components in Angular
 
-<img src="/public/img/img5.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img5.png" alt="Inputs and Outputs" style="width: 300px; height:300px">
 
 
 Let's explore an interesting but rarely-used technique of component injection. 

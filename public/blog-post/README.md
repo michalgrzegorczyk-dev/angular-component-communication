@@ -1,6 +1,6 @@
 # Mastering Component Communication in Angular
 
-<img src="/public/img/img0.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img0.png" alt="Inputs and Outputs" style="width: 300px; height:300px">
 
 
 ## Intro
@@ -53,7 +53,7 @@ as possible, so I really recommend you to check the full examples in the reposit
 
 ## Inputs & Outputs, Setters and `ngOnChanges` Lifecycle Hook
 
-<img src="/public/img/img1.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img1.png" alt="Inputs and Outputs" style="width: 300px; height:300px">
 
 ### Inputs & Outputs in Angular
 
@@ -171,7 +171,7 @@ class ChildComponent extends ParentComponent {
 ```
 
 ### Setter Methods
-<img src="/public/img/img11.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img11.png" alt="Inputs and Outputs" style="width: 300px; height:300px">
 
 Want more control over your inputs? Angular's setter
 methods let you intercept and handle input values before they're set.
@@ -255,7 +255,7 @@ Full set of examples around this topic you can find in the [2-input-ng-on-change
 
 ## Services in Angular
 
-<img src="/public/img/img3.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img3.png" alt="Inputs and Outputs" style="width: 300px; height:300px">
 
 
 Services are a fundamental feature in Angular that serve multiple purposes, with one 
@@ -312,7 +312,7 @@ Full set of examples around this topic you can find in the [3-service](https://g
 
 ## Template Variables in Angular
 
-<img src="/public/img/img4.jpeg" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img4.jpeg" alt="Inputs and Outputs" style="width: 300px; height:300px">
 
 
 Template variables are a really cool feature in Angular marked by the `#` symbol.
@@ -370,7 +370,7 @@ Full set of examples around this topic you can find in the [4-template-variable]
 
 ## Injected Components in Angular
 
-<img src="/public/img/img5.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img5.png" alt="Inputs and Outputs" style="width: 300px; height:300px">
 
 
 Let's explore an interesting but rarely-used technique of component injection. 
@@ -417,7 +417,7 @@ Full set of examples around this topic you can find in the [5-injected-component
 
 ## ViewChild and ViewChildren
 
-<img src="/public/img/img6.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img6.png" alt="Inputs and Outputs" style="width: 300px; height:300px">
 
 
 ### Understanding ViewChild in Angular
@@ -601,7 +601,7 @@ Full set of examples around this topic you can find in the [src/app/7-view-child
 
 ## ContentChild and ContentChildren in Angular
 
-<img src="/public/img/img8.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img8.png" alt="Inputs and Outputs" style="width: 300px; height:300px">
 
 Here's how to work with projected content in Angular components. 
 While `ViewChild` and `ViewChildren` handle elements in a component's template,
@@ -679,7 +679,7 @@ Full set of examples around this topic you can find in the [src/app/8-content-pr
 
 ## Routing Parameters & Queries in Angular
 
-<img src="/public/img/img9.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img9.png" alt="Inputs and Outputs" style="width: 300px; height:300px">
 
 ### Routing Parameters
 

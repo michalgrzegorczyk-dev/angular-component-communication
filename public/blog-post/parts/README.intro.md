@@ -1,6 +1,6 @@
 # Mastering Component Communication in Angular
 
-<img src="/public/img/img0.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img0.png" alt="Inputs and Outputs" style="width: 300px; height:300px">
 
 
 ## Intro

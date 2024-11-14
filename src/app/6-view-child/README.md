@@ -1,6 +1,6 @@
 ## ViewChild and ViewChildren
 
-<img src="/public/img/img6.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img6.png" alt="Inputs and Outputs" style="width: 300px; height:300px">
 
 
 ### Understanding ViewChild in Angular

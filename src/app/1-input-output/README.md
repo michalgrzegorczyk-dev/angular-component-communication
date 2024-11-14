@@ -1,6 +1,6 @@
 ## Inputs & Outputs, Setters and `ngOnChanges` Lifecycle Hook
 
-<img src="/public/img/img1.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img1.png" alt="Inputs and Outputs" style="width: 300px; height:300px">
 
 ### Inputs & Outputs in Angular
 
@@ -118,7 +118,7 @@ class ChildComponent extends ParentComponent {
 ```
 
 ### Setter Methods
-<img src="/public/img/img11.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img11.png" alt="Inputs and Outputs" style="width: 300px; height:300px">
 
 Want more control over your inputs? Angular's setter
 methods let you intercept and handle input values before they're set.
