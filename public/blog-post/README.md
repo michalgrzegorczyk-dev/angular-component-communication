@@ -69,11 +69,11 @@ approaches to handle this communication.
 
 | Good/Bad | Description                                                                                                                                                                     |
 |--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ❌ | Providing inputs and outputs via metadata properties can be harder to understand and can be less concise.                                                                          |
 | ✅ | It's the standard way to communicate between components, well-tested and recommended.                                                                                     |
 | ✅ | The newest Angular version lets you transform data through `@Input` decorator's metadata `transform`, similar to setters. |
 | ✅ | Always good to use and recommended from Angular v17+. |
 | ✅ | Provides improved performance and change detection. |
-| ❌ | Providing inputs and outputs via metadata properties can be harder to understand and can be less concise.                                                                          |
 
 
 
