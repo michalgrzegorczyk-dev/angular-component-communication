@@ -1,7 +1,7 @@
 ### Understanding ViewChildren in Angular
 Building on our knowledge of `ViewChild` comes its sibling feature, `ViewChildren`.
 This robust tool lets a parent component work with multiple 
-child components or elements in its template. While ViewChild gives you one 
+child components or elements in its template. While `ViewChild` gives you one 
 element, `ViewChildren` provides a `QueryList` containing all matching elements.
 
 #### Practical Uses of ViewChildren

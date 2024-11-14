@@ -46,6 +46,6 @@ as possible, so I really recommend you to check the full examples in the reposit
 - Routing
   - Routing Parameters and Queries (`/:id` and `?query=param`)
   - Parent component injection into child components
-  - Routing with `@Input()` and `withComponentInputBinding()`
-
+  - Routing with `@Input()` and `withComponentInputBinding()` 
+  - Routing objects
 ---
