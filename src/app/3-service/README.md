@@ -16,7 +16,7 @@ Any component can read from or write to this hub, creating a smooth two-way flow
 2. Manage all backend API calls from a single service, simplifying the process of fetching, posting, and handling data across components.
 3. Creating utility functions used across multiple components (formatters, validators).
 
-| Status | Description                                                                  |
+| Good/Bad | Description                                                                  |
 |--------|------------------------------------------------------------------------------|
 | ❌ | Requires understanding of Angular's dependency injection system.             |
 | ⚠️ | Simple class that can be injected, usually used with Signals or Observables. |

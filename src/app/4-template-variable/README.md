@@ -13,7 +13,7 @@ they can use to talk to each other!
 2. Form manipulation (accessing form values, triggering validation, resetting forms).
 3. Quickly access and manipulate DOM elements directly from the template without additional logic in the component class.
 
-| Status | Description                                                                                                                        |
+| Good/Bad | Description                                                                                                                        |
 |-------|------------------------------------------------------------------------------------------------------------------------------------|
 | ❌     | Limited scalability due to tight coupling between components.                                                                      |
 | ❌     | Variables are only accessible within the template unless passed through events.                                                                                                                                   |

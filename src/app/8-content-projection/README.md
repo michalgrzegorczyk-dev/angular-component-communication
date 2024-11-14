@@ -17,7 +17,7 @@ from parent components.
    parent component, allowing each tab content to be uniquely defined while using the
    same tab navigation system.
 
-| Status | Description                                                                                                                                                               |
+| Good/Bad | Description                                                                                                                                                               |
 |--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ❌ | Content is only available after the `ngAfterContentInit` lifecycle hook, not during initialization.                                                                       |
 | ❌ | Component initialization cannot access or manipulate projected content.                                                                                                   |

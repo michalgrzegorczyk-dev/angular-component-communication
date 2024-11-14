@@ -19,13 +19,13 @@ can then easily access these parameters.
 3. Filtering subsections of data like `products/category/electronics`.
 
 
-| Status | Description                                                                                                                    |
-|--------|--------------------------------------------------------------------------------------------------------------------------------|
-| ❌ | Params are always strings, so you may need to parse or convert complex data types.                                           |
-| ❌ | Sensitive data passed through the URL can be visible and prone to tampering.                                                   |
-| ✅ | Allows passing data between components without direct parent-child relationships, enabling more flexible component interaction. |
-| ✅ | Data in URL params is preserved during navigation and can be shared easily through links.                                      |
-| ✅ | Components can easily access params via `ActivatedRoute` service.                                                     |
+| Good/Bad | Description                                                                                                                    |
+|----------|--------------------------------------------------------------------------------------------------------------------------------|
+| ❌        | Params are always strings, so you may need to parse or convert complex data types.                                           |
+| ❌        | Sensitive data passed through the URL can be visible and prone to tampering.                                                   |
+| ✅        | Allows passing data between components without direct parent-child relationships, enabling more flexible component interaction. |
+| ✅        | Data in URL params is preserved during navigation and can be shared easily through links.                                      |
+| ✅        | Components can easily access params via `ActivatedRoute` service.                                                     |
 
 
 ```typescript

@@ -13,7 +13,7 @@ for specific use cases.
 2. Nested menu structures where child items need parent menu state.
 3. Wizard/stepper components where steps need access to the main wizard state.
 
-| Status | Description                                                                                                                                                                |
+| Good/Bad | Description                                                                                                                                                                |
 |--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ❌ | Rare in real-world applications, which may make the code less maintainable for teams.                                                                                                 |
 | ❌ | Creates strong dependencies between components, reducing reusability.                                                                                                                                        |

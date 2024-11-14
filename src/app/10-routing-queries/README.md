@@ -23,7 +23,7 @@ user experience by allowing direct navigation to pre-searched results.
 4. Pre-populating forms through link, query parameters can carry the necessary data
 to populate form fields.
 
-| Status | Description                                                                           |
+| Good/Bad | Description                                                                           |
 |--------|---------------------------------------------------------------------------------------|
 | ❌     | Can only handle string data, complex data types need parsing or conversion.           |
 | ❌     | Sensitive data is exposed in the URL, making it vulnerable to tampering.            |

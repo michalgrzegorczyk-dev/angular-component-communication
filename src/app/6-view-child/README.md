@@ -16,7 +16,7 @@ through the template.
 3. Managing multiple similar components (tabs, carousel slides, list items).
 
 
-| Status | Description                                                                                    |
+| Good/Bad | Description                                                                                    |
 |--------|------------------------------------------------------------------------------------------------|
 | ❌ | Creates tight coupling between parent and child components, which can limit reusability.            |
 | ❌ | Limited to direct parent-child relationships only.                                            |

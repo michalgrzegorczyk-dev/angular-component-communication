@@ -13,7 +13,7 @@ what changed, if it's the first change, and both the old and new values.
 3. Synchronize the state of two or more components that depend on shared data inputs, ensuring consistency across the user interface.
 
 
-| Status | Description                                                                         |
+| Good/Bad | Description                                                                         |
 |--------|-------------------------------------------------------------------------------------|
 | ❌ | Executes on every input change, which may affect performance if not used carefully. |
 | ❌ | Runs for all input changes, even when you're interested in specific ones only.      |

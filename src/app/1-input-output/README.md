@@ -9,9 +9,9 @@ inputs and outputs. We'll look at both traditional and modern
 approaches to handle this communication.
 
 #### 💡 Practical Uses of Inputs and Outputs
-1. Navigate from a product list to a detailed view using @Input to pass the selected product ID to the detail component.
-2. Implement dynamic filtering for a list view where filter settings are passed down using `@Input()` and filter changes are communicated back via `@Output()`.
-3. Creating interactive components that need to notify parent of changes (dropdowns, search inputs).
+1. Creating more interactive components that need to notify parent of changes (dropdowns, search inputs).
+2. Pass data like user details to a child component and `@Output()` to emit user update events from the child to the parent component.
+3. Navigate from a product list to a detailed view using `@Input` to pass the selected product ID to the detail component.
 
 
 #### Traditional Approach with Decorators
@@ -28,16 +28,16 @@ This method has been an Angular standard for years.
 class Component {
   // Receives data from parent.
   @Input()
-  thisIsInputProperty = '';
+  inputProp = '';
 
   // Sends data to parent.
   @Output()
-  thisIsOutputProperty = new EventEmitter<string>();
+  outputProp = new EventEmitter<string>();
 }
 
 // Using in parent template.
-<app-component thisIsInputProperty="value" 
-               (thisIsOutputProperty)="doSomething($event)" />
+<app-component inputProp="value" 
+               (outputProp)="doSomething($event)" />
 ```
 
 #### Alternative Non-Decorator Approach
@@ -45,7 +45,7 @@ Here's something interesting - we don't actually need decorators for inputs and 
 There's a non-traditional way using `@Component` metadata with `inputs` or `outputs` arrays.
 It achieves the same result with a different syntax.
 
-| Status | Description                                                                                                                                                                     |
+| Good/Bad | Description                                                                                                                                                                     |
 |--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ❌ | Providing inputs and outputs via metadata properties can be harder to understand and can be less concise.                                                                          |
 | ✅ | It's the standard way to communicate between components, well-tested and recommended.                                                                                     |
@@ -70,7 +70,7 @@ functions. This approach offers better performance and smarter change detection,
 making it the go-to choice for new applications.
 
 
-| Status | Description                                           |
+| Good/Bad | Description                                           |
 |--------|-------------------------------------------------------|
 | ✅ | Always good to use and recommended from Angular v17+. |
 | ✅ | Provides improved performance and change detection. |
@@ -89,7 +89,7 @@ class Component {
 
 While not common, Angular supports inheriting input and output properties from parent components.
 
-| Status | Description                                                                       |
+| Good/Bad | Description                                                                       |
 |--------|-----------------------------------------------------------------------------------|
 | ❌ | Component inheritance is rarely used in Angular, so you may never need this. |
 | ❌ | Not compatible with the new signals inputs and outputs approach.             |
@@ -126,7 +126,7 @@ Want more control over your inputs? Angular's setter
 methods let you intercept and handle input values before they're set.
 
 
-| Status | Description                                          |
+| Good/Bad | Description                                          |
 |--------|------------------------------------------------------|
 | ❌ | Requires additional property for storing the value. |
 | ❌ |More verbose than simple `@Input` declarations.                |

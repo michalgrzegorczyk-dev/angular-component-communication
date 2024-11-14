@@ -15,7 +15,7 @@ someone visits a page.
 1. Product detail pages with product information in route (e.g., /products/:productId)
 2. Blog post pages with slug parameters (e.g., /blog/:category/:slug)
 
-| Status | Description                                     |
+| Good/Bad | Description                                     |
 |---------|-------------------------------------------------|
 | ❌      | Can make routing more complex if used too much. |
 | ❌      | Not great for complex data that changes often.  |

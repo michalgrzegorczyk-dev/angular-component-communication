@@ -9,9 +9,9 @@ inputs and outputs. We'll look at both traditional and modern
 approaches to handle this communication.
 
 #### 💡 Practical Uses of Inputs and Outputs
-1. Navigate from a product list to a detailed view using @Input to pass the selected product ID to the detail component.
-2. Implement dynamic filtering for a list view where filter settings are passed down using `@Input()` and filter changes are communicated back via `@Output()`.
-3. Creating interactive components that need to notify parent of changes (dropdowns, search inputs).
+1. Creating more interactive components that need to notify parent of changes (dropdowns, search inputs).
+2. Pass data like user details to a child component and `@Output()` to emit user update events from the child to the parent component.
+3. Navigate from a product list to a detailed view using `@Input` to pass the selected product ID to the detail component.
 
 
 #### Traditional Approach with Decorators
@@ -28,16 +28,16 @@ This method has been an Angular standard for years.
 class Component {
   // Receives data from parent.
   @Input()
-  thisIsInputProperty = '';
+  inputProp = '';
 
   // Sends data to parent.
   @Output()
-  thisIsOutputProperty = new EventEmitter<string>();
+  outputProp = new EventEmitter<string>();
 }
 
 // Using in parent template.
-<app-component thisIsInputProperty="value" 
-               (thisIsOutputProperty)="doSomething($event)" />
+<app-component inputProp="value" 
+               (outputProp)="doSomething($event)" />
 ```
 
 #### Alternative Non-Decorator Approach
@@ -45,7 +45,7 @@ Here's something interesting - we don't actually need decorators for inputs and 
 There's a non-traditional way using `@Component` metadata with `inputs` or `outputs` arrays.
 It achieves the same result with a different syntax.
 
-| Status | Description                                                                                                                                                                     |
+| Good/Bad | Description                                                                                                                                                                     |
 |--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ❌ | Providing inputs and outputs via metadata properties can be harder to understand and can be less concise.                                                                          |
 | ✅ | It's the standard way to communicate between components, well-tested and recommended.                                                                                     |
@@ -70,7 +70,7 @@ functions. This approach offers better performance and smarter change detection,
 making it the go-to choice for new applications.
 
 
-| Status | Description                                           |
+| Good/Bad | Description                                           |
 |--------|-------------------------------------------------------|
 | ✅ | Always good to use and recommended from Angular v17+. |
 | ✅ | Provides improved performance and change detection. |
@@ -89,7 +89,7 @@ class Component {
 
 While not common, Angular supports inheriting input and output properties from parent components.
 
-| Status | Description                                                                       |
+| Good/Bad | Description                                                                       |
 |--------|-----------------------------------------------------------------------------------|
 | ❌ | Component inheritance is rarely used in Angular, so you may never need this. |
 | ❌ | Not compatible with the new signals inputs and outputs approach.             |
@@ -126,7 +126,7 @@ Want more control over your inputs? Angular's setter
 methods let you intercept and handle input values before they're set.
 
 
-| Status | Description                                          |
+| Good/Bad | Description                                          |
 |--------|------------------------------------------------------|
 | ❌ | Requires additional property for storing the value. |
 | ❌ |More verbose than simple `@Input` declarations.                |
@@ -164,7 +164,7 @@ what changed, if it's the first change, and both the old and new values.
 3. Synchronize the state of two or more components that depend on shared data inputs, ensuring consistency across the user interface.
 
 
-| Status | Description                                                                         |
+| Good/Bad | Description                                                                         |
 |--------|-------------------------------------------------------------------------------------|
 | ❌ | Executes on every input change, which may affect performance if not used carefully. |
 | ❌ | Runs for all input changes, even when you're interested in specific ones only.      |
@@ -220,7 +220,7 @@ Any component can read from or write to this hub, creating a smooth two-way flow
 2. Manage all backend API calls from a single service, simplifying the process of fetching, posting, and handling data across components.
 3. Creating utility functions used across multiple components (formatters, validators).
 
-| Status | Description                                                                  |
+| Good/Bad | Description                                                                  |
 |--------|------------------------------------------------------------------------------|
 | ❌ | Requires understanding of Angular's dependency injection system.             |
 | ⚠️ | Simple class that can be injected, usually used with Signals or Observables. |
@@ -274,7 +274,7 @@ they can use to talk to each other!
 2. Form manipulation (accessing form values, triggering validation, resetting forms).
 3. Quickly access and manipulate DOM elements directly from the template without additional logic in the component class.
 
-| Status | Description                                                                                                                        |
+| Good/Bad | Description                                                                                                                        |
 |-------|------------------------------------------------------------------------------------------------------------------------------------|
 | ❌     | Limited scalability due to tight coupling between components.                                                                      |
 | ❌     | Variables are only accessible within the template unless passed through events.                                                                                                                                   |
@@ -332,7 +332,7 @@ for specific use cases.
 2. Nested menu structures where child items need parent menu state.
 3. Wizard/stepper components where steps need access to the main wizard state.
 
-| Status | Description                                                                                                                                                                |
+| Good/Bad | Description                                                                                                                                                                |
 |--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ❌ | Rare in real-world applications, which may make the code less maintainable for teams.                                                                                                 |
 | ❌ | Creates strong dependencies between components, reducing reusability.                                                                                                                                        |
@@ -382,7 +382,7 @@ through the template.
 3. Managing multiple similar components (tabs, carousel slides, list items).
 
 
-| Status | Description                                                                                    |
+| Good/Bad | Description                                                                                    |
 |--------|------------------------------------------------------------------------------------------------|
 | ❌ | Creates tight coupling between parent and child components, which can limit reusability.            |
 | ❌ | Limited to direct parent-child relationships only.                                            |
@@ -567,7 +567,7 @@ from parent components.
    parent component, allowing each tab content to be uniquely defined while using the
    same tab navigation system.
 
-| Status | Description                                                                                                                                                               |
+| Good/Bad | Description                                                                                                                                                               |
 |--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ❌ | Content is only available after the `ngAfterContentInit` lifecycle hook, not during initialization.                                                                       |
 | ❌ | Component initialization cannot access or manipulate projected content.                                                                                                   |
@@ -647,13 +647,13 @@ can then easily access these parameters.
 3. Filtering subsections of data like `products/category/electronics`.
 
 
-| Status | Description                                                                                                                    |
-|--------|--------------------------------------------------------------------------------------------------------------------------------|
-| ❌ | Params are always strings, so you may need to parse or convert complex data types.                                           |
-| ❌ | Sensitive data passed through the URL can be visible and prone to tampering.                                                   |
-| ✅ | Allows passing data between components without direct parent-child relationships, enabling more flexible component interaction. |
-| ✅ | Data in URL params is preserved during navigation and can be shared easily through links.                                      |
-| ✅ | Components can easily access params via `ActivatedRoute` service.                                                     |
+| Good/Bad | Description                                                                                                                    |
+|----------|--------------------------------------------------------------------------------------------------------------------------------|
+| ❌        | Params are always strings, so you may need to parse or convert complex data types.                                           |
+| ❌        | Sensitive data passed through the URL can be visible and prone to tampering.                                                   |
+| ✅        | Allows passing data between components without direct parent-child relationships, enabling more flexible component interaction. |
+| ✅        | Data in URL params is preserved during navigation and can be shared easily through links.                                      |
+| ✅        | Components can easily access params via `ActivatedRoute` service.                                                     |
 
 
 ```typescript
@@ -730,7 +730,7 @@ user experience by allowing direct navigation to pre-searched results.
 4. Pre-populating forms through link, query parameters can carry the necessary data
 to populate form fields.
 
-| Status | Description                                                                           |
+| Good/Bad | Description                                                                           |
 |--------|---------------------------------------------------------------------------------------|
 | ❌     | Can only handle string data, complex data types need parsing or conversion.           |
 | ❌     | Sensitive data is exposed in the URL, making it vulnerable to tampering.            |
@@ -812,7 +812,7 @@ someone visits a page.
 1. Product detail pages with product information in route (e.g., /products/:productId)
 2. Blog post pages with slug parameters (e.g., /blog/:category/:slug)
 
-| Status | Description                                     |
+| Good/Bad | Description                                     |
 |---------|-------------------------------------------------|
 | ❌      | Can make routing more complex if used too much. |
 | ❌      | Not great for complex data that changes often.  |
@@ -881,7 +881,7 @@ when you need to access the data.
   you can pass it through the state object.
 
 
-| Status | Description                                                                                                             |
+| Good/Bad | Description                                                                                                             |
 |---------|-------------------------------------------------------------------------------------------------------------------------|
 | ❌      | Does not work properly with SSR, because it lose the state.                                                             | |
 | ❌      | Impossible to share a link to a specific application state with another user.                                           | |

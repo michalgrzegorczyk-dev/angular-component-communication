@@ -20,7 +20,7 @@ when you need to access the data.
   you can pass it through the state object.
 
 
-| Status | Description                                                                                                             |
+| Good/Bad | Description                                                                                                             |
 |---------|-------------------------------------------------------------------------------------------------------------------------|
 | ❌      | Does not work properly with SSR, because it lose the state.                                                             | |
 | ❌      | Impossible to share a link to a specific application state with another user.                                           | |
