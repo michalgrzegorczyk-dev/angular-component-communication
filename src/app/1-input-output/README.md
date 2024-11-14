@@ -14,13 +14,13 @@ approaches to handle this communication.
 3. Navigate from a product list to a detailed view using `@Input` to pass the selected product ID to the detail component.
 
 
-| Good/Bad | Description                                                                                                                                                                     |
-|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ❌ | Providing inputs and outputs via metadata properties can be harder to understand and can be less concise.                                                                          |
-| ✅ | It's the standard way to communicate between components, well-tested and recommended.                                                                                     |
+| Good/Bad | Description                                                                                                              |
+|--------|--------------------------------------------------------------------------------------------------------------------------|
+| ❌ | Providing inputs and outputs via metadata properties can be harder to understand and can be less concise.                |
+| ✅ | It's the standard way to communicate between components, well-tested and recommended.                                    |
 | ✅ | The newest Angular version lets you transform data through `@Input` decorator's metadata `transform`, similar to setters. |
-| ✅ | Always good to use and recommended from Angular v17+. |
-| ✅ | Provides improved performance and change detection. |
+| ✅ | Always good to use and recommended with signals (with signals from Angular v17+).                                        |
+| ✅ | Signals input and outputs provide improved performance and change detection.                                             |
 
 
 
