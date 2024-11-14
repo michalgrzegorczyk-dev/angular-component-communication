@@ -149,7 +149,7 @@ Full set of examples around this topic you can find in the [1-input-output](http
 
 ### Understanding `ngOnChanges` Lifecycle Hook
 
-<img src="/public/img/img12.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
+<img src="/public/img/img12.png" alt="Inputs and Outputs" style="width: 300px; height:300px">
 
 Now, let's explore `ngOnChanges`, a helpful lifecycle hook in Angular that tracks changes to 
 your component's input values. When inputs change, Angular automatically runs 
