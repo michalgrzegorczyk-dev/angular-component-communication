@@ -40,6 +40,14 @@ class Component {
                (outputProp)="doSomething($event)" />
 ```
 
+
+| Good/Bad | Description                                                                                                                                                                     |
+|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ✅ | It's the standard way to communicate between components, well-tested and recommended.                                                                                     |
+| ✅ | The newest Angular version lets you transform data through `@Input` decorator's metadata `transform`, similar to setters. |
+
+
+
 #### Alternative Non-Decorator Approach
 Here's something interesting - we don't actually need decorators for inputs and outputs!
 There's a non-traditional way using `@Component` metadata with `inputs` or `outputs` arrays.
@@ -48,19 +56,17 @@ It achieves the same result with a different syntax.
 | Good/Bad | Description                                                                                                                                                                     |
 |--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ❌ | Providing inputs and outputs via metadata properties can be harder to understand and can be less concise.                                                                          |
-| ✅ | It's the standard way to communicate between components, well-tested and recommended.                                                                                     |
-| ✅ | The newest Angular version lets you transform data through `@Input` decorator's metadata `transform`, similar to setters. |
 
 
 ```typescript
 // Component using metadata for inputs/outputs.
 @Component({
-  inputs: ['thisIsInputProperty'],
-  outputs: ['thisIsOutputProperty']
+  inputs: ['inputProp'],
+  outputs: ['outputProp']
 })
 class Component {
-  thisIsInputProperty: string;
-  thisIsOutputProperty = new EventEmitter<string>();
+  inputProp: string;
+  outputProp = new EventEmitter<string>();
 } 
 ```
 
@@ -80,8 +86,8 @@ making it the go-to choice for new applications.
 // Modern signal-based approach.
 @Component()
 class Component {
-  thisIsInputProperty = input<string>();
-  thisIsOutputProperty = output<string>();
+  inputProp = input<string>();
+  outputProp = output<string>();
 } 
 ```
 
@@ -92,7 +98,6 @@ While not common, Angular supports inheriting input and output properties from p
 | Good/Bad | Description                                                                       |
 |--------|-----------------------------------------------------------------------------------|
 | ❌ | Component inheritance is rarely used in Angular, so you may never need this. |
-| ❌ | Not compatible with the new signals inputs and outputs approach.             |
 | ✅ | Adds to your toolkit of component communication techniques.                 |
 
 ```typescript
@@ -153,7 +158,7 @@ Full set of examples around this topic you can find in the [1-input-output](http
 
 <img src="/public/img/img12.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
-Next one, let's explore `ngOnChanges`, a helpful lifecycle hook in Angular that tracks changes to 
+Now, let's explore `ngOnChanges`, a helpful lifecycle hook in Angular that tracks changes to 
 your component's input values. When inputs change, Angular automatically runs 
 this method, providing you with `SimpleChanges` that tell you three key things:
 what changed, if it's the first change, and both the old and new values.
@@ -322,7 +327,7 @@ Full set of examples around this topic you can find in the [4-template-variable]
 <img src="/public/img/img5.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
 
-Let's explore an interesting but rarely-used technique of component injection! 
+Let's explore an interesting but rarely-used technique of component injection. 
 This approach lets a child component directly access its parent by injecting the 
 parent component into the child's constructor. While not common, it's worth understanding 
 for specific use cases.

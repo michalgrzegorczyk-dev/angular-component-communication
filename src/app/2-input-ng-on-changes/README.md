@@ -2,7 +2,7 @@
 
 <img src="/public/img/img12.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
-Next one, let's explore `ngOnChanges`, a helpful lifecycle hook in Angular that tracks changes to 
+Now, let's explore `ngOnChanges`, a helpful lifecycle hook in Angular that tracks changes to 
 your component's input values. When inputs change, Angular automatically runs 
 this method, providing you with `SimpleChanges` that tell you three key things:
 what changed, if it's the first change, and both the old and new values.

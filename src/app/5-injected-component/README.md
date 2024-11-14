@@ -3,7 +3,7 @@
 <img src="/public/img/img5.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
 
-Let's explore an interesting but rarely-used technique of component injection! 
+Let's explore an interesting but rarely-used technique of component injection. 
 This approach lets a child component directly access its parent by injecting the 
 parent component into the child's constructor. While not common, it's worth understanding 
 for specific use cases.
