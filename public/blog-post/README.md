@@ -35,6 +35,7 @@ as possible, so I really recommend you to check the full examples in the reposit
   - `OnChanges` lifecycle hook with `@Input` decorators
 - Services
   - `@Injectable` services
+- Component injection
 - Template variables
   - Template reference variables (`#`)
 - Content Projection
@@ -45,7 +46,6 @@ as possible, so I really recommend you to check the full examples in the reposit
   - `viewChild()` and `viewChildren()` with signals
 - Routing
   - Routing Parameters and Queries (`/:id` and `?query=param`)
-  - Parent component injection into child components
   - Routing with `@Input()` and `withComponentInputBinding()` 
   - Routing objects
 ---
