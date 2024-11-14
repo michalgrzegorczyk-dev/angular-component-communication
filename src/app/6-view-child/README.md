@@ -10,7 +10,7 @@ component in the view, making it perfect for one-to-one parent-child communicati
 through the template.
 
 
-#### Practical Uses of ViewChild
+#### 💡 Practical Uses of ViewChild
 1. Controlling UI components programmatically (modal dialogs, accordion panels).
 2. Interacting with third-party components (maps, charts, date pickers).
 3. Managing multiple similar components (tabs, carousel slides, list items).

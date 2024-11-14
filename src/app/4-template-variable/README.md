@@ -8,7 +8,7 @@ Think of them as quick references you can create in your template
 to connect parent and child components. It's like giving your components nicknames 
 they can use to talk to each other!
 
-#### Practical Uses of Template Variables
+#### 💡 Practical Uses of Template Variables
 1. Managing component state from parent templates (expand/collapse panels, pagination controls).
 2. Form manipulation (accessing form values, triggering validation, resetting forms).
 3. Quickly access and manipulate DOM elements directly from the template without additional logic in the component class.

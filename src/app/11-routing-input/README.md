@@ -11,7 +11,7 @@ To use this feature, you'll need the `withComponentInputBinding()` function from
 Once set up, the router will automatically connect your URL parameters to your component inputs when 
 someone visits a page.
 
-#### Practical Uses of Routing Input Binding
+#### 💡 Practical Uses of Routing Input Binding
 1. Product detail pages with product information in route (e.g., /products/:productId)
 2. Blog post pages with slug parameters (e.g., /blog/:category/:slug)
 

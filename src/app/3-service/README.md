@@ -11,7 +11,7 @@ exchange information effectively.
 Think of a service as a central hub where components can store and access shared data. 
 Any component can read from or write to this hub, creating a smooth two-way flow of information.
 
-#### Practical Uses of Services
+#### 💡 Practical Uses of Services
 1. Store user login states, preferences, and session tokens, providing a consistent user experience across different parts of the application.
 2. Manage all backend API calls from a single service, simplifying the process of fetching, posting, and handling data across components.
 3. Creating utility functions used across multiple components (formatters, validators).

@@ -8,7 +8,7 @@ This approach lets a child component directly access its parent by injecting the
 parent component into the child's constructor. While not common, it's worth understanding 
 for specific use cases.
 
-#### Practical Uses of Injected Components
+#### 💡 Practical Uses of Injected Components
 1. Complex form components where child fields need parent form context.
 2. Nested menu structures where child items need parent menu state.
 3. Wizard/stepper components where steps need access to the main wizard state.

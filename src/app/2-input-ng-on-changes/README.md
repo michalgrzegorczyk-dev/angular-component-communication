@@ -7,7 +7,7 @@ your component's input values. When inputs change, Angular automatically runs
 this method, providing you with `SimpleChanges` that tell you three key things:
 what changed, if it's the first change, and both the old and new values.
 
-#### Practical Uses of `ngOnChanges`
+#### 💡 Practical Uses of `ngOnChanges`
 1. Implementing undo/redo functionality by tracking previous values.
 2. Validating dependent inputs when multiple inputs change together (like form validation rules).
 3. Synchronize the state of two or more components that depend on shared data inputs, ensuring consistency across the user interface.

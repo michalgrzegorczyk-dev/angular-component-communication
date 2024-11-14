@@ -8,7 +8,7 @@ Let's explore the fundamental ways components talk to each other in Angular - th
 inputs and outputs. We'll look at both traditional and modern 
 approaches to handle this communication.
 
-#### Practical Uses of Inputs and Outputs
+#### 💡 Practical Uses of Inputs and Outputs
 1. Navigate from a product list to a detailed view using @Input to pass the selected product ID to the detail component.
 2. Implement dynamic filtering for a list view where filter settings are passed down using `@Input()` and filter changes are communicated back via `@Output()`.
 3. Creating interactive components that need to notify parent of changes (dropdowns, search inputs).
