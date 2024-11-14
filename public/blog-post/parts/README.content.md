@@ -788,7 +788,7 @@ class ChildComponent implements OnInit {
 }
 ```
 
-Full set of examples around this topic you can find in the [src/app/10-routing-queries](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/9-routing-queries) folder.
+Full set of examples around this topic you can find in the [src/app/10-routing-queries](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/10-routing-queries) folder.
 
 ---
 
