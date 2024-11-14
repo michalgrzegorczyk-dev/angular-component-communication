@@ -1,6 +1,6 @@
 ### Routing Queries in Angular
 
-Routing queries offer a perfect solution for handling optional parameters!
+Routing queries offer a perfect solution for handling optional parameters.
 Unlike regular route parameters that are part of the URL path, query parameters 
 come after a question mark (`?`) in your URL. For example: `localhost:4200/table?sort=asc`.
 They're great for handling things like sorting, filtering, or page numbers.
@@ -16,7 +16,7 @@ Your components can then read these parameters to adjust what they show or how t
 
 
 #### 💡 Practical Uses of Routing Queries
-1. Filtering and Sorting e.g. list view data are common uses for query parameters.
+1. Filtering and Sorting, e.g. list view data are common uses for query parameters.
 2. Pagination - query parameters can be used to store the current page number.
 3. Search terms - useful for any application that has a search feature, enhancing
 user experience by allowing direct navigation to pre-searched results.
@@ -83,6 +83,6 @@ class ChildComponent implements OnInit {
 }
 ```
 
-Full set of examples around this topic you can find in the [src/app/9-routing-queries](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/9-routing-queries) folder.
+Full set of examples around this topic you can find in the [src/app/10-routing-queries](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/9-routing-queries) folder.
 
 ---

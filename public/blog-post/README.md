@@ -67,6 +67,16 @@ approaches to handle this communication.
 3. Navigate from a product list to a detailed view using `@Input` to pass the selected product ID to the detail component.
 
 
+| Good/Bad | Description                                                                                                                                                                     |
+|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ✅ | It's the standard way to communicate between components, well-tested and recommended.                                                                                     |
+| ✅ | The newest Angular version lets you transform data through `@Input` decorator's metadata `transform`, similar to setters. |
+| ✅ | Always good to use and recommended from Angular v17+. |
+| ✅ | Provides improved performance and change detection. |
+| ❌ | Providing inputs and outputs via metadata properties can be harder to understand and can be less concise.                                                                          |
+
+
+
 #### Traditional Approach with Decorators
 
 The classic way uses `@Input()` and `@Output()` decorators, letting 
@@ -94,22 +104,11 @@ class Component {
 ```
 
 
-| Good/Bad | Description                                                                                                                                                                     |
-|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ✅ | It's the standard way to communicate between components, well-tested and recommended.                                                                                     |
-| ✅ | The newest Angular version lets you transform data through `@Input` decorator's metadata `transform`, similar to setters. |
-
-
 
 #### Alternative Non-Decorator Approach
 Here's something interesting - we don't actually need decorators for inputs and outputs!
 There's a non-traditional way using `@Component` metadata with `inputs` or `outputs` arrays.
 It achieves the same result with a different syntax.
-
-| Good/Bad | Description                                                                                                                                                                     |
-|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ❌ | Providing inputs and outputs via metadata properties can be harder to understand and can be less concise.                                                                          |
-
 
 ```typescript
 // Component using metadata for inputs/outputs.
@@ -127,12 +126,6 @@ class Component {
 Angular 17+ introduces a powerful new way using signals with `input()` and `output()`
 functions. This approach offers better performance and smarter change detection, 
 making it the go-to choice for new applications.
-
-
-| Good/Bad | Description                                           |
-|--------|-------------------------------------------------------|
-| ✅ | Always good to use and recommended from Angular v17+. |
-| ✅ | Provides improved performance and change detection. |
 
 
 ```typescript
@@ -601,7 +594,7 @@ class ChildComponent {
 }
 ```
 
-Full set of examples around this topic you can find in the [src/app/7-view-children](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/src/app/7-view-children) folder.
+Full set of examples around this topic you can find in the [src/app/7-view-children](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/7-view-children) folder.
 
 ---
 
@@ -610,7 +603,7 @@ Full set of examples around this topic you can find in the [src/app/7-view-child
 
 <img src="/public/img/img8.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
-Here's how to work with projected content in Angular components! 
+Here's how to work with projected content in Angular components. 
 While `ViewChild` and `ViewChildren` handle elements in a component's template,
 `ContentChild` and `ContentChildren` deal with content that's projected between
 component tags. This advanced feature helps you manage content passed
@@ -679,7 +672,7 @@ class ContainerComponent implements AfterContentInit {
 Angular 17+ introduces signal-based versions with `contentChild()` and `contentChildren()`
 functions. They work similarly, but give you the power of signals.
 
-Full set of examples around this topic you can find in the [src/app/8-component-projection](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/8-component-projection) folder.
+Full set of examples around this topic you can find in the [src/app/8-content-projection](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/8-content-projection) folder.
 
 ---
 
@@ -700,7 +693,7 @@ Once set up, you can pass values through these routes when navigating. Your comp
 can then easily access these parameters.
 
 #### 💡 Practical Uses of Routing Params
-1. Most common use cae is navigation to detailed view of specific item.
+1. Most common use case is navigation to detailed view of specific item.
 2. Steps in multistep process or workflow, can help to keep track of the current step like `/checkout/step-2`.
 3. Filtering subsections of data like `products/category/electronics`.
 
@@ -758,14 +751,14 @@ class ChildComponent implements OnInit {
 }
 ```
 
-Full set of examples around this topic you can find in the [src/app/9-routing-params](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/src/app/9-routing-params) folder.
+Full set of examples around this topic you can find in the [src/app/9-routing-params](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/9-routing-params) folder.
 
 ---
 
 
 ### Routing Queries in Angular
 
-Routing queries offer a perfect solution for handling optional parameters!
+Routing queries offer a perfect solution for handling optional parameters.
 Unlike regular route parameters that are part of the URL path, query parameters 
 come after a question mark (`?`) in your URL. For example: `localhost:4200/table?sort=asc`.
 They're great for handling things like sorting, filtering, or page numbers.
@@ -781,7 +774,7 @@ Your components can then read these parameters to adjust what they show or how t
 
 
 #### 💡 Practical Uses of Routing Queries
-1. Filtering and Sorting e.g. list view data are common uses for query parameters.
+1. Filtering and Sorting, e.g. list view data are common uses for query parameters.
 2. Pagination - query parameters can be used to store the current page number.
 3. Search terms - useful for any application that has a search feature, enhancing
 user experience by allowing direct navigation to pre-searched results.
@@ -848,7 +841,7 @@ class ChildComponent implements OnInit {
 }
 ```
 
-Full set of examples around this topic you can find in the [src/app/9-routing-queries](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/9-routing-queries) folder.
+Full set of examples around this topic you can find in the [src/app/10-routing-queries](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/9-routing-queries) folder.
 
 ---
 
@@ -867,8 +860,8 @@ Once set up, the router will automatically connect your URL parameters to your c
 someone visits a page.
 
 #### 💡 Practical Uses of Routing Input Binding
-1. Product detail pages with product information in route (e.g., /products/:productId)
-2. Blog post pages with slug parameters (e.g., /blog/:category/:slug)
+1. Product detail pages with product information in route (e.g., `/products/:productId`)
+2. Blog post pages with slug parameters (e.g., `/blog/:category/:slug`)
 
 | Good/Bad | Description                                     |
 |---------|-------------------------------------------------|
@@ -924,10 +917,10 @@ object in the navigation extras. This object is transient, meaning it is only av
 during the lifetime of the navigation and does not persist if the page is reloaded.
 
 You can pass the state object using the `navigate()` method of the `Router` service, or through a 
-`[routerLink]` directive with binding. Here's an example with `navigate()`:
+`[routerLink]` directive with binding. 
 
-Once you navigate to the destination component, you can access the state from the Router service. 
-This is typically done in the ngOnInit lifecycle hook or directly in the constructor, depending on 
+Once you navigate to the destination component, you can access the state from the `Router` service. 
+This is typically done in the `ngOnInit` lifecycle hook or directly in the constructor, depending on 
 when you need to access the data.
 
 #### 💡 Practical Uses of State Objects

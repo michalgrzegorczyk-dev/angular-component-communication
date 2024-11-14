@@ -14,6 +14,16 @@ approaches to handle this communication.
 3. Navigate from a product list to a detailed view using `@Input` to pass the selected product ID to the detail component.
 
 
+| Good/Bad | Description                                                                                                                                                                     |
+|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ✅ | It's the standard way to communicate between components, well-tested and recommended.                                                                                     |
+| ✅ | The newest Angular version lets you transform data through `@Input` decorator's metadata `transform`, similar to setters. |
+| ✅ | Always good to use and recommended from Angular v17+. |
+| ✅ | Provides improved performance and change detection. |
+| ❌ | Providing inputs and outputs via metadata properties can be harder to understand and can be less concise.                                                                          |
+
+
+
 #### Traditional Approach with Decorators
 
 The classic way uses `@Input()` and `@Output()` decorators, letting 
@@ -41,22 +51,11 @@ class Component {
 ```
 
 
-| Good/Bad | Description                                                                                                                                                                     |
-|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ✅ | It's the standard way to communicate between components, well-tested and recommended.                                                                                     |
-| ✅ | The newest Angular version lets you transform data through `@Input` decorator's metadata `transform`, similar to setters. |
-
-
 
 #### Alternative Non-Decorator Approach
 Here's something interesting - we don't actually need decorators for inputs and outputs!
 There's a non-traditional way using `@Component` metadata with `inputs` or `outputs` arrays.
 It achieves the same result with a different syntax.
-
-| Good/Bad | Description                                                                                                                                                                     |
-|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ❌ | Providing inputs and outputs via metadata properties can be harder to understand and can be less concise.                                                                          |
-
 
 ```typescript
 // Component using metadata for inputs/outputs.
@@ -74,12 +73,6 @@ class Component {
 Angular 17+ introduces a powerful new way using signals with `input()` and `output()`
 functions. This approach offers better performance and smarter change detection, 
 making it the go-to choice for new applications.
-
-
-| Good/Bad | Description                                           |
-|--------|-------------------------------------------------------|
-| ✅ | Always good to use and recommended from Angular v17+. |
-| ✅ | Provides improved performance and change detection. |
 
 
 ```typescript

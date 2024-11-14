@@ -12,8 +12,8 @@ Once set up, the router will automatically connect your URL parameters to your c
 someone visits a page.
 
 #### 💡 Practical Uses of Routing Input Binding
-1. Product detail pages with product information in route (e.g., /products/:productId)
-2. Blog post pages with slug parameters (e.g., /blog/:category/:slug)
+1. Product detail pages with product information in route (e.g., `/products/:productId`)
+2. Blog post pages with slug parameters (e.g., `/blog/:category/:slug`)
 
 | Good/Bad | Description                                     |
 |---------|-------------------------------------------------|

@@ -5,10 +5,10 @@ object in the navigation extras. This object is transient, meaning it is only av
 during the lifetime of the navigation and does not persist if the page is reloaded.
 
 You can pass the state object using the `navigate()` method of the `Router` service, or through a 
-`[routerLink]` directive with binding. Here's an example with `navigate()`:
+`[routerLink]` directive with binding. 
 
-Once you navigate to the destination component, you can access the state from the Router service. 
-This is typically done in the ngOnInit lifecycle hook or directly in the constructor, depending on 
+Once you navigate to the destination component, you can access the state from the `Router` service. 
+This is typically done in the `ngOnInit` lifecycle hook or directly in the constructor, depending on 
 when you need to access the data.
 
 #### 💡 Practical Uses of State Objects

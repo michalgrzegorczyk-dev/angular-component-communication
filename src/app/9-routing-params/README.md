@@ -14,7 +14,7 @@ Once set up, you can pass values through these routes when navigating. Your comp
 can then easily access these parameters.
 
 #### 💡 Practical Uses of Routing Params
-1. Most common use cae is navigation to detailed view of specific item.
+1. Most common use case is navigation to detailed view of specific item.
 2. Steps in multistep process or workflow, can help to keep track of the current step like `/checkout/step-2`.
 3. Filtering subsections of data like `products/category/electronics`.
 
@@ -72,6 +72,6 @@ class ChildComponent implements OnInit {
 }
 ```
 
-Full set of examples around this topic you can find in the [src/app/9-routing-params](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/src/app/9-routing-params) folder.
+Full set of examples around this topic you can find in the [src/app/9-routing-params](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/9-routing-params) folder.
 
 ---

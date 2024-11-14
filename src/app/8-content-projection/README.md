@@ -2,7 +2,7 @@
 
 <img src="/public/img/img8.png" alt="Inputs and Outputs" style="width: 500px; height:auto;">
 
-Here's how to work with projected content in Angular components! 
+Here's how to work with projected content in Angular components. 
 While `ViewChild` and `ViewChildren` handle elements in a component's template,
 `ContentChild` and `ContentChildren` deal with content that's projected between
 component tags. This advanced feature helps you manage content passed
@@ -71,6 +71,6 @@ class ContainerComponent implements AfterContentInit {
 Angular 17+ introduces signal-based versions with `contentChild()` and `contentChildren()`
 functions. They work similarly, but give you the power of signals.
 
-Full set of examples around this topic you can find in the [src/app/8-component-projection](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/8-component-projection) folder.
+Full set of examples around this topic you can find in the [src/app/8-content-projection](https://github.com/michalgrzegorczyk-dev/angular-component-communication/tree/master/src/app/8-content-projection) folder.
 
 ---
