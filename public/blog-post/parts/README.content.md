@@ -17,11 +17,11 @@ approaches to handle this communication.
 | Good/Bad | Description                                                                                                              |
 |--------|--------------------------------------------------------------------------------------------------------------------------|
 | ❌ | Providing inputs and outputs via metadata properties can be harder to understand and can be less concise.                |
+| ❌ | Component inheritance is rarely used in Angular, so you may never need this. |
 | ✅ | It's the standard way to communicate between components, well-tested and recommended.                                    |
 | ✅ | The newest Angular version lets you transform data through `@Input` decorator's metadata `transform`, similar to setters. |
 | ✅ | Always good to use and recommended with signals (with signals from Angular v17+).                                        |
 | ✅ | Signals input and outputs provide improved performance and change detection.                                             |
-
 
 
 #### Traditional Approach with Decorators
@@ -87,11 +87,6 @@ class Component {
 #### Input Inheritance
 
 While not common, Angular supports inheriting input and output properties from parent components.
-
-| Good/Bad | Description                                                                       |
-|--------|-----------------------------------------------------------------------------------|
-| ❌ | Component inheritance is rarely used in Angular, so you may never need this. |
-| ✅ | Adds to your toolkit of component communication techniques.                 |
 
 ```typescript
 // Parent component with input.
