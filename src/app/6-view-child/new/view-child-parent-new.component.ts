@@ -1,4 +1,4 @@
-import {Component, ViewChild, viewChild} from "@angular/core";
+import {Component, viewChild} from "@angular/core";
 import {ViewChildChildComponent} from "../view-child.component";
 
 @Component({
@@ -12,7 +12,6 @@ import {ViewChildChildComponent} from "../view-child.component";
   imports: [ViewChildChildComponent]
 })
 export class ViewChildParentNewComponent {
-  // new way with signals of using ViewChild
   childComponentNew = viewChild.required<ViewChildChildComponent>(ViewChildChildComponent);
 
   click(): void {

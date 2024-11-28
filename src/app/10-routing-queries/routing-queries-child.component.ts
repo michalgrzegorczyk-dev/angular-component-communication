@@ -16,10 +16,10 @@ export class RoutingQueriesChildComponent implements OnInit {
   name = '';
   role = '';
 
-  readonly #route = inject(ActivatedRoute);
+  readonly route = inject(ActivatedRoute);
 
   ngOnInit(): void {
-    this.#route.queryParams.subscribe((params: Params) => {
+    this.route.queryParams.subscribe((params: Params) => {
       this.id = params['id'];
       this.name = params['name'];
       this.role = params['role'];

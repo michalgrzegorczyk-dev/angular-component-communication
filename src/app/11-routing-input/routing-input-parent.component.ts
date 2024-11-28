@@ -1,4 +1,4 @@
-import {Component, Input, inject} from "@angular/core";
+import {Component, inject} from "@angular/core";
 import {Router, RouterOutlet} from "@angular/router";
 import {RoutingInputChildComponent} from "./routing-input-child.component";
 
@@ -18,9 +18,9 @@ import {RoutingInputChildComponent} from "./routing-input-child.component";
 })
 export class RoutingInputParentComponent {
 
-  readonly #router = inject(Router);
+  private readonly router = inject(Router);
 
   changeRoute(id: string) {
-    this.#router.navigate(['/router-input', id]);
+    this.router.navigate(['/router-input', id]);
   }
 }

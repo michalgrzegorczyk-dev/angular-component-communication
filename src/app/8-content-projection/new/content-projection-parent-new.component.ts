@@ -1,4 +1,3 @@
-// container component
 import {Component, AfterContentInit, ElementRef, contentChild, contentChildren} from "@angular/core";
 import {ContentProjectionChildComponent} from "../content-projection-child.component";
 
@@ -18,7 +17,6 @@ export class ContentProjectionParentOldComponent implements AfterContentInit {
   items = contentChildren<ContentProjectionChildComponent>(ContentProjectionChildComponent);
 
   ngAfterContentInit(): void {
-    // Access projected content here
     console.log('Header:', this.headerContent()?.nativeElement.textContent);
     this.items().forEach(item => console.log(item.title));
   }

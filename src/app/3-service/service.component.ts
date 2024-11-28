@@ -14,16 +14,16 @@ import {AsyncPipe} from "@angular/common";
   imports: [AsyncPipe]
 })
 export class ServiceComponent implements OnInit {
-  readonly #newService = inject(NewService);
-  readonly newValue = this.#newService.value;
+  private readonly newService = inject(NewService);
+  readonly newValue = this.newService.value;
 
-  readonly #oldService = inject(OldService);
-  readonly oldValue$ = this.#oldService.value$;
+  private readonly oldService = inject(OldService);
+  readonly oldValue$ = this.oldService.value$;
 
   ngOnInit() {
     setTimeout(() => {
-      this.#newService.setValue('new value');
-      this.#oldService.setValue('new value');
+      this.newService.setValue('new value');
+      this.oldService.setValue('new value');
     }, 2000);
   }
 }

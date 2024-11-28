@@ -1,4 +1,3 @@
-// container component
 import {Component, AfterContentInit, ContentChild, ElementRef, ContentChildren, QueryList} from "@angular/core";
 import {ContentProjectionChildComponent} from "../content-projection-child.component";
 
@@ -14,13 +13,13 @@ import {ContentProjectionChildComponent} from "../content-projection-child.compo
   imports: [ContentProjectionChildComponent],
 })
 export class ContentProjectionParentNewComponent implements AfterContentInit {
-  @ContentChild('header') headerContent!: ElementRef;
+  @ContentChild('header')
+  headerContent!: ElementRef;
 
   @ContentChildren(ContentProjectionChildComponent)
   items!: QueryList<ContentProjectionChildComponent>;
 
   ngAfterContentInit() {
-    // Access projected content here
     console.log('Header:', this.headerContent?.nativeElement.textContent);
     this.items.forEach(item => console.log(item.title));
   }

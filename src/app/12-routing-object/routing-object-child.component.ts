@@ -1,6 +1,6 @@
-import {Component, Input, inject} from "@angular/core";
+import {Component, inject} from "@angular/core";
 import {Router, NavigationStart} from "@angular/router";
-import {filter, map, first, takeUntil} from "rxjs";
+import {filter, map} from "rxjs";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Component({
@@ -12,12 +12,12 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 })
 export class RoutingObjectChildComponent {
 
-  readonly #router = inject(Router);
+  private readonly router = inject(Router);
 
   constructor() {
-    this.#router.events.pipe(
+    this.router.events.pipe(
       filter(e => e instanceof NavigationStart),
-      map(() => this.#router.getCurrentNavigation()?.extras.state),
+      map(() => this.router.getCurrentNavigation()?.extras.state),
       takeUntilDestroyed(),
     ).subscribe(state => {
       if (state) {

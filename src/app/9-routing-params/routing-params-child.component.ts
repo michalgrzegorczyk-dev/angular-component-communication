@@ -11,10 +11,10 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class RoutingParamsChildComponent implements OnInit {
   readonly id = signal('foo');
-  #activatedRoute = inject(ActivatedRoute);
+  private activatedRoute = inject(ActivatedRoute);
 
   ngOnInit(): void {
-    this.#activatedRoute.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       this.id.set(params['id']);
     });
   }

@@ -137,14 +137,12 @@ export class AppComponent implements OnInit {
   readonly input2Signal = signal('input-2-signal');
   readonly currentPage = signal(1);
 
-
-  outputHandler() {
-    // Handle output
-    console.log('Output')
-  }
-
   ngOnInit(): void {
     setTimeout(() => this.input1Signal.set('Example'), 5000);
+  }
+
+  outputHandler() {
+    console.log('Output')
   }
 
   onPageChange(page: number) {

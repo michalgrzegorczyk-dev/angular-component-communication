@@ -8,9 +8,9 @@ import {Component} from "@angular/core";
   `,
 })
 export class ViewChildChildComponent {
-  readonly #someChildField = 'Field Value';
+  private readonly someChildField = 'Field Value';
 
   someChildMethod(): void {
-    console.log(this.#someChildField);
+    console.log(this.someChildField);
   }
 }

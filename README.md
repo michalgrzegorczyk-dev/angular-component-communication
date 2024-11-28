@@ -1,4 +1,4 @@
-# Components Communication in Angular
+# Mastering Component Communication in Angular
 
 ```typescript
 npm install && ng serve

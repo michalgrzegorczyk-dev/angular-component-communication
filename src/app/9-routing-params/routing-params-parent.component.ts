@@ -12,13 +12,13 @@ import {RouterOutlet, Router} from "@angular/router";
   imports: [RouterOutlet]
 })
 export class RoutingParamsParentComponent implements OnInit {
-  readonly #router = inject(Router);
+  private readonly router = inject(Router);
 
   async ngOnInit(): Promise<void> {
-    await this.#router.navigate(['/']);
+    await this.router.navigate(['/']);
   }
 
   async goToDetails(): Promise<void> {
-    await this.#router.navigate(['/details', '123']);
+    await this.router.navigate(['/details', '123']);
   }
 }

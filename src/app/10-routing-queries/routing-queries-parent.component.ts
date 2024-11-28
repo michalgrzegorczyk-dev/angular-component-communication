@@ -12,14 +12,14 @@ import {RouterOutlet, Router} from "@angular/router";
   imports: [RouterOutlet]
 })
 export class RoutingQueriesParentComponent implements OnInit {
-  readonly #router = inject(Router);
+  private router = inject(Router);
 
   async ngOnInit(): Promise<void> {
-    await this.#router.navigate(['/']);
+    await this.router.navigate(['/']);
   }
 
   async goToDetails(): Promise<void> {
-    await this.#router.navigate(['/detail-query'], {
+    await this.router.navigate(['/detail-query'], {
       queryParams: {
         id: '123',
         name: 'John Doe',

@@ -12,7 +12,6 @@ import {ViewChildChildComponent} from "../view-child.component";
   imports: [ViewChildChildComponent]
 })
 export class ViewChildParentOldComponent {
-  // old way of using ViewChild
   @ViewChild(ViewChildChildComponent)
   childComponentOld!: ViewChildChildComponent;
 

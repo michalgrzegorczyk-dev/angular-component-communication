@@ -1,4 +1,4 @@
-import {Component, ViewChildren, QueryList, viewChildren} from "@angular/core";
+import {Component, ViewChildren, QueryList} from "@angular/core";
 import {ViewChildrenChildComponent} from "../view-children-child.component";
 
 @Component({
@@ -14,7 +14,6 @@ import {ViewChildrenChildComponent} from "../view-children-child.component";
   imports: [ViewChildrenChildComponent]
 })
 export class ViewChildrenParentOldComponent {
-  // old way of using ViewChildren
   @ViewChildren(ViewChildrenChildComponent) children!: QueryList<ViewChildrenChildComponent>;
 
   click(): void {

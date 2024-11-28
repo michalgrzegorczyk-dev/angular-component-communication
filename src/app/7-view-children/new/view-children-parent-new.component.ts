@@ -14,7 +14,6 @@ import {ViewChildrenChildComponent} from "../view-children-child.component";
   imports: [ViewChildrenChildComponent]
 })
 export class ViewChildrenParentNewComponent {
-  // new way with signals of using ViewChildren
   childrenNew = viewChildren<ViewChildrenChildComponent>(ViewChildrenChildComponent);
 
   click(): void {

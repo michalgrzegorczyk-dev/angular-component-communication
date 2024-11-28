@@ -1,4 +1,4 @@
-import {Component, Input, inject, OnInit} from "@angular/core";
+import {Component, inject, OnInit} from "@angular/core";
 import {Router, RouterOutlet} from "@angular/router";
 import {RoutingObjectChildComponent} from "./routing-object-child.component";
 
@@ -15,14 +15,13 @@ import {RoutingObjectChildComponent} from "./routing-object-child.component";
   standalone: true
 })
 export class RoutingObjectParentComponent implements OnInit {
-
-  readonly #router = inject(Router);
+  private readonly router = inject(Router);
 
   async ngOnInit(): Promise<void> {
-    await this.#router.navigate(['/']);
+    await this.router.navigate(['/']);
   }
 
   async changeRoute(): Promise<void> {
-    await this.#router.navigate(['router-object'], {state: {user: {name: 'Secret', value: 30}}});
+    await this.router.navigate(['router-object'], {state: {user: {name: 'Secret', value: 30}}});
   }
 }
